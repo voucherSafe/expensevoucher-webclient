@@ -1,0 +1,23 @@
+<div class="jumbotron">
+  <h1>Welcome</h1>
+  <p class="lead">
+    Expense Voucher Management System for Small and Medium Enterprises
+  </p>
+
+  <div class="alert alert-danger" role="alert" ng-show="error!==''">
+    <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="error=''"></span>
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{error}}
+  </div>
+  <div class="well">
+    <input type="email" class="form-control" placeholder="email" ng-model="credentials.email">
+    </br>
+    <input type="password" class="form-control" placeholder="password" ng-model="credentials.password">
+  </div>
+  <p><a class="btn btn-lg btn-success" ng-click="login()">Login<span class="glyphicon glyphicon-play"></span></a></p>
+</div>
+
+<div class="row marketing">
+
+</div>
