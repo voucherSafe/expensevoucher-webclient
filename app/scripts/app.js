@@ -35,6 +35,11 @@ angular
         controller: 'ExpenseVoucherCtrl',
         controllerAs: 'expensevouchers'
       })
+      .when('/edit-voucher/:id', {
+        templateUrl: 'views/edit-voucher.html',
+        controller: 'EditVoucherCtrl',
+        controllerAs: 'editVoucher'
+      })
       .otherwise({
         redirectTo: '/'
       });

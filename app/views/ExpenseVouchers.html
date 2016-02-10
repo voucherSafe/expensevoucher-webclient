@@ -7,17 +7,20 @@
     <span class="sr-only">Error:</span>
     {{error}}
   </div>
-  <div class="btn btn-default" ng-click="newVoucher">Create new Expense Voucher</div>
-  <ul class="list-group">
-    <li class="list-group-item" ng-repeat="voucher in expenseVouchers">
-      <p> Head: {{voucher.expenseHead}} </p>
-      <p>  Description: {{voucher.expenseDescription}}</p>
-      <small>Submitted on: {{voucher.submitDate}}</small>
-      <small>by: {{voucher.submitter}}</small>
-    </li>
-  </ul>
-</div>
-
-<div class="row marketing">
-
+  <div class="btn btn-default" data-ng-click="newVoucher()">Create new Expense Voucher</div>
+  <div class="list-group">
+    <a class="list-group-item" data-ng-repeat="voucher in expenseVouchers" data-ng-href="#/edit-voucher/{{voucher.id}}" >
+      <p class="list-group-item-text">
+        <span>Head </span>
+        <span>{{voucher.expenseHead}}</span>
+      </p>
+      <p class="list-group-item-text">
+        <span>Description: </span>
+        <span>{{voucher.expenseDescription}}</span>
+      </p>
+      <small class="list-group-item-text">
+        <span>Submitted on : {{voucher.submitDate}}, By {{voucher.submitter}}</span>
+      </small>
+    </a>
+  </div>
 </div>
