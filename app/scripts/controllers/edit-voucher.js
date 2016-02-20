@@ -16,4 +16,7 @@ angular.module('expenseVouchersClientApp')
     //];
     $scope.voucher = ExpenseVoucher.findById({id: $routeParams.id});
 
+
+
+
   });

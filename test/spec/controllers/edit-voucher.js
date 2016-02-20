@@ -20,4 +20,5 @@ describe('Controller: EditVoucherCtrl', function () {
   //it('should attach a list of awesomeThings to the scope', function () {
   //  expect(EditVoucherCtrl.awesomeThings.length).toBe(3);
   //});
+
 });
