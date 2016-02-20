@@ -1,20 +1,26 @@
 // Karma configuration
 // Generated on Sat Feb 13 2016 14:09:31 GMT+0530 (IST)
 
-module.exports = function(config) {
+module.exports = function (config) {
+  'use strict';
+
   config.set({
+    // enable / disable watching file and executing tests whenever any file changes
+    autoWatch : true,
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath : '',
 
-
-    // frameworks to use
+    // testing framework to use (jasmine/mocha/qunit/...)
+    // as well as any additional frameworks (requirejs/chai/sinon/...)
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
-
+    frameworks : [
+      'jasmine'
+    ],
 
     // list of files / patterns to load in the browser
-    files: [
+    files : [
+      // bower:js
       'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'bower_components/bootstrap/dist/js/bootstrap.js',
@@ -25,58 +31,115 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'app/scripts/*.js',
-      'app/scripts/services/*.js',
-      'app/scripts/controllers/*.js',
-      'test/**/*.js'
+      // endbower
+      'test/spec/**/*.js',
+      'app/scripts/**/*.js',
+      // view templates
+      'app/views/**/*.html'
     ],
 
+    // list of files / patterns to exclude
+    exclude : [],
 
-    // list of files to exclude
-    exclude: [
-    ],
-
-
-    // preprocess matching files before serving them to the browser
+    // pre-process matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
+    preprocessors : {
+      // pre-process HTML files into AngularJS templates.
+      'app/views/**/*.html' : ['ng-html2js'],
+      // source files, that you wanna generate coverage for
+      // do not include tests or libraries
+      // (these files will be instrumented by Istanbul)
+      'app/scripts/**/*.js' : ['coverage']
     },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
-
+    // coverage reporter generates the coverage
+    reporters : ['spec', 'coverage'],
 
     // web server port
-    port: 9876,
+    port : 9876,
 
-
-    // enable / disable colors in the output (reporters and logs)
-    colors: true,
-
-
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_DEBUG,
-
-
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
-
-
-    // start these browsers
+    // Start these browsers, currently available:
+    // - Chrome
+    // - ChromeCanary
+    // - Firefox
+    // - Opera
+    // - Safari (only Mac)
+    // - PhantomJS
+    // - IE (only Windows)
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers : [
+      'PhantomJS'
+    ],
 
+    // Which plugins to enable
+    plugins : [
+      'karma-phantomjs-launcher',
+      'karma-jasmine',
+      'karma-spec-reporter',
+      'karma-coverage',
+      'karma-ng-html2js-preprocessor'
+    ],
 
     // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    // if true, it capture browsers, run tests and exit
+    singleRun : false,
+
+    // enable / disable colors in the output (reporters and logs)
+    colors : true,
+
+    // level of logging
+    // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
+    logLevel : config.LOG_DEBUG,
+
+    // Uncomment the following lines if you are using grunt's server to run the tests
+    // proxies: {
+    //   '/': 'http://localhost:9000/'
+    // },
+    // URL root prevent conflicts with the site root
+    // urlRoot: '_karma_'
+
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
-  })
+    concurrency: Infinity,
+
+    specReporter : {maxLogLines : 10},
+
+    // configure the html2js preprocessor
+    ngHtml2JsPreprocessor : {
+      //// strip this from the file path
+      //stripPrefix   : 'public/',
+      //stripSuffix   : '.ext',
+      //// prepend this to the
+      //prependPrefix : 'served/',
+
+      // or define a custom transform function
+      //cacheIdFromPath : function (filepath) {
+      //  return cacheId;
+      //},
+
+      // - setting this option will create only a single module that contains templates
+      //   from all the files, so you can load them all with module('foo')
+      // - you may provide a function(htmlPath, originalPath) instead of a string
+      //   if you'd like to generate modules dynamically
+      //   htmlPath is a originalPath stripped and/or prepended
+      //   with all provided suffixes and prefixes
+      // moduleName : 'calendarViews'
+    },
+
+    // configure the reporter
+    coverageReporter : {
+      dir       : 'coverage/',
+      reporters : [
+        // reporters not supporting the `file` property
+        {type : 'html', subdir : 'report-html'},
+        {type : 'text'},
+        {type : 'text-summary'}
+      ]
+    }
+  });
 };
+
