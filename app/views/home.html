@@ -1,0 +1,93 @@
+<h1 class="header">Home</h1>
+<div class="row">
+  <div class="col-md-6">
+    <p class="lead"> Welcome! <b>{{employee.employeeID}}</b></p>
+  </div>
+  <div class="col-md-6">
+    <p class="lead" ng-if="employee.isManager===true">Manager of <b>{{organisation.name}}</b></p>
+    <p class="lead" ng-if="employee.isManager===false">Employee of <b>{{organisation.name}}</b></p>
+  </div>
+</div>
+
+<div class="well">
+  <div class="alert alert-danger" role="alert" ng-show="error!==''">
+    <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="error=''"></span>
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{error.msg}}
+  </div>
+
+  <!--Work area containing action buttons and vouchers starts-->
+  <div class="row">
+    <!--Left hand column for actions starts-->
+    <div class="col-md-5">
+      <h3>Actions</h3>
+      <ul class="list-group">
+        <li class="list-group-item" data-ng-click="newVoucher()">Create a new Voucher</li>
+        <li class="list-group-item" data-ng-click="report()">View Submitted Vouchers</li>
+        <li class="list-group-item" data-ng-click="report()">View Completed Vouchers</li>
+      </ul>
+    </div>
+    <!--Left hand column for actions ends-->
+
+    <!--Right-hand column starts-->
+    <div class="col-md-7">
+
+      <!--Active vouchers panel starts-->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Active Vouchers <small>(Draft and Rejected)</small></h3>
+        </div>
+        <div class="panel-body">
+          <p ng-if="!activeVouchers.length"> You don't have any.</p>
+          <div class="list-group" ng-if="activeVouchers.length">
+            <a class="list-group-item" data-ng-repeat="voucher in activeVouchers"
+               data-ng-href="#/edit-voucher/{{voucher.id}}" >
+              <p class="list-group-item-text">
+                <span>Head </span>
+                <span>{{voucher.expenseHead}}</span>
+              </p>
+              <p class="list-group-item-text">
+                <span>Description: </span>
+                <span>{{voucher.expenseDescription}}</span>
+              </p>
+              <small class="list-group-item-text">
+                <span>Submitted on : {{voucher.Date}}, By {{voucher.submitter}}</span>
+              </small>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!--Active vouchers panel ends-->
+
+      <!--Approved vouchers panel starts-->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Approved Vouchers <small>(To Print)</small></h3>
+        </div>
+        <div class="panel-body">
+          <p ng-if="!approvedVouchers.length"> You don't have any.</p>
+          <div class="list-group" ng-if="approvedVouchers.length">
+            <a class="list-group-item" data-ng-repeat="voucher in approvedVouchers"
+               data-ng-href="#/edit-voucher/{{voucher.id}}" >
+              <p class="list-group-item-text">
+                <span>Head </span>
+                <span>{{voucher.expenseHead}}</span>
+              </p>
+              <p class="list-group-item-text">
+                <span>Description: </span>
+                <span>{{voucher.expenseDescription}}</span>
+              </p>
+              <small class="list-group-item-text">
+                <span>Submitted on : {{voucher.Date}}, By {{voucher.submitter}}</span>
+              </small>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!--Approved vouchers panel ends-->
+    </div>
+    <!--Right-hand column ends-->
+  </div>
+  <!--Work area containing action buttons and vouchers ends-->
+</div>

@@ -25,14 +25,14 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/expensevouchers',{
-        templateUrl: 'views/expensevouchers.html',
-        controller: 'ExpenseVoucherCtrl',
+      .when('/home/:id',{
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl',
         controllerAs: 'expensevouchers'
       })
-      .when('/createvoucher', {
-        templateUrl: 'views/newvoucher.html',
-        controller: 'ExpenseVoucherCtrl',
+      .when('/create-voucher/:id', {
+        templateUrl: 'views/create-voucher.html',
+        controller: 'CreateVoucherCtrl',
         controllerAs: 'expensevouchers'
       })
       .when('/edit-voucher/:id', {

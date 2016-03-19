@@ -1,0 +1,98 @@
+<h1 class="header">Create a new Voucher</h1>
+
+<!-- The form copies the exact format used by the Vouchers in Purandara -->
+  <!-- Top Row a Box with the Recipient details and VR No, Date -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i>{{organisation.name}}</i></h3>
+    </div>
+    <div class="panel-body">
+      <!-- Table Recipient details on left, VR No, Data on the right-->
+      <div class="row">
+        <div class="col-md-7">
+          <label for="recipient-details">Recipient Name & Address</label>
+          <div class="input-group-lg">
+            <input type="text" class="form-control" id="recipient-details">
+          </div>
+        </div>
+        <div class="col-md-5">
+          <b class="pull-right">BANK/CASH/VOUCHER</b>
+          <table class="table table-bordered">
+            <tr>
+              <td>
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">Vr. No.</span>
+                  <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">Date</span>
+                  <input type="date" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- Table Recipient details on left, VR No, Data on the right - Ends-->
+      <!-- Expenses begins -->
+      <div class="row">
+        <div class="col-md-8">
+          <h4> Expenses</h4>
+        </div>
+        <div class="col-md-4">
+          <button type="button" class="btn btn-default">Add Expense</button>
+        </div>
+      </div>
+
+      <table class="table table-striped">
+        <tr>
+          <th>
+            Sl. No.
+          </th>
+          <th>
+            Particulars
+          </th>
+          <th>
+            Head
+          </th>
+          <th>
+            Amount (Rs.Ps)
+          </th>
+        </tr>
+        <tr>
+          <!--temp-->
+          <td>
+            1
+          </td>
+          <td>
+            Lunch at Paradise, Kozhikode
+          </td>
+          <td>
+            Customer Entertainment
+          </td>
+          <td>
+            662.00
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="panel-footer">
+      <div class="btn-group btn-group-lg" role="group" aria-label="...">
+        <button type="button" class="btn btn-default">Save</button>
+          <button type="button" class="btn btn-default">Submit</button>
+        <button type="button" class="btn btn-default">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+<div class="alert alert-danger" role="alert" ng-show="error!==''">
+  <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="error=''"></span>
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  {{error}}
+</div>
+
