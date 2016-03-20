@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'lbServices'
+    'lbServices',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider, LoopBackResourceProvider) {
     $routeProvider
@@ -30,15 +31,14 @@ angular
         controller: 'HomeCtrl',
         controllerAs: 'expensevouchers'
       })
-      .when('/create-voucher/:id', {
-        templateUrl: 'views/create-voucher.html',
+      .when('/employee/:id/voucher/create', {
+        templateUrl: '../views/create-voucher.html',
         controller: 'CreateVoucherCtrl',
         controllerAs: 'expensevouchers'
       })
-      .when('/edit-voucher/:id', {
-        templateUrl: 'views/edit-voucher.html',
-        controller: 'EditVoucherCtrl',
-        controllerAs: 'editVoucher'
+      .when('/employee/:employeeid/voucher/:voucherid/edit', {
+        templateUrl: '../views/voucher.html',
+        controller: 'VoucherCtrl'
       })
       .otherwise({
         redirectTo: '/'

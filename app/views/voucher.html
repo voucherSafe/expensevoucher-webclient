@@ -1,0 +1,153 @@
+<div class="page-header">
+  <h1>Work with Voucher</h1>
+</div>
+<div class="alert alert-danger" role="alert" ng-show="error!==''">
+  <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="error=''"></span>
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  {{error}}
+</div>
+<!-- The form copies the exact format used by the Vouchers in Purandara -->
+<!-- Top Row a Box with the Recipient details and VR No, Date -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{organisation.name}}</h3>
+  </div>
+  <div class="panel-body">
+    <!-- Table Recipient details on left, VR No, Data on the right-->
+    <div class="row">
+      <div class="col-md-7">
+        <label for="recipient-details">Recipient Name & Address</label>
+          <textarea class="form-control" rows="4" id="recipient-details" ng-disabled="true">{{ recipientDetails }}
+          </textarea>
+      </div>
+      <div class="col-md-5">
+        <b class="pull-right">BANK/CASH/VOUCHER</b>
+        <table class="table table-bordered">
+          <tr>
+            <td>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Vr. No.</span>
+                <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Date</span>
+                <input type="date" class="form-control" placeholder="" aria-describedby="basic-addon1" required="true"
+                       ng-model="voucher.Date">
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- Table Recipient details on left, VR No, Data on the right - Ends-->
+
+    <!-- Add expense Pop-up template starts-->
+    <script type="text/ng-template" id="myPopoverTemplate.html">
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" ng-model="newExpense.Date" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Particulars</label>
+        <input type="text" ng-model="newExpense.Particulars" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Head of Account</label>
+        <input type="text" ng-model="newExpense.HeadofAccount" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Amount</label>
+        <div class="input-group">
+          <span class="input-group-addon">Rs.</span>
+          <input type="number" class="form-control" aria-label="Amount Rs" min="0" ng-model="newExpense.Amount.major">
+          <span class="input-group-addon">Ps.</span>
+          <input type="number" class="form-control" aria-label="Amount Ps" min="0" max="100" ng-model="newExpense.Amount.minor">
+        </div>
+      </div>
+      <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default" ng-click="addNewExpense()">Add</button>
+        <button type="button" class="btn btn-default" ng-click="cancelNewExpense()">Cancel</button>
+      </div>
+    </script>
+    <!-- Add expense Pop-up template ends -->
+
+    <!-- Expenses begins -->
+    <div class="row">
+      <div class="col-md-8">
+        <h4> Expenses </h4>
+      </div>
+      <div class="col-md-4">
+        <button uib-popover-template="expensePopover.templateUrl"
+                popover-title="{{expensePopover.title}}"
+                popover-placement="left"
+                type="button"
+                class="btn btn-success"
+                popover-is-open="showExpensePopover"
+                ng-click="createNewExpense()">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          Add Expense
+        </button>
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <tr>
+        <th>
+          Sl. No.
+        </th>
+        <th>
+          Particulars
+        </th>
+        <th>
+          Head
+        </th>
+        <th>
+          Amount (INR)
+        </th>
+      </tr>
+      <tr ng-repeat="expense in expenses">
+        <td>
+          {{ expense.SlNo }}
+        </td>
+        <td>
+          {{ expense.Particulars }}
+        </td>
+        <td>
+          {{ expense.HeadofAccount }}
+        </td>
+        <td>
+          {{ expense.Amount.major + '.' + expense.Amount.minor }}
+        </td>
+      </tr>
+    </table>
+    <div class="float-right">
+      <label>Total Amount in this Voucher</label>
+      <span class="badge">{{voucherTotalAmount | currency:"&#8377;"}}</span>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class="btn-group btn-group-lg" ng-if="activeVoucher" role="group" aria-label="...">
+      <button type="button" class="btn btn-default" ng-click="save()">Save</button>
+      <button type="button" class="btn btn-default" ng-click="submit()">Submit</button>
+      <button type="button" class="btn btn-default" ng-click="">Print</button>
+      <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+    </div>
+    <div class="btn-group btn-group-lg" ng-if="submittedVoucher && employee.isManager" role="group" aria-label="...">
+      <button type="button" class="btn btn-default" ng-click="">Approve</button>
+      <button type="button" class="btn btn-default" ng-click="">Reject</button>
+      <button type="button" class="btn btn-default" ng-click="">Print</button>
+      <button type="button" class="btn btn-default" ng-click="">Cancel</button>
+    </div>
+    <div class="btn-group btn-group-lg" ng-if="archivedVoucher" role="group" aria-label="...">
+      <button type="button" class="btn btn-default" ng-click="">Print</button>
+      <button type="button" class="btn btn-default" ng-click="">Back</button>
+    </div>
+    <h3 class="pull-right"> {{voucher.State}}</h3>
+  </div>
+</div>
+

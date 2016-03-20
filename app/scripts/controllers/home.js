@@ -10,14 +10,17 @@ angular.module('expenseVouchersClientApp')
 
     $scope.error = '';
     $scope.employee = Employee.get({'id' : $routeParams.id}, function(){
-      $scope.organisation = Organisation.get({'id' : $scope.employee.organisationId})
+      console.log('Employee is %j', $scope.employee);
+      $scope.organisation = Organisation.get({'id' : $scope.employee.organisationId});
     });
+
+    $scope.orgSubmittedVouchers = [];
 
     function sortVouchersByState(vouchers){
       $scope.activeVouchers = [];
       $scope.approvedVouchers = [];
       for(var i=0; i<vouchers.length; i++){
-        switch(vouchers[i].state){
+        switch(vouchers[i].State){
           case voucherStates.draft:
             $scope.activeVouchers.push(vouchers[i]);
             break;
@@ -35,25 +38,11 @@ angular.module('expenseVouchersClientApp')
 
     $scope.vouchers = Employee.vouchers({'id' : $routeParams.id}, function(){
       sortVouchersByState($scope.vouchers);
+      console.log('%j', $scope.vouchers);
     });
 
     $scope.newVoucher = function(){
-      $location.path('/create-voucher/' + $routeParams.id);
-    };
-
-    $scope.createVoucher = function(){
-      $scope.activeVoucher = ExpenseVoucher.create($scope.activeVoucher,
-      function(res, headers){
-        //success
-      },
-      function(err){
-        //error
-        $scope.error = err;
-      });
-    };
-
-    $scope.submitVoucher = function(){
-
+      $location.path('/employee/' + $routeParams.id + '/voucher/create');
     };
 
   });

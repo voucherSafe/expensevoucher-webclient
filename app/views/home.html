@@ -1,93 +1,164 @@
-<h1 class="header">Home</h1>
-<div class="row">
-  <div class="col-md-6">
-    <p class="lead"> Welcome! <b>{{employee.employeeID}}</b></p>
-  </div>
-  <div class="col-md-6">
-    <p class="lead" ng-if="employee.isManager===true">Manager of <b>{{organisation.name}}</b></p>
-    <p class="lead" ng-if="employee.isManager===false">Employee of <b>{{organisation.name}}</b></p>
-  </div>
+<div class="page-header">
+  <h1>Home</h1>
 </div>
+<div class="container-fluid">
 
-<div class="well">
+  <!-- Employee Info and Welcome -->
+  <div class="row">
+    <div class="col-md-6">
+      <p class="lead"> Welcome <b>{{employee.firstName + " " + employee.lastName}}</b></p>
+    </div>
+    <div class="col-md-6">
+      <p class="lead" ng-if="employee.isManager===true">Manager of <b>{{organisation.name}}</b></p>
+      <p class="lead" ng-if="employee.isManager===false">Employee of <b>{{organisation.name}}</b></p>
+    </div>
+  </div>
+  <!-- Employee Info and Welcome -->
+
+  <!-- Output Error if any -->
   <div class="alert alert-danger" role="alert" ng-show="error!==''">
     <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="error=''"></span>
     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
     <span class="sr-only">Error:</span>
     {{error.msg}}
   </div>
+  <!-- Output Error ends -->
 
-  <!--Work area containing action buttons and vouchers starts-->
-  <div class="row">
-    <!--Left hand column for actions starts-->
-    <div class="col-md-5">
-      <h3>Actions</h3>
-      <ul class="list-group">
-        <li class="list-group-item" data-ng-click="newVoucher()">Create a new Voucher</li>
-        <li class="list-group-item" data-ng-click="report()">View Submitted Vouchers</li>
-        <li class="list-group-item" data-ng-click="report()">View Completed Vouchers</li>
-      </ul>
-    </div>
-    <!--Left hand column for actions ends-->
+  <!-- Manager's Corner -->
+  <div class="row" ng-show="employee.isManager">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Manager's Corner</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <h4>Recently Submitted</h4>
+            <p class="lead" ng-if="!orgSubmittedVouchers.length"> There aren't any.</p>
+            <div class="list-group" ng-if="orgSubmittedVouchers.length">
+              <a class="list-group-item" data-ng-repeat="voucher in orgSubmittedVouchers"
+                 data-ng-href="#/employee/{{organisation.id}}/voucher/{{voucher.id}}/edit" >
+                <p class="list-group-item-text">
+                  <span>{{ voucher.employeeId }}</span>
+                  <span class="badge">{{voucher.Amount | currency:"&#8377;"}}</span>
+                </p>
+                <p class="list-group-item-text">
+                  <span>Amount</span>
+                  <span class="badge">{{voucher.Amount | currency:"&#8377;"}}</span>
+                </p>
+                <p class="list-group-item-text">
+                  <span>{{voucher.Date | date:'medium'}}</span>
+                </p>
+              </a>
+            </div>
+          </div>
 
-    <!--Right-hand column starts-->
-    <div class="col-md-7">
+          <!-- Organization Reports -->
+          <div class="col-md-4">
+            <h4>Work with Vouchers</h4>
+                    <div class="list-group">
+                      <div class="list-group-item" data-ng-href="">All Submitted Vouchers</div>
+                      <div class="list-group-item" data-ng-href="">All Completed Vouchers</div>
+                    </div>
+          </div>
+          <!-- Organization Reports ends -->
 
-      <!--Active vouchers panel starts-->
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Active Vouchers <small>(Draft and Rejected)</small></h3>
-        </div>
-        <div class="panel-body">
-          <p ng-if="!activeVouchers.length"> You don't have any.</p>
-          <div class="list-group" ng-if="activeVouchers.length">
-            <a class="list-group-item" data-ng-repeat="voucher in activeVouchers"
-               data-ng-href="#/edit-voucher/{{voucher.id}}" >
-              <p class="list-group-item-text">
-                <span>Head </span>
-                <span>{{voucher.expenseHead}}</span>
-              </p>
-              <p class="list-group-item-text">
-                <span>Description: </span>
-                <span>{{voucher.expenseDescription}}</span>
-              </p>
-              <small class="list-group-item-text">
-                <span>Submitted on : {{voucher.Date}}, By {{voucher.submitter}}</span>
-              </small>
-            </a>
+          <!-- Employee Management -->
+          <div class="col-md-4">
+          <h4>Manage Employees</h4>
+          <div class="list-group">
+            <div class="list-group-item" data-ng-click="">Add </div>
+            <div class="list-group-item" data-ng-click="">Modify Details</div>
+            <div class="list-group-item" data-ng-click="">View all</div>
           </div>
         </div>
-      </div>
-      <!--Active vouchers panel ends-->
+        <!-- Employee Management ends -->
+        </div>
 
-      <!--Approved vouchers panel starts-->
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Approved Vouchers <small>(To Print)</small></h3>
-        </div>
-        <div class="panel-body">
-          <p ng-if="!approvedVouchers.length"> You don't have any.</p>
-          <div class="list-group" ng-if="approvedVouchers.length">
-            <a class="list-group-item" data-ng-repeat="voucher in approvedVouchers"
-               data-ng-href="#/edit-voucher/{{voucher.id}}" >
-              <p class="list-group-item-text">
-                <span>Head </span>
-                <span>{{voucher.expenseHead}}</span>
-              </p>
-              <p class="list-group-item-text">
-                <span>Description: </span>
-                <span>{{voucher.expenseDescription}}</span>
-              </p>
-              <small class="list-group-item-text">
-                <span>Submitted on : {{voucher.Date}}, By {{voucher.submitter}}</span>
-              </small>
-            </a>
-          </div>
-        </div>
       </div>
-      <!--Approved vouchers panel ends-->
     </div>
-    <!--Right-hand column ends-->
   </div>
-  <!--Work area containing action buttons and vouchers ends-->
-</div>
+  <!-- Manager's Corner ends -->
+
+  <!-- Employee's Stuff -->
+  <div class="row">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Work with your Vouchers</h3>
+    </div>
+    <div class="panel-body">
+      <!--Work area containing action buttons and vouchers starts-->
+          <div class="row">
+            <!--Left hand column for action buttons starts-->
+            <div class="col-md-5">
+              <h4>Actions</h4>
+              <div class="list-group">
+                <button class="list-group-item" data-ng-click="newVoucher()">Create a new Voucher</button>
+                <button class="list-group-item" data-ng-click="report()">View Submitted Vouchers</button>
+                <button class="list-group-item" data-ng-click="report()">View Completed Vouchers</button>
+              </div>
+            </div>
+            <!--Left hand column for actions ends-->
+
+            <!--Right-hand column starts-->
+            <div class="col-md-7">
+
+              <!--Active vouchers panel starts-->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Active Vouchers <small>(Draft and Rejected)</small></h3>
+                </div>
+                <div class="panel-body">
+                  <p ng-if="!activeVouchers.length"> You don't have any.</p>
+                  <div class="list-group" ng-if="activeVouchers.length">
+                    <a class="list-group-item" data-ng-repeat="voucher in activeVouchers"
+                       data-ng-href="#/employee/{{employee.employeeID}}/voucher/{{voucher.id}}/edit" >
+                      <p class="list-group-item-text">
+                        <span>Amount</span>
+                        <span class="badge">{{voucher.Amount | currency:"&#8377;"}}</span>
+                      </p>
+                      <p class="list-group-item-text">
+                        <span>{{voucher.Date | date:'medium'}}</span>
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!--Active vouchers panel ends-->
+
+              <!--Approved vouchers panel starts-->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Approved Vouchers <small>(To Print)</small></h3>
+                </div>
+                <div class="panel-body">
+                  <p ng-if="!approvedVouchers.length"> You don't have any.</p>
+                  <div class="list-group" ng-if="approvedVouchers.length">
+                    <a class="list-group-item" data-ng-repeat="voucher in approvedVouchers"
+                       data-ng-href="#/employee/{{employee.employeeID}}/voucher/{{voucher.id}}/edit" >
+                      <p class="list-group-item-text">
+                        <span>Head </span>
+                        <span>{{voucher.expenseHead}}</span>
+                      </p>
+                      <p class="list-group-item-text">
+                        <span>Description: </span>
+                        <span>{{voucher.expenseDescription}}</span>
+                      </p>
+                      <small class="list-group-item-text">
+                        <span>Submitted on : {{voucher.Date}}, By {{voucher.submitter}}</span>
+                      </small>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!--Approved vouchers panel ends-->
+            </div>
+            <!--Right-hand column ends-->
+          </div>
+          <!--Work area containing action buttons and vouchers ends-->
+        </div>
+    </div>
+    </div>
+  <!-- Employee's stuff ends -->
+  </div>
+  <!-- container-fluid -->

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Expense Voucher Management System</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -21,7 +21,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+<!--    <div class="header">
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
 
     <div class="container">
     <div ng-view=""></div>
@@ -54,8 +54,8 @@
 
     <div class="footer">
       <div class="container">
-        <p class="lead"><span class="glyphicon glyphicon-heart"></span> Powered by NodeJS, MongoDB, Angular and Loopback</p>
-        <p><span class="glyphicon glyphicon-user"></span> <small>Developed by Arun N. Kutty (kutty.a@gmail.com)</small></p>
+        <p><span class="glyphicon glyphicon-heart"></span> Powered by Node.JS, MongoDB, Angular.JS and Loopback.io</p>
+        <a href="http://arunkutty.com"><span class="glyphicon glyphicon-user"></span> Arun N. Kutty (arunkutty.com)</a>
       </div>
     </div>
 
@@ -81,6 +81,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -89,8 +90,8 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <script src="scripts/services/lb-services.js"></script>
-        <script src="scripts/controllers/edit-voucher.js"></script>
       <script src="scripts/controllers/create-voucher.js"></script>
+    <script src="scripts/controllers/voucher.js"></script>
         <script src="scripts/controllers/home.js"></script>
         <script src="scripts/services/voucherstates.js"></script>
         <script src="scripts/services/dummyservice.js"></script>
