@@ -1,6 +1,6 @@
-<div class="jumbotron">
-  <h1>Welcome</h1>
-  <p class="lead">
+<div class="container">
+  <h1 class="text-center">Welcome</h1>
+  <p class="lead text-center">
     Expense Voucher Management Tool
   </p>
 
@@ -11,12 +11,14 @@
     {{error}}
   </div>
   <div class="well">
-    <input type="email" class="form-control" placeholder="email" ng-model="credentials.email">
+    <input type="email" class="form-control" placeholder="Email" ng-model="credentials.email">
     </br>
-    <input type="password" class="form-control" placeholder="password" ng-model="credentials.password">
+    <input type="password" class="form-control" placeholder="Password" ng-model="credentials.password">
   </div>
-  <p><a class="btn btn-lg btn-success" ng-click="login()">Login<span class="glyphicon glyphicon-play"></span></a></p>
+  <p class="pull-right"><a class="btn btn-primary" ng-click="login()">
+        <span class="glyphicon glyphicon-log-in"></span> Log In</a></p>
 </div>
+
 
 <div class="row marketing">
 

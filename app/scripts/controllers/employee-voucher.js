@@ -7,7 +7,7 @@
  * Controller of the expenseVouchersClientApp
  */
 angular.module('expenseVouchersClientApp')
-  .controller('VoucherCtrl', function($scope, Voucher, Employee, Organisation, Expense, $location, $routeParams, voucherStates) {
+  .controller('EmployeeVoucherCtrl', function($scope, $filter, Voucher, Employee, Organisation, Expense, $location, $routeParams, voucherStates) {
 
     $scope.error = '';
     $scope.employee = Employee.get({'id' : $routeParams.employeeid}, function(){
@@ -28,6 +28,10 @@ angular.module('expenseVouchersClientApp')
           }
           //Take total amount
           $scope.voucherTotalAmount = $scope.voucher.Amount;
+
+          //Date in a form suitable for date field
+          $scope.formattedDate = new Date($scope.voucher.Date);
+
           //Get expenses for this voucher
           $scope.expenses = Voucher.expenses({'id': $routeParams.voucherid});
         });
@@ -75,6 +79,7 @@ angular.module('expenseVouchersClientApp')
         return;
       }
       $scope.voucher.Amount = $scope.voucherTotalAmount;
+      $scope.voucher.Date = new Date($scope.formattedDate);
       $scope.voucher = Employee.vouchers.updateById({'id' : $routeParams.employeeid, 'fk' : $routeParams.voucherid},
         $scope.voucher, function(err, voucher){
           if (err){
@@ -97,9 +102,13 @@ angular.module('expenseVouchersClientApp')
       saveVoucherAndExpenses();
     };
 
-    $scope.submitVoucher = function(){
+    $scope.submit = function(){
       $scope.voucher.State = voucherStates.submitted;
       saveVoucherAndExpenses();
+    };
+
+    $scope.print = function(){
+      window.print();
     };
 
   });

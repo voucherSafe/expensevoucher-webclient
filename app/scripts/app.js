@@ -38,7 +38,11 @@ angular
       })
       .when('/employee/:employeeid/voucher/:voucherid/edit', {
         templateUrl: '../views/voucher.html',
-        controller: 'VoucherCtrl'
+        controller: 'EmployeeVoucherCtrl'
+      })
+      .when('/organisation/:organisationid/manager/:managerid/employee/:employeeid/voucher/:voucherid/edit', {
+        templateUrl: '../views/voucher.html',
+        controller: 'ManagerVoucherCtrl'
       })
       .otherwise({
         redirectTo: '/'

@@ -1,14 +1,19 @@
 <div class="page-header">
   <h1>Home</h1>
+
 </div>
 <div class="container-fluid">
 
   <!-- Employee Info and Welcome -->
   <div class="row">
-    <div class="col-md-6">
+    <p class="pull-right"><a class="btn btn-primary" ng-click="logout()">
+      <span class="glyphicon glyphicon-log-out"></span> Log Out </a></p>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
       <p class="lead"> Welcome <b>{{employee.firstName + " " + employee.lastName}}</b></p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-7">
       <p class="lead" ng-if="employee.isManager===true">Manager of <b>{{organisation.name}}</b></p>
       <p class="lead" ng-if="employee.isManager===false">Employee of <b>{{organisation.name}}</b></p>
     </div>
@@ -37,10 +42,9 @@
             <p class="lead" ng-if="!orgSubmittedVouchers.length"> There aren't any.</p>
             <div class="list-group" ng-if="orgSubmittedVouchers.length">
               <a class="list-group-item" data-ng-repeat="voucher in orgSubmittedVouchers"
-                 data-ng-href="#/employee/{{organisation.id}}/voucher/{{voucher.id}}/edit" >
+                 data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/employee/{{voucher.employeeId}}/voucher/{{voucher.id}}/edit" >
                 <p class="list-group-item-text">
                   <span>{{ voucher.employeeId }}</span>
-                  <span class="badge">{{voucher.Amount | currency:"&#8377;"}}</span>
                 </p>
                 <p class="list-group-item-text">
                   <span>Amount</span>
@@ -137,16 +141,12 @@
                     <a class="list-group-item" data-ng-repeat="voucher in approvedVouchers"
                        data-ng-href="#/employee/{{employee.employeeID}}/voucher/{{voucher.id}}/edit" >
                       <p class="list-group-item-text">
-                        <span>Head </span>
-                        <span>{{voucher.expenseHead}}</span>
+                        <span>Amount</span>
+                        <span class="badge">{{voucher.Amount | currency:"&#8377;"}}</span>
                       </p>
                       <p class="list-group-item-text">
-                        <span>Description: </span>
-                        <span>{{voucher.expenseDescription}}</span>
+                        <span>{{voucher.Date | date:'medium'}}</span>
                       </p>
-                      <small class="list-group-item-text">
-                        <span>Submitted on : {{voucher.Date}}, By {{voucher.submitter}}</span>
-                      </small>
                     </a>
                   </div>
                 </div>

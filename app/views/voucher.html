@@ -9,7 +9,7 @@
 </div>
 <!-- The form copies the exact format used by the Vouchers in Purandara -->
 <!-- Top Row a Box with the Recipient details and VR No, Date -->
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">{{organisation.name}}</h3>
   </div>
@@ -36,8 +36,8 @@
             <td>
               <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1">Date</span>
-                <input type="date" class="form-control" placeholder="" aria-describedby="basic-addon1" required="true"
-                       ng-model="voucher.Date">
+                <input type="date" class="form-control" placeholder="dd/mm/yyyy" aria-describedby="basic-addon1" required="true"
+                       ng-model="formattedDate">
               </div>
             </td>
           </tr>
@@ -88,6 +88,7 @@
                 type="button"
                 class="btn btn-success"
                 popover-is-open="showExpensePopover"
+                ng-if="activeVoucher"
                 ng-click="createNewExpense()">
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
           Add Expense
@@ -126,7 +127,7 @@
       </tr>
     </table>
     <div class="float-right">
-      <label>Total Amount in this Voucher</label>
+      <label>Total Amount in this Voucher </label>
       <span class="badge">{{voucherTotalAmount | currency:"&#8377;"}}</span>
     </div>
   </div>
@@ -134,20 +135,20 @@
     <div class="btn-group btn-group-lg" ng-if="activeVoucher" role="group" aria-label="...">
       <button type="button" class="btn btn-default" ng-click="save()">Save</button>
       <button type="button" class="btn btn-default" ng-click="submit()">Submit</button>
-      <button type="button" class="btn btn-default" ng-click="">Print</button>
+      <button type="button" class="btn btn-default" ng-click="print()">Print</button>
       <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
     </div>
-    <div class="btn-group btn-group-lg" ng-if="submittedVoucher && employee.isManager" role="group" aria-label="...">
-      <button type="button" class="btn btn-default" ng-click="">Approve</button>
-      <button type="button" class="btn btn-default" ng-click="">Reject</button>
-      <button type="button" class="btn btn-default" ng-click="">Print</button>
-      <button type="button" class="btn btn-default" ng-click="">Cancel</button>
+    <div class="btn-group btn-group-lg" ng-if="submittedVoucher" role="group" aria-label="...">
+      <button type="button" class="btn btn-default" ng-click="approve()">Approve</button>
+      <button type="button" class="btn btn-default" ng-click="reject()">Reject</button>
+      <button type="button" class="btn btn-default" ng-click="print()">Print</button>
+      <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
     </div>
     <div class="btn-group btn-group-lg" ng-if="archivedVoucher" role="group" aria-label="...">
-      <button type="button" class="btn btn-default" ng-click="">Print</button>
-      <button type="button" class="btn btn-default" ng-click="">Back</button>
+      <button type="button" class="btn btn-default" ng-click="print()">Print</button>
+      <button type="button" class="btn btn-default" ng-click="cancel()">Back</button>
     </div>
-    <h3 class="pull-right"> {{voucher.State}}</h3>
+    <h4 class="pull-right"> {{voucher.State | uppercase}}</h4>
   </div>
 </div>
 
