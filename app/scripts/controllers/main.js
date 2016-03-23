@@ -16,7 +16,7 @@ angular.module('expenseVouchersClientApp')
     //Check if the user is authenticated already and if yes redirect to home
     if (Employee.isAuthenticated()){
       console.log('User is authenticated and id is ' + Employee.getCurrentId());
-      $location.path('/home/'+ Employee.getCurrentId());
+      //$location.path('/home/'+ Employee.getCurrentId());
     }
 
     $scope.login = function () {

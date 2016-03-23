@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h2>{{organisation.name}}'s <i>{{voucherState | uppercase }}</i> Vouchers</h2>
+</div>
+<div class="alert alert-danger" role="alert" ng-show="error!==''">
+  <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="error=''"></span>
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  {{error}}
+</div>
+<div class="container">
+  <div class="row">
+    <div class="btn-group" role="group" aria-label="...">
+      <button type="button" ng-class="queryContext==='lastMonth' ? 'btn btn-info' : 'btn btn-default'">Last Month</button>
+      <button type="button" ng-class="queryContext==='currentMonth' ? 'btn btn-info' : 'btn btn-default'">Current Month</button>
+      <button type="button" ng-class="queryContext==='custom' ? 'btn btn-info' : 'btn btn-default'">
+        <span class="glyphicon glyphicon-calendar"></span> Between Dates</button>
+      <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-9">
+      <h4> Vouchers created between <b>{{startDate}}</b> and <b>{{endDate}}</b></h4>
+    </div>
+    <div class="col-md-3">
+      <div class="btn btn-primary" ng-disabled="vouchers.length === 0">
+        <span class="glyphicon glyphicon-floppy-save"></span> Save Report </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <table class="table table-striped">
+        <th class="bg-primary">
+          <td class="bg-primary">Date </td>
+          <td class="bg-primary">Employee </td>
+          <td class="bg-primary">Approver </td>
+          <td class="bg-primary">Amount </td>
+        </th>
+        <tr ng-repeat="voucher in vouchers">
+          <td>voucher.Date</td>
+          <td>voucher.employeeId</td>
+          <td>voucher.Approver</td>
+          <td>voucher.Amount</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+</div>
+

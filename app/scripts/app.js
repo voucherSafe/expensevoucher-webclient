@@ -44,9 +44,13 @@ angular
         templateUrl: '../views/voucher.html',
         controller: 'ManagerVoucherCtrl'
       })
-      .otherwise({
-        redirectTo: '/'
+      .when('/organisation/:organisationid/vouchers/:voucherState', {
+        templateUrl: '../views/query-voucher.html',
+        controller: 'QueryVoucherCtrl'
       });
+      //.otherwise({
+      //  redirectTo: '/'
+      //});
     // Use a custom auth header instead of the default 'Authorization'
     LoopBackResourceProvider.setAuthHeader('X-Access-Token');
     // Change the URL where to access the LoopBack REST API server

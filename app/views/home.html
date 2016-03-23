@@ -60,10 +60,12 @@
           <!-- Organization Reports -->
           <div class="col-md-4">
             <h4>Work with Vouchers</h4>
-                    <div class="list-group">
-                      <div class="list-group-item" data-ng-href="">All Submitted Vouchers</div>
-                      <div class="list-group-item" data-ng-href="">All Completed Vouchers</div>
-                    </div>
+            <div class="list-group">
+              <a class="list-group-item" data-ng-href="#/organisation/{{organisation.id}}/vouchers/submitted">
+                All Submitted Vouchers</a>
+              <a class="list-group-item" data-ng-href="#/organisation/{{organisation.id}}/vouchers/completed">
+                All Completed Vouchers</a>
+            </div>
           </div>
           <!-- Organization Reports ends -->
 
