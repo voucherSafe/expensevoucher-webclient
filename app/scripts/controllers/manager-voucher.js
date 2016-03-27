@@ -64,4 +64,8 @@ angular.module('expenseVouchersClientApp')
       managerAction(voucherStates.rejected);
     };
 
+    $scope.print = function(){
+      window.print();
+    };
+
   });

@@ -6,10 +6,10 @@
  * Controller of the expenseVouchersClientApp
  */
 angular.module('expenseVouchersClientApp')
-.controller('HomeCtrl', function($scope, Voucher, Employee, Organisation, $location, $routeParams, voucherStates) {
+  .controller('HomeCtrl', function($scope, Voucher, Employee, Organisation, $location, $routeParams, voucherStates) {
 
 
-     //Manager's functionality - Elements in the Manager's corner in the view
+    //Manager's functionality - Elements in the Manager's corner in the view
     $scope.orgSubmittedVouchers = [];
 
     function getVouchersForOrganisation(){
@@ -32,32 +32,19 @@ angular.module('expenseVouchersClientApp')
       });
     });
 
-
-
-    function sortVouchersByState(vouchers){
-      $scope.activeVouchers = [];
-      $scope.approvedVouchers = [];
-      for(var i=0; i<vouchers.length; i++){
-        switch(vouchers[i].State){
-          case voucherStates.draft:
-            $scope.activeVouchers.push(vouchers[i]);
-            break;
-          case voucherStates.rejected:
-            $scope.activeVouchers.push(vouchers[i]);
-            break;
-          case voucherStates.approved:
-            $scope.approvedVouchers.push(vouchers[i]);
-            break;
-          default:
-            //Nothing to do
-        }
-      }
-    }
-
-    $scope.vouchers = Employee.vouchers({'id' : $routeParams.id}, function(){
-      sortVouchersByState($scope.vouchers);
-      console.log('%j', $scope.vouchers);
+    $scope.activeVouchers = Employee.vouchers({'id' : $routeParams.id,
+      'filter' : {'where': {'State' : 'draft'}, 'limit':5}}, function(){
+      console.log('%j', $scope.activeVouchers);
     });
+
+    $scope.approvedVouchers = Employee.vouchers({'id' : $routeParams.id,
+      'filter' : {'where': {'State' : 'approved'}, 'limit':5}}, function(){
+      console.log('%j', $scope.approvedVouchers);
+    });
+
+    $scope.employeeVoucherQuery = function(voucherState){
+      $location.path('/employee/' + $routeParams.id + '/vouchers/' + voucherState);
+    };
 
     $scope.newVoucher = function(){
       $location.path('/employee/' + $routeParams.id + '/voucher/create');
@@ -67,6 +54,6 @@ angular.module('expenseVouchersClientApp')
       Employee.logout(function(){
         $location.path('/');
       });
+    };
 
-    }
   });

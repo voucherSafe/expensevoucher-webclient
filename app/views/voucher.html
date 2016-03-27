@@ -9,7 +9,7 @@
 </div>
 <!-- The form copies the exact format used by the Vouchers in Purandara -->
 <!-- Top Row a Box with the Recipient details and VR No, Date -->
-<div class="panel panel-primary">
+<div print-section class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">{{organisation.name}}</h3>
   </div>
@@ -47,7 +47,7 @@
     <!-- Table Recipient details on left, VR No, Data on the right - Ends-->
 
     <!-- Add expense Pop-up template starts-->
-    <script type="text/ng-template" id="myPopoverTemplate.html">
+    <script type="text/ng-template" id="EditExpensePopoverTemplate.html">
       <div class="form-group">
         <label>Date</label>
         <input type="date" ng-model="newExpense.Date" class="form-control">
@@ -70,7 +70,8 @@
         </div>
       </div>
       <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default" ng-click="addNewExpense()">Add</button>
+        <button type="button" class="btn btn-default" ng-show="expenseEditMode" ng-click="cancelNewExpense()">OK</button>
+        <button type="button" class="btn btn-default" ng-hide="expenseEditMode" ng-click="addNewExpense()">Add</button>
         <button type="button" class="btn btn-default" ng-click="cancelNewExpense()">Cancel</button>
       </div>
     </script>
@@ -81,14 +82,13 @@
       <div class="col-md-8">
         <h4> Expenses </h4>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" ng-if="activeVoucher">
         <button uib-popover-template="expensePopover.templateUrl"
                 popover-title="{{expensePopover.title}}"
                 popover-placement="left"
                 type="button"
                 class="btn btn-success"
-                popover-is-open="showExpensePopover"
-                ng-if="activeVoucher"
+                popover-toggle="displayExpensePopover"
                 ng-click="createNewExpense()">
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
           Add Expense
@@ -110,6 +110,7 @@
         <th>
           Amount (INR)
         </th>
+        <th></th>
       </tr>
       <tr ng-repeat="expense in expenses">
         <td>
@@ -124,15 +125,41 @@
         <td>
           {{ expense.Amount.major + '.' + expense.Amount.minor }}
         </td>
+        <td>
+          <button print-hide ng-if="activeVoucher" class="btn btn-default btn-xs"
+                  uib-popover-template="expensePopover.templateUrl"
+                  popover-title="{{expensePopover.title}}"
+                  popover-placement="left"
+                  popover-toggle="displayExpensePopover"
+                  ng-click="editExpense(expense.SlNo)">
+            <span class="glyphicon glyphicon-edit"></span>
+          </button>
+          <button print-hide ng-if="activeVoucher" class="btn btn-default btn-xs" ng-click="deleteExpense(expense.SlNo)">
+            <span class="glyphicon glyphicon-remove-circle"></span>
+          </button>
+        </td>
       </tr>
     </table>
-    <div class="float-right">
+    <div class="pull-right">
       <label>Total Amount in this Voucher </label>
       <span class="badge">{{voucherTotalAmount | currency:"&#8377;"}}</span>
     </div>
   </div>
+  <div print-only class="container">
+    <div class="row">
+      <div class="col-md-2"> </div>
+      <div class="col-md-2"> Authorised By</div>
+      <div class="col-md-3">
+              <textarea rows="2"></textarea>
+            </div>
+      <div class="col-md-2"> Recipient Signature</div>
+      <div class="col-md-3">
+        <textarea rows="2"></textarea>
+      </div>
+    </div>
+  </div>
   <div class="panel-footer">
-    <div class="btn-group btn-group-lg" ng-if="activeVoucher" role="group" aria-label="...">
+    <div print-hide class="btn-group btn-group-lg" ng-if="activeVoucher" role="group" aria-label="...">
       <button type="button" class="btn btn-default" ng-click="save()">Save</button>
       <button type="button" class="btn btn-default" ng-click="submit()">Submit</button>
       <button type="button" class="btn btn-default" ng-click="print()">
@@ -140,7 +167,7 @@
       <button type="button" class="btn btn-default" ng-click="cancel()">
         <span class="glyphicon glyphicon-circle-arrow-left"></span> Cancel</button>
     </div>
-    <div class="btn-group btn-group-lg" ng-if="submittedVoucher" role="group" aria-label="...">
+    <div print-hide class="btn-group btn-group-lg" ng-if="submittedVoucher" role="group" aria-label="...">
       <button type="button" class="btn btn-default" ng-click="approve()">Approve</button>
       <button type="button" class="btn btn-default" ng-click="reject()">Reject</button>
       <button type="button" class="btn btn-default" ng-click="print()">
@@ -148,7 +175,7 @@
       <button type="button" class="btn btn-default" ng-click="cancel()">
         <span class="glyphicon glyphicon-circle-arrow-left"></span> Cancel</button>
     </div>
-    <div class="btn-group btn-group-lg" ng-if="archivedVoucher" role="group" aria-label="...">
+    <div print-hide class="btn-group btn-group-lg" ng-if="archivedVoucher" role="group" aria-label="...">
       <button type="button" class="btn btn-default" ng-click="print()">
         <span class="glyphicon glyphicon-print"></span> Print</button>
       <button type="button" class="btn btn-default" ng-click="cancel()">

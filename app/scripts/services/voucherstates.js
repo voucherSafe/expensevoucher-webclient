@@ -15,25 +15,4 @@ angular.module('expenseVouchersClientApp')
     this.approved = 'approved';
     this.complete = 'complete';
     this.rejected = 'rejected';
-    this.getNextStateFromCurrent = function(currentState, approve){
-      var nextState = '';
-      switch(currentState){
-        case this.draft:
-          nextState = this.submitted;
-          break;
-        case this.submitted:
-          if (approve === true){
-            nextState = this.approved;
-          }else{
-            nextState = this.rejected;
-          }
-          break;
-        case this.approved:
-          nextState = this.complete;
-          break;
-        default:
-          console.log('Invalid Voucher state.');
-      }
-      return nextState;
-    };
   });

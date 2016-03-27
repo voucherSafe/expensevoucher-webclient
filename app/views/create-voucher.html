@@ -48,7 +48,7 @@
       <!-- Table Recipient details on left, VR No, Data on the right - Ends-->
 
       <!-- Add expense Pop-up template starts-->
-      <script type="text/ng-template" id="myPopoverTemplate.html">
+      <script type="text/ng-template" id="ExpensePopoverTemplate.html">
         <div class="form-group">
           <label>Date</label>
           <input type="date" ng-model="newExpense.Date" class="form-control">
@@ -87,8 +87,7 @@
                   popover-title="{{expensePopover.title}}"
                   popover-placement="left"
                   type="button"
-                  class="btn btn-success"
-                  popover-is-open="showExpensePopover"
+                  class="btn btn-success" popover-is-open="showExpensePopover"
                   ng-click="createNewExpense()">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             Add Expense
@@ -126,7 +125,7 @@
           </td>
         </tr>
       </table>
-      <div class="float-right">
+      <div class="pull-right">
           <label>Total Amount in this Voucher</label>
         <span class="badge">{{voucherTotalAmount | currency:"&#8377;"}}</span>
       </div>

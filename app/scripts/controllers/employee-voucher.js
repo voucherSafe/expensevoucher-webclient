@@ -7,7 +7,7 @@
  * Controller of the expenseVouchersClientApp
  */
 angular.module('expenseVouchersClientApp')
-  .controller('EmployeeVoucherCtrl', function($scope, $filter, Voucher, Employee, Organisation, Expense, $location, $routeParams, voucherStates) {
+  .controller('EmployeeVoucherCtrl', function($scope, Voucher, Employee, Organisation, Expense, $location, $routeParams, voucherStates) {
 
     $scope.error = '';
     $scope.employee = Employee.get({'id' : $routeParams.employeeid}, function(){
@@ -45,26 +45,58 @@ angular.module('expenseVouchersClientApp')
       $scope.newExpense.Amount.major = 0;
       $scope.newExpense.Amount.minor = 0;
       $scope.newExpense.Date = new Date();
-      $scope.showExpensePopover = true;
+      //$scope.displayExpensePopover = true;
+      console.log('show popover to true');
       $scope.newExpense.SlNo = $scope.expenses.length + 1;
       console.log('You clicked Add new Expense');
     };
 
     $scope.addNewExpense = function(){
       $scope.expenses.push($scope.newExpense);
-      $scope.showExpensePopover = false;
+      console.log('setting popover to false in add');
+      //$scope.displayExpensePopover = false;
       //Calculate the new total Amount for Voucher
       var expenseAmount = $scope.newExpense.Amount.major + ($scope.newExpense.Amount.minor/100);
       $scope.voucherTotalAmount = $scope.voucherTotalAmount + expenseAmount;
     };
 
+    $scope.deleteExpense = function(SlNo){
+      //Note: SlNo is (expenses array index + 1)
+      //Remove the expense
+      var expenseToDelete = $scope.expenses.splice(SlNo-1, 1);
+      if (expenseToDelete[0].id !== undefined && expenseToDelete[0].id !== null){
+        //This is an expense received from the database and not added in this session
+        //expenseToDelete.deleteById({'id':expenseToDelete.id});
+        Voucher.expenses.destroyById({'id': $scope.voucher.id, 'fk': expenseToDelete[0].id});
+      }
+
+      //update the SlNos of the remaining expenses
+      //Re-calculate the voucher total
+      $scope.voucherTotalAmount = 0;
+      for (var i=0; i<$scope.expenses.length; i++){
+        var expenseAmount = $scope.expenses[i].Amount.major + ($scope.expenses[i].Amount.minor/100);
+        $scope.expenses[i].SlNo = i+1;
+        $scope.voucherTotalAmount = $scope.voucherTotalAmount + expenseAmount;
+      }
+    };
+
+    $scope.editExpense = function(SlNo){
+      $scope.expenseEditMode = true;
+      $scope.newExpense = $scope.expenses[SlNo - 1];
+      $scope.displayExpensePopover = true;
+      $scope.newExpense.Date = new Date($scope.newExpense.Date);
+      console.log('show popover to true');
+    };
+
     $scope.cancelNewExpense = function(){
-      $scope.showExpensePopover = false;
+      $scope.expenseEditMode = false;
+      console.log('setting popover to false in cancel');
+      //$scope.displayExpensePopover = false;
     };
 
     $scope.expensePopover = {
-      templateUrl: 'myPopoverTemplate.html',
-      title: 'Enter your Expense details'
+      templateUrl: 'EditExpensePopoverTemplate.html',
+      title: 'Expense details'
     };
 
     $scope.cancel = function(){
@@ -87,14 +119,16 @@ angular.module('expenseVouchersClientApp')
           }
           console.log('saved voucher id - %j', $scope.voucher.id);
           $location.path('/home/' + $routeParams.employeeid);
-          //for (var i=0; i<$scope.expenses.length; i++){
-          //  var expense = $scope.expenses[i];
-          //  Voucher.expenses.create({'id': $scope.voucher.id}, expense, function(err){
-          //    if (err){
-          //      $scope.error = 'Unable to save. Check network settings and try again later.'
-          //    }
-          //  });
-          //}
+          for (var i=0; i<$scope.expenses.length; i++){
+            var expense = $scope.expenses[i];
+            if (expense.id !== undefined && expense.id != null){
+              //Expense already present
+              Voucher.expenses.updateById({'id': $scope.voucher.id, 'fk': expense.id}, expense);
+            }else{
+              //expense created in this view
+              Voucher.expenses.create({'id': $scope.voucher.id}, expense);
+            }
+          }
         });
     }
 

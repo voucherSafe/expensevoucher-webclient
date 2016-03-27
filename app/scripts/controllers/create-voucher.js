@@ -21,7 +21,7 @@ angular.module('expenseVouchersClientApp')
         $scope.voucher.employeeId = $scope.employee.id;
         $scope.voucher.State = voucherStates.draft;
 
-        $scope.recipientDetails = $scope.employee.firstName + " " + $scope.employee.lastName + "\n"
+        $scope.recipientDetails = $scope.employee.firstName + " " + $scope.employee.lastName + '\n'
         + $scope.employee.address;
 
         $scope.expenses = [];
@@ -38,6 +38,7 @@ angular.module('expenseVouchersClientApp')
       $scope.newExpense.Amount.minor = 0;
       $scope.newExpense.Date = new Date();
       $scope.showExpensePopover = true;
+      console.log('show popover to true');
       $scope.newExpense.SlNo = $scope.expenses.length + 1;
       console.log('You clicked Add new Expense');
     };
@@ -45,18 +46,20 @@ angular.module('expenseVouchersClientApp')
     $scope.addNewExpense = function(){
       $scope.expenses.push($scope.newExpense);
       $scope.showExpensePopover = false;
+      console.log('show popover to false');
       //Calculate the new total Amount for Voucher
       var expenseAmount = $scope.newExpense.Amount.major + ($scope.newExpense.Amount.minor/100);
       $scope.voucherTotalAmount = $scope.voucherTotalAmount + expenseAmount;
     };
 
     $scope.cancelNewExpense = function(){
+      console.log('show popover to false');
       $scope.showExpensePopover = false;
     };
 
     $scope.expensePopover = {
-      templateUrl: 'myPopoverTemplate.html',
-      title: 'Enter your Expense details'
+      templateUrl: 'ExpensePopoverTemplate.html',
+      title: 'Expense details'
     };
 
 
@@ -64,7 +67,7 @@ angular.module('expenseVouchersClientApp')
       $location.path('/home/' + $routeParams.id);
     };
 
-    function displayInfoModal(){
+/*    function displayInfoModal(){
       var informationDialogModalInstance = $modal.open({
          animation: true,
          templateUrl: 'InformationDialogModal.html',
@@ -97,7 +100,7 @@ angular.module('expenseVouchersClientApp')
        }, function () {
          console.info('Modal dismissed at: ' + new Date());
        });
-    }
+    }*/
 
     function saveVoucherAndExpenses(){
       //Utility function that saves Voucher into Database
@@ -118,7 +121,7 @@ angular.module('expenseVouchersClientApp')
             if (err){
               $scope.error = 'Unable to save. Check network settings and try again later.'
             }else{
-              displayInfoModal();
+              //displayInfoModal();
             }
           });
         }

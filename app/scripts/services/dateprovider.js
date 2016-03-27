@@ -11,23 +11,6 @@
 angular.module('expenseVouchersClientApp')
   .service('dateprovider', function () {
 
-    this.lastDayOfMonth = function(year){
-      return {
-        'jan': 31,
-        'feb': ((year % 4) === 0)? 29 : 28,
-        'mar': 31,
-        'apr': 30,
-        'may': 31,
-        'jun': 30,
-        'jul': 31,
-        'aug': 31,
-        'sep': 30,
-        'oct': 31,
-        'nov': 30,
-        'dec': 31
-      }
-    };
-
     //Month is 1 based
     function daysInMonth(month,year) {
       return new Date(year, month, 0).getDate();
@@ -35,9 +18,9 @@ angular.module('expenseVouchersClientApp')
 
     this.context = 'lastMonth'; //default
 
-    this.setContext = function(context){
+    this.setContext = function(context, currentDate){
       this.context = context;
-      var today = new Date();
+      var today = currentDate;
       if (context === 'currentMonth'){
         this.startDate = new Date(today);
         this.startDate.setDate(1); //everything else is same except the day of month which is set to 1
@@ -47,12 +30,10 @@ angular.module('expenseVouchersClientApp')
         this.startDate = new Date(today);
         this.startDate.setMonth(today.getMonth() - 1);
         this.startDate.setDate(1);
-
         this.endDate = new Date(this.startDate); //Month is already moved to last month
-        this.endDate.setDate(daysInMonth(this.endDate.getMonth(),this.endDate.getYear));
+        this.endDate.setDate(daysInMonth(this.startDate.getMonth()+1, this.endDate.getYear()));
       }else{
-        //Shouldn't happen
-        //Set start and end dates to now
+        //Shouldn't happen; Set start and end dates to now and an empty query listing in the worst case
         this.startDate = this.endDate = new Date();
       }
     };
