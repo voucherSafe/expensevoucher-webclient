@@ -17,6 +17,7 @@ angular.module('expenseVouchersClientApp')
 
         //Initialize voucher and fixed fields
         $scope.voucher = new Voucher();
+        $scope.voucher.ModifiedDate = new Date();
         $scope.voucher.organisationId = $scope.organisation.id;
         $scope.voucher.employeeId = $scope.employee.id;
         $scope.voucher.State = voucherStates.draft;
@@ -27,6 +28,9 @@ angular.module('expenseVouchersClientApp')
         $scope.expenses = [];
         $scope.voucherTotalAmount = 0;
 
+        $scope.voucher.History = [];
+        $scope.voucher.History.push(voucherStates.historyObjectFactory('create', $routeParams.id, new Date()));
+
       });
     });
 
@@ -34,7 +38,7 @@ angular.module('expenseVouchersClientApp')
       $location.path('/home/' + $routeParams.id);
     };
 
-    function saveVoucherAndExpenses(){
+    function saveVoucherAndExpenses(submit){
       //Utility function that saves Voucher into Database
       //Picks saved Voucher's ID and saves each expense against it
       if ($scope.expenses.length === 0){
@@ -46,23 +50,54 @@ angular.module('expenseVouchersClientApp')
         return false;
       }
       $scope.voucher.Amount = $scope.voucherTotalAmount;
-      $scope.voucher = Employee.vouchers.create({'id' : $routeParams.id}, $scope.voucher, function(){
-        console.log('saved voucher id - %j', $scope.voucher.id);
-        for (var i=0; i<$scope.expenses.length; i++){
-          var expense = $scope.expenses[i];
-          Voucher.expenses.create({'id': $scope.voucher.id}, expense);
-        }
-        return true;
-      });
+
+      if (submit === true){
+        $scope.voucher.History.push(voucherStates.historyObjectFactory('submit', $routeParams.id, new Date()));
+      }else{
+        $scope.voucher.History.push(voucherStates.historyObjectFactory('save', $routeParams.id, new Date()));
+      }
+
+      if ($scope.voucher.id === undefined){
+        //saving/submitting on the first time. Create.
+        $scope.voucher = Employee.vouchers.create({'id' : $routeParams.id}, $scope.voucher, function(){
+          console.log('saved voucher id - %j', $scope.voucher.id);
+          for (var i=0; i<$scope.expenses.length; i++){
+            var expense = $scope.expenses[i];
+            if (expense.id === undefined){
+              expense = Voucher.expenses.create({'id': $scope.voucher.id}, expense); //Object should get updated with id
+            }else{
+              Voucher.expenses.updateById({'id' : $scope.voucher.id, 'fk' : expense.id}, expense);
+            }
+          }
+          return true;
+        });
+
+      }else{
+        //voucher is already saved. Update.
+        Employee.vouchers.updateById({'id' : $routeParams.id, 'fk' : $scope.voucher.id}, $scope.voucher, function(){
+          console.log('saved voucher id - %j', $scope.voucher.id);
+          for (var i=0; i<$scope.expenses.length; i++){
+            var expense = $scope.expenses[i];
+            if (expense.id === undefined){
+              expense = Voucher.expenses.create({'id': $scope.voucher.id}, expense);
+            }else{
+              Voucher.expenses.updateById({'id' : $scope.voucher.id, 'fk' : expense.id}, expense);
+            }
+
+          }
+          return true;
+        });
+      }
+
     }
 
     $scope.save = function(){
-      saveVoucherAndExpenses();
+      saveVoucherAndExpenses(false); //saveOnly
     };
 
     $scope.submit = function(){
       $scope.voucher.State = voucherStates.submitted;
-      if (saveVoucherAndExpenses() === false){
+      if (saveVoucherAndExpenses(true) === false){
         //Save was not successful or validation criteria failed
         $scope.voucher.State = voucherStates.draft;
       }else{

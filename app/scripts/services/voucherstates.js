@@ -15,4 +15,12 @@ angular.module('expenseVouchersClientApp')
     this.approved = 'approved';
     this.complete = 'complete';
     this.rejected = 'rejected';
+
+    this.historyObjectFactory = function(action, by, on){
+      var historyObject = {};
+      historyObject.action = action;
+      historyObject.by = by;
+      historyObject.on = on;
+      return historyObject;
+    }
   });

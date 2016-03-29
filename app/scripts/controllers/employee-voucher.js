@@ -97,6 +97,10 @@ angular.module('expenseVouchersClientApp')
 
       $scope.voucher.Amount = $scope.voucherTotalAmount;
       $scope.voucher.Date = new Date($scope.formattedDate);
+      $scope.voucher.ModifiedDate = new Date();
+
+      //Update the history for action
+
       $scope.voucher = Employee.vouchers.updateById({'id' : $routeParams.employeeid, 'fk' : $routeParams.voucherid},
         $scope.voucher, function(){
           console.log('saved voucher id - %j', $scope.voucher.id);

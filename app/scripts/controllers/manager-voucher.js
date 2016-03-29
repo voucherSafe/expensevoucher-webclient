@@ -59,12 +59,8 @@ angular.module('expenseVouchersClientApp')
       }
 
       $scope.voucher = Organisation.vouchers.updateById({'id': $routeParams.organisationid,
-        'fk': $routeParams.voucherid}, $scope.voucher, function(err, voucher){
-        if (err){
-          $scope.error = 'Unable to save voucher. Check network settings and try again later.';
-        }else{
+        'fk': $routeParams.voucherid}, $scope.voucher, function(){
           $location.path('/home/' + $routeParams.managerid);
-        }
       });
     }
 

@@ -79,7 +79,7 @@
         </th>
         <th></th>
       </tr>
-      <tr ng-repeat="expense in expenses">
+      <tr ng-repeat="expense in expenses | orderBy:'SlNo'">
         <td>
           {{ expense.SlNo }}
         </td>
@@ -112,8 +112,8 @@
       <div class="col-md-2"> </div>
       <div class="col-md-2"> Authorised By</div>
       <div class="col-md-3">
-              <textarea rows="2"></textarea>
-            </div>
+        <textarea rows="2"></textarea>
+      </div>
       <div class="col-md-2"> Recipient Signature</div>
       <div class="col-md-3">
         <textarea rows="2"></textarea>
@@ -121,29 +121,43 @@
     </div>
   </div>
   <div class="panel-footer">
-    <div print-hide class="btn-group btn-group-lg" ng-if="activeVoucher" role="group" aria-label="...">
-      <button type="button" class="btn btn-default" ng-click="save()">Save</button>
-      <button type="button" class="btn btn-default" ng-click="submit()">Submit</button>
-      <button type="button" class="btn btn-default" ng-click="print()">
-        <span class="glyphicon glyphicon-print"></span> Print</button>
-      <button type="button" class="btn btn-default" ng-click="cancel()">
-        <span class="glyphicon glyphicon-circle-arrow-left"></span> Cancel</button>
+    <div class="row">
+      <div class="col-md-7">
+        <div print-hide class="btn-group" ng-if="activeVoucher" role="group" aria-label="...">
+          <button type="button" class="btn btn-default" ng-click="save()">
+            <span class="glyphicon glyphicon-floppy-save"></span> Save</button>
+          <button type="button" class="btn btn-default" ng-click="submit()">
+            <span class="glyphicon glyphicon-ok-sign"></span> Submit</button>
+          <button type="button" class="btn btn-default" ng-click="print()">
+            <span class="glyphicon glyphicon-print"></span> Print</button>
+          <button type="button" class="btn btn-default" ng-click="cancel()">
+            <span class="glyphicon glyphicon-circle-arrow-left"></span> Cancel</button>
+        </div>
+        <div print-hide class="btn-group" ng-if="submittedVoucher" role="group" aria-label="...">
+          <button type="button" class="btn btn-default" ng-if="isManagerViewing" ng-click="approve()">
+            <span class="glyphicon glyphicon-thumbs-up"></span> Approve</button>
+          <button type="button" class="btn btn-default" ng-if="isManagerViewing" ng-click="reject()">
+            <span class="glyphicon glyphicon-thumbs-down"></span> Reject</button>
+          <button type="button" class="btn btn-default" ng-click="print()">
+            <span class="glyphicon glyphicon-print"></span> Print</button>
+          <button type="button" class="btn btn-default" ng-click="cancel()">
+            <span class="glyphicon glyphicon-circle-arrow-left"></span> Cancel</button>
+        </div>
+        <div print-hide class="btn-group" ng-if="archivedVoucher" role="group" aria-label="...">
+          <button type="button" class="btn btn-default" ng-click="print()">
+            <span class="glyphicon glyphicon-print"></span> Print</button>
+          <button type="button" class="btn btn-default" ng-click="cancel()">
+            <span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h5 ng-if="archivedVoucher"> Approved by: {{voucher.Approver}}</h5>
+      </div>
+      <div class="col-md-2">
+        <h5 class="pull-right"> {{voucher.State | uppercase}}</h5>
+      </div>
     </div>
-    <div print-hide class="btn-group btn-group-lg" ng-if="submittedVoucher" role="group" aria-label="...">
-      <button type="button" class="btn btn-default" ng-if="isManagerViewing" ng-click="approve()">Approve</button>
-      <button type="button" class="btn btn-default" ng-if="isManagerViewing" ng-click="reject()">Reject</button>
-      <button type="button" class="btn btn-default" ng-click="print()">
-        <span class="glyphicon glyphicon-print"></span> Print</button>
-      <button type="button" class="btn btn-default" ng-click="cancel()">
-        <span class="glyphicon glyphicon-circle-arrow-left"></span> Cancel</button>
-    </div>
-    <div print-hide class="btn-group btn-group-lg" ng-if="archivedVoucher" role="group" aria-label="...">
-      <button type="button" class="btn btn-default" ng-click="print()">
-        <span class="glyphicon glyphicon-print"></span> Print</button>
-      <button type="button" class="btn btn-default" ng-click="cancel()">
-        <span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
-    </div>
-    <h4 class="pull-right"> {{voucher.State | uppercase}}</h4>
+
   </div>
 </div>
 
