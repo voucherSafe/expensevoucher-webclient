@@ -13,7 +13,7 @@
       <button type="button" ng-class="queryContext==='lastMonth' ? 'btn btn-info' : 'btn btn-default'"
               data-ng-click="changeQueryContext('lastMonth')">Last Month</button>
       <button type="button" ng-class="queryContext==='currentMonth' ? 'btn btn-info' : 'btn btn-default'"
-        data-ng-click="changeQueryContext('currentMonth')">Current Month</button>
+        data-ng-click="changeQueryContext('currentMonth')">This Month</button>
       <button type="button" ng-class="queryContext==='custom' ? 'btn btn-info' : 'btn btn-default'">
         <span class="glyphicon glyphicon-calendar"></span> Between Dates</button>
       <button type="button" class="btn btn-default" data-ng-click="back()">
@@ -26,13 +26,15 @@
       <h4> Vouchers between <b>{{startDate | date}}</b> and <b>{{endDate | date}}</b></h4>
     </div>
     <div class="col-md-3">
-      <div class="btn btn-primary pull-right" ng-disabled="vouchers.length === 0">
-        <span class="glyphicon glyphicon-floppy-save"></span> Save Report </div>
+      <a class="btn btn-primary pull-right" ng-disabled="vouchers.length === 0"
+           ng-click="csv.generate()" ng-href="{{ csv.link() }}"
+           download="{{name}}-{{state}}-vouchers-{{startDate | date }}-to-{{endDate | date}}.csv">
+        <span class="glyphicon glyphicon-floppy-save"></span> Save Report </a>
     </div>
   </div>
   <br>
   <div class="row">
-    <table class="table table-striped">
+    <table class="table table-striped" export-csv="csv" separator=",">
       <tr>
         <th class="bg-primary">Date </th>
         <th class="bg-primary">Employee </th>

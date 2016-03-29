@@ -29,23 +29,35 @@ angular.module('expenseVouchersClientApp')
           }
           //Take total amount
           $scope.voucherTotalAmount = $scope.voucher.Amount;
+
+          //Date in a form suitable for date field
+          $scope.formattedDate = new Date($scope.voucher.Date);
+
           //Get expenses for this voucher
           $scope.expenses = Voucher.expenses({'id': $routeParams.voucherid});
         });
       });
     });
 
+    $scope.isManagerViewing = true;
+
     $scope.cancel = function(){
       $location.path('/home/' + $routeParams.managerid);
     };
 
     //Perform approve or reject
-    function managerAction(nextState){
-      if ($scope.voucher.employeeId === $routeParams.managerID){
-        $scope.error = 'You can\'t approve your own voucher. Ask any other manager in this organisation to approve';
+    function managerAction(approve){
+      if ($scope.voucher.employeeId === $routeParams.managerid){
+        $scope.error = 'You can\'t approve/reject your own voucher. Ask any other manager in this organisation.';
         return;
       }
-      $scope.voucher.State = nextState;
+      if (approve === true){
+        $scope.voucher.State = voucherStates.approved;
+        $scope.voucher.Approver = $routeParams.managerid;
+      }else{
+        $scope.voucher.State = voucherStates.draft;
+      }
+
       $scope.voucher = Organisation.vouchers.updateById({'id': $routeParams.organisationid,
         'fk': $routeParams.voucherid}, $scope.voucher, function(err, voucher){
         if (err){
@@ -57,11 +69,11 @@ angular.module('expenseVouchersClientApp')
     }
 
     $scope.approve = function(){
-      managerAction(voucherStates.approved);
+      managerAction(true);
     };
 
     $scope.reject = function(){
-      managerAction(voucherStates.rejected);
+      managerAction(false);
     };
 
     $scope.print = function(){

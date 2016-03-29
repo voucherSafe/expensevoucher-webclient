@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'lbServices',
     'ui.bootstrap',
-    'AngularPrint'
+    'AngularPrint',
+    'ngTableToCsv'
   ])
   .config(function ($routeProvider, LoopBackResourceProvider) {
     $routeProvider
@@ -41,7 +42,7 @@ angular
         templateUrl: '../views/voucher.html',
         controller: 'EmployeeVoucherCtrl'
       })
-      .when('/organisation/:organisationid/manager/:managerid/employee/:employeeid/voucher/:voucherid/edit', {
+      .when('/organisation/:organisationid/manager/:managerid/employee/:employeeid/voucher/:voucherid', {
         templateUrl: '../views/voucher.html',
         controller: 'ManagerVoucherCtrl'
       })

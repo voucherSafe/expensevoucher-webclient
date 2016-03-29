@@ -55,6 +55,11 @@
                 </p>
               </a>
             </div>
+            <a class="btn btn-default pull-right"
+               ng-if="orgSubmittedVouchers.length >= 1"
+               ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/vouchers/submitted">
+              View All
+            </a>
           </div>
 
           <!-- Organization Reports -->
@@ -62,8 +67,8 @@
             <h4>Work with Vouchers</h4>
             <div class="list-group">
               <a class="list-group-item"
-                 data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/vouchers/submitted">
-                All Submitted Vouchers</a>
+                 data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/vouchers/approved">
+                All Approved Vouchers</a>
               <a class="list-group-item"
                  data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/vouchers/completed">
                 All Completed Vouchers</a>

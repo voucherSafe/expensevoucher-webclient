@@ -32,6 +32,7 @@ module.exports = function (config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-print/angularPrint.js',
+      'bower_components/ng-table-to-csv/dist/ng-table-to-csv.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'test/spec/**/*.js',

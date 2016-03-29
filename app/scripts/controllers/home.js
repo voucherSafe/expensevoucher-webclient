@@ -13,12 +13,8 @@ angular.module('expenseVouchersClientApp')
     $scope.orgSubmittedVouchers = [];
 
     function getVouchersForOrganisation(){
-      $scope.orgVouchers = Organisation.vouchers({'id' : $scope.organisation.id}, function(){
-        for(var k=0; k<$scope.orgVouchers.length; k++){
-          if ($scope.orgVouchers[k].State === voucherStates.submitted){
-            $scope.orgSubmittedVouchers.push($scope.orgVouchers[k]);
-          }
-        }
+      $scope.orgSubmittedVouchers = Organisation.vouchers({'id' : $scope.organisation.id,
+        'filter' : {'where': {'State' : voucherStates.submitted}, 'limit':5}}, function(){
       });
     }
 
@@ -33,12 +29,12 @@ angular.module('expenseVouchersClientApp')
     });
 
     $scope.activeVouchers = Employee.vouchers({'id' : $routeParams.id,
-      'filter' : {'where': {'State' : 'draft'}, 'limit':5}}, function(){
+      'filter' : {'where': {'State' : voucherStates.draft}, 'limit':5}}, function(){
       console.log('%j', $scope.activeVouchers);
     });
 
     $scope.approvedVouchers = Employee.vouchers({'id' : $routeParams.id,
-      'filter' : {'where': {'State' : 'approved'}, 'limit':5}}, function(){
+      'filter' : {'where': {'State' : voucherStates.approved}, 'limit':5}}, function(){
       console.log('%j', $scope.approvedVouchers);
     });
 

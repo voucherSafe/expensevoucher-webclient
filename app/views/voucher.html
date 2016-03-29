@@ -7,6 +7,10 @@
   <span class="sr-only">Error:</span>
   {{error}}
 </div>
+
+<!-- Modal dialog for creating/editing individual expenses -->
+<div ng-include="'/views/expense-modal.html'"></div>
+
 <!-- The form copies the exact format used by the Vouchers in Purandara -->
 <!-- Top Row a Box with the Recipient details and VR No, Date -->
 <div print-section class="panel panel-primary">
@@ -46,50 +50,13 @@
     </div>
     <!-- Table Recipient details on left, VR No, Data on the right - Ends-->
 
-    <!-- Add expense Pop-up template starts-->
-    <script type="text/ng-template" id="EditExpensePopoverTemplate.html">
-      <div class="form-group">
-        <label>Date</label>
-        <input type="date" ng-model="newExpense.Date" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Particulars</label>
-        <input type="text" ng-model="newExpense.Particulars" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Head of Account</label>
-        <input type="text" ng-model="newExpense.HeadofAccount" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Amount</label>
-        <div class="input-group">
-          <span class="input-group-addon">Rs.</span>
-          <input type="number" class="form-control" aria-label="Amount Rs" min="0" ng-model="newExpense.Amount.major">
-          <span class="input-group-addon">Ps.</span>
-          <input type="number" class="form-control" aria-label="Amount Ps" min="0" max="100" ng-model="newExpense.Amount.minor">
-        </div>
-      </div>
-      <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default" ng-show="expenseEditMode" ng-click="cancelNewExpense()">OK</button>
-        <button type="button" class="btn btn-default" ng-hide="expenseEditMode" ng-click="addNewExpense()">Add</button>
-        <button type="button" class="btn btn-default" ng-click="cancelNewExpense()">Cancel</button>
-      </div>
-    </script>
-    <!-- Add expense Pop-up template ends -->
-
     <!-- Expenses begins -->
     <div class="row">
       <div class="col-md-8">
         <h4> Expenses </h4>
       </div>
       <div class="col-md-4" ng-if="activeVoucher">
-        <button uib-popover-template="expensePopover.templateUrl"
-                popover-title="{{expensePopover.title}}"
-                popover-placement="left"
-                type="button"
-                class="btn btn-success"
-                popover-toggle="displayExpensePopover"
-                ng-click="createNewExpense()">
+        <button class="btn btn-success" ng-click="createNewExpense()">
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
           Add Expense
         </button>
@@ -126,12 +93,7 @@
           {{ expense.Amount.major + '.' + expense.Amount.minor }}
         </td>
         <td>
-          <button print-hide ng-if="activeVoucher" class="btn btn-default btn-xs"
-                  uib-popover-template="expensePopover.templateUrl"
-                  popover-title="{{expensePopover.title}}"
-                  popover-placement="left"
-                  popover-toggle="displayExpensePopover"
-                  ng-click="editExpense(expense.SlNo)">
+          <button print-hide ng-if="activeVoucher" class="btn btn-default btn-xs" ng-click="editExpense(expense.SlNo)">
             <span class="glyphicon glyphicon-edit"></span>
           </button>
           <button print-hide ng-if="activeVoucher" class="btn btn-default btn-xs" ng-click="deleteExpense(expense.SlNo)">
@@ -168,8 +130,8 @@
         <span class="glyphicon glyphicon-circle-arrow-left"></span> Cancel</button>
     </div>
     <div print-hide class="btn-group btn-group-lg" ng-if="submittedVoucher" role="group" aria-label="...">
-      <button type="button" class="btn btn-default" ng-click="approve()">Approve</button>
-      <button type="button" class="btn btn-default" ng-click="reject()">Reject</button>
+      <button type="button" class="btn btn-default" ng-if="isManagerViewing" ng-click="approve()">Approve</button>
+      <button type="button" class="btn btn-default" ng-if="isManagerViewing" ng-click="reject()">Reject</button>
       <button type="button" class="btn btn-default" ng-click="print()">
         <span class="glyphicon glyphicon-print"></span> Print</button>
       <button type="button" class="btn btn-default" ng-click="cancel()">

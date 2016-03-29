@@ -6,8 +6,8 @@
  * Controller of the expenseVouchersClientApp
  */
 angular.module('expenseVouchersClientApp')
-.controller('CreateVoucherCtrl', function($scope, Voucher, Employee, Organisation, Expense, $location,
-                                          $routeParams, voucherStates) {
+  .controller('CreateVoucherCtrl', function($scope, Voucher, Employee, Organisation, Expense, $location,
+                                            $routeParams, voucherStates, $uibModal) {
 
     $scope.error = '';
 
@@ -30,101 +30,29 @@ angular.module('expenseVouchersClientApp')
       });
     });
 
-    $scope.createNewExpense = function(){
-      $scope.newExpense = new Expense();
-      $scope.newExpense.Amount = {};
-      $scope.newExpense.Amount.currency = 'INR';
-      $scope.newExpense.Amount.major = 0;
-      $scope.newExpense.Amount.minor = 0;
-      $scope.newExpense.Date = new Date();
-      $scope.showExpensePopover = true;
-      console.log('show popover to true');
-      $scope.newExpense.SlNo = $scope.expenses.length + 1;
-      console.log('You clicked Add new Expense');
-    };
-
-    $scope.addNewExpense = function(){
-      $scope.expenses.push($scope.newExpense);
-      $scope.showExpensePopover = false;
-      console.log('show popover to false');
-      //Calculate the new total Amount for Voucher
-      var expenseAmount = $scope.newExpense.Amount.major + ($scope.newExpense.Amount.minor/100);
-      $scope.voucherTotalAmount = $scope.voucherTotalAmount + expenseAmount;
-    };
-
-    $scope.cancelNewExpense = function(){
-      console.log('show popover to false');
-      $scope.showExpensePopover = false;
-    };
-
-    $scope.expensePopover = {
-      templateUrl: 'ExpensePopoverTemplate.html',
-      title: 'Expense details'
-    };
-
-
     $scope.cancel = function(){
       $location.path('/home/' + $routeParams.id);
     };
-
-/*    function displayInfoModal(){
-      var informationDialogModalInstance = $modal.open({
-         animation: true,
-         templateUrl: 'InformationDialogModal.html',
-         controller: 'InformationDialogController',
-         size: 'sm',
-         resolve: {
-           message: function () {
-             return 'Voucher Saved Successfully.';
-           }
-         }
-       });
-
-       confirmationDialogModalInstance.result.then(function (result) {
-         console.log('result is ' + result);
-         //Take an action depending on user's confirmation
-         if (result.confirm === true){
-           if ( spec ) {
-             spec.$remove();
-             for (var i in $scope.specs) {
-               if ($scope.specs [i] === spec) {
-                 $scope.specs.splice(i, 1);
-               }
-             }
-           } else {
-             $scope.spec.$remove(function() {
-               $location.path('specs');
-             });
-           }
-         }
-       }, function () {
-         console.info('Modal dismissed at: ' + new Date());
-       });
-    }*/
 
     function saveVoucherAndExpenses(){
       //Utility function that saves Voucher into Database
       //Picks saved Voucher's ID and saves each expense against it
       if ($scope.expenses.length === 0){
         $scope.error = 'No Expenses in Voucher. Add an expense and try again';
-        return;
+        return false;
+      }
+      if ($scope.voucher.Date === undefined || $scope.voucher.Date === null){
+        $scope.error = 'Invalid Voucher Date';
+        return false;
       }
       $scope.voucher.Amount = $scope.voucherTotalAmount;
-      $scope.voucher = Employee.vouchers.create({'id' : $routeParams.id}, $scope.voucher, function(err, voucher){
-        if (err){
-          $scope.error = 'Unable to save voucher. Check network settings and try again later.'
-        }
+      $scope.voucher = Employee.vouchers.create({'id' : $routeParams.id}, $scope.voucher, function(){
         console.log('saved voucher id - %j', $scope.voucher.id);
         for (var i=0; i<$scope.expenses.length; i++){
           var expense = $scope.expenses[i];
-          Voucher.expenses.create({'id': $scope.voucher.id}, expense, function(err){
-            if (err){
-              $scope.error = 'Unable to save. Check network settings and try again later.'
-            }else{
-              //displayInfoModal();
-            }
-          });
+          Voucher.expenses.create({'id': $scope.voucher.id}, expense);
         }
+        return true;
       });
     }
 
@@ -134,7 +62,74 @@ angular.module('expenseVouchersClientApp')
 
     $scope.submit = function(){
       $scope.voucher.State = voucherStates.submitted;
-      saveVoucherAndExpenses();
+      if (saveVoucherAndExpenses() === false){
+        //Save was not successful or validation criteria failed
+        $scope.voucher.State = voucherStates.draft;
+      }else{
+        //submit was successful. re-direct user to home directory
+        $location.path('/home/' + $routeParams.id);
+      }
     };
+
+    /*
+     * Expense Creation, Deletion and Editing Modal Starts
+     */
+
+    $scope.createNewExpense = function(){
+      $scope.open();
+    };
+
+    $scope.deleteExpense = function(SlNo){
+      //Remove the expense
+      var expenseToDelete = $scope.expenses.splice(SlNo-1, 1); //SlNo is (expenses array index + 1)
+
+      //update the SlNos of the remaining expenses &
+      //Re-calculate the voucher total
+      $scope.voucherTotalAmount = 0;
+      for (var i=0; i<$scope.expenses.length; i++){
+        var expenseAmount = $scope.expenses[i].Amount.major + ($scope.expenses[i].Amount.minor/100);
+        $scope.expenses[i].SlNo = i+1;
+        $scope.voucherTotalAmount = $scope.voucherTotalAmount + expenseAmount;
+      }
+    };
+
+    $scope.editExpense = function(SlNo){
+      $scope.open($scope.expenses[SlNo - 1]);
+    };
+
+    $scope.open = function (expense) {
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'ExpenseModal.html',
+        controller: 'ExpenseModalInstanceCtrl',
+        resolve: {
+          expense: function () {
+            return expense;
+          },
+          voucherDate: function() {
+            return $scope.voucher.Date;
+          }
+        }
+      });
+
+      modalInstance.result.then(function (result) {
+        if (result.isNew === true){ //Push new expense into array
+          $scope.newExpense = result.expense;
+          $scope.newExpense.SlNo = $scope.expenses.length+1;
+          $scope.expenses.push($scope.newExpense);
+        }
+
+        //Recalculate new voucher total
+        $scope.voucherTotalAmount = 0;
+        for (var k=0; k < $scope.expenses.length; k++){
+          var expenseAmount = $scope.expenses[k].Amount.major + ($scope.expenses[k].Amount.minor/100);
+          $scope.voucherTotalAmount = $scope.voucherTotalAmount + expenseAmount;
+        }
+
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
+    //Expense Creation and Editing Modal Ends
 
   });
