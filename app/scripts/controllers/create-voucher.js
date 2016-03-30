@@ -62,11 +62,11 @@ angular.module('expenseVouchersClientApp')
         $scope.voucher = Employee.vouchers.create({'id' : $routeParams.id}, $scope.voucher, function(){
           console.log('saved voucher id - %j', $scope.voucher.id);
           for (var i=0; i<$scope.expenses.length; i++){
-            var expense = $scope.expenses[i];
-            if (expense.id === undefined){
-              expense = Voucher.expenses.create({'id': $scope.voucher.id}, expense); //Object should get updated with id
+            if ($scope.expenses[i].id === undefined){
+              //update the expense object in the array index to the saved on so that the id field also gets included
+              $scope.expenses[i] = Voucher.expenses.create({'id': $scope.voucher.id}, $scope.expenses[i]);
             }else{
-              Voucher.expenses.updateById({'id' : $scope.voucher.id, 'fk' : expense.id}, expense);
+              Voucher.expenses.updateById({'id' : $scope.voucher.id, 'fk' : $scope.expenses[i].id}, $scope.expenses[i]);
             }
           }
           return true;
@@ -78,10 +78,12 @@ angular.module('expenseVouchersClientApp')
           console.log('saved voucher id - %j', $scope.voucher.id);
           for (var i=0; i<$scope.expenses.length; i++){
             var expense = $scope.expenses[i];
-            if (expense.id === undefined){
-              expense = Voucher.expenses.create({'id': $scope.voucher.id}, expense);
+            if ($scope.expenses[i].id === undefined){
+              //Expense added after last save
+              $scope.expenses[i] = Voucher.expenses.create({'id': $scope.voucher.id}, $scope.expenses[i]);
             }else{
-              Voucher.expenses.updateById({'id' : $scope.voucher.id, 'fk' : expense.id}, expense);
+              //Expense that was present in the last save
+              Voucher.expenses.updateById({'id' : $scope.voucher.id, 'fk' : $scope.expenses[i].id}, $scope.expenses[i]);
             }
 
           }
