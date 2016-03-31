@@ -22,7 +22,7 @@ angular.module('expenseVouchersClientApp')
             $scope.activeVoucher = true;
           }else if($scope.voucher.State === voucherStates.submitted){
             $scope.submittedVoucher = true;
-          }else if (($scope.voucher.State === voucherStates.completed) ||
+          }else if (($scope.voucher.State === voucherStates.complete) ||
             ($scope.voucher.State === voucherStates.approved)){
             $scope.archivedVoucher = true;
           }
@@ -141,6 +141,13 @@ angular.module('expenseVouchersClientApp')
     };
 
     $scope.print = function(){
+      if ($scope.voucher.State === voucherStates.approved){
+        $scope.voucher.State = voucherStates.complete;
+        //Add action to history
+        $scope.voucher.History.push(voucherStates.historyObjectFactory('print', $routeParams.id, new Date()));
+        //Save the voucher state
+        Employee.vouchers.updateById({'id' : $routeParams.employeeid, 'fk' : $routeParams.voucherid}, $scope.voucher);
+      }
       window.print();
     };
 

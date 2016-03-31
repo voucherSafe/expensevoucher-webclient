@@ -23,7 +23,7 @@ angular.module('expenseVouchersClientApp')
             $scope.activeVoucher = true;
           }else if($scope.voucher.State === voucherStates.submitted){
             $scope.submittedVoucher = true;
-          }else if (($scope.voucher.State === voucherStates.completed) ||
+          }else if (($scope.voucher.State === voucherStates.complete) ||
             ($scope.voucher.State === voucherStates.approved)){
             $scope.archivedVoucher = true;
           }

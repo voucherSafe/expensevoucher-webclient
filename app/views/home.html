@@ -70,7 +70,7 @@
                  data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/vouchers/approved">
                 All Approved Vouchers</a>
               <a class="list-group-item"
-                 data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/vouchers/completed">
+                 data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/vouchers/complete">
                 All Completed Vouchers</a>
             </div>
           </div>
@@ -108,7 +108,7 @@
               <div class="list-group">
                 <button class="list-group-item" data-ng-click="newVoucher()">Create a new Voucher</button>
                 <button class="list-group-item" data-ng-click="employeeVoucherQuery('submitted')">View Submitted Vouchers</button>
-                <button class="list-group-item" data-ng-click="employeeVoucherQuery('completed')">View Completed Vouchers</button>
+                <button class="list-group-item" data-ng-click="employeeVoucherQuery('complete')">View Completed Vouchers</button>
               </div>
             </div>
             <!--Left hand column for actions ends-->

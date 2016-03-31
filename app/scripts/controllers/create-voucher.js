@@ -82,7 +82,7 @@ angular.module('expenseVouchersClientApp')
               //Expense added after last save
               $scope.expenses[i] = Voucher.expenses.create({'id': $scope.voucher.id}, $scope.expenses[i]);
             }else{
-              //Expense that was present in the last save
+              //Expense that was present in the last save`
               Voucher.expenses.updateById({'id' : $scope.voucher.id, 'fk' : $scope.expenses[i].id}, $scope.expenses[i]);
             }
 
