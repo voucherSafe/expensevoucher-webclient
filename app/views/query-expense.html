@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h2>{{name}}'s <i>{{voucherState | uppercase }}</i> Vouchers</h2>
+  <h2>{{name}}'s <i>{{voucherState | uppercase }}</i> Expenses</h2>
 </div>
 <div class="alert alert-danger" role="alert" ng-show="error!==''">
   <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="error=''"></span>
@@ -22,20 +22,14 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-md-7">
-      <h5> Vouchers between <b>{{startDate | date}}</b> and <b>{{endDate | date}}</b></h5>
+    <div class="col-md-9">
+      <h4> Expenses between <b>{{startDate | date}}</b> and <b>{{endDate | date}}</b></h4>
     </div>
-    <div class="col-md-5">
-      <div class="btn-group" role="group" aria-label="...">
-        <a class="btn btn-default" ng-disabled="vouchers.length === 0"
-           ng-href="">
-          <span class="glyphicon glyphicon-th-list"></span> View Expenses </a>
-        <a class="btn btn-default" ng-disabled="vouchers.length === 0"
+    <div class="col-md-3">
+      <a class="btn btn-primary pull-right" ng-disabled="vouchers.length === 0"
            ng-click="csv.generate()" ng-href="{{ csv.link() }}"
-           download="{{name}}-{{state}}-vouchers-{{startDate | date }}-to-{{endDate | date}}.csv">
-          <span class="glyphicon glyphicon-download"></span> Save Report </a>
-      </div>
-
+           download="{{name}}-{{state}}-expenses-{{startDate | date }}-to-{{endDate | date}}.csv">
+        <span class="glyphicon glyphicon-download"></span> Save Report </a>
     </div>
   </div>
   <br>

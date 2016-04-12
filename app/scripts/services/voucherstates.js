@@ -22,5 +22,6 @@ angular.module('expenseVouchersClientApp')
       historyObject.by = by;
       historyObject.on = on;
       return historyObject;
-    }
+    };
+
   });

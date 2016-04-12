@@ -54,6 +54,14 @@ angular
         templateUrl: '../views/query-voucher.html',
         controller: 'EmployeeQueryVoucherCtrl'
       })
+      .when('/organisation/:organisationid/manager/:managerid/vouchers/:voucherState/expenses', {
+        templateUrl : '../views/query-expense.html',
+        controller  : 'ManagerQueryExpenseCtrl'
+      })
+      .when('/employee/:employeeid/vouchers/:voucherState/expenses', {
+        templateUrl : '../views/query-expense.html',
+        controller: 'EmployeeQueryExpenseCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
