@@ -9,23 +9,10 @@
 </div>
 <!-- Modal Window for Expense -->
 <div ng-include="'/views/expense-modal.html'"></div>
-<!--<script type="text/ng-template" id="ExpenseModal.html">
-          <div class="modal-header">
-              <h3 class="modal-title">I'm a modal!</h3>
-          </div>
-          <div class="modal-body">
-              <ul>
-                  <li ng-repeat="item in items">
-                      <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                  </li>
-              </ul>
-              Selected: <b>{{ selected.item }}</b>
-          </div>
-          <div class="modal-footer">
-              <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-              <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-          </div>
-      </script>-->
+<!-- Confirmation Message -->
+<div ng-include="'/views/confirm-dialog.html'"></div>
+<div ng-include="'/views/info-dialog.html'"></div>
+
 <!-- The form copies the exact format used by the Vouchers in Purandara -->
 <!-- Top Row a Box with the Recipient details and VR No, Date -->
 <div class="panel panel-primary">
@@ -56,8 +43,16 @@
             <td>
               <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1">Date</span>
-                <input type="date" class="form-control" placeholder="" aria-describedby="basic-addon1" required="true"
-                       ng-model="voucher.Date">
+                <!--<input type="date" class="form-control" placeholder="" aria-describedby="basic-addon1" required="true"
+                       ng-model="voucher.Date"> -->
+                <input type="text" class="form-control" uib-datepicker-popup="{{format}}"
+                       ng-model="voucher.Date" is-open="datePickerOpened" datepicker-options="dateOptions"
+                       ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="openDatePicker()">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                  </button>
+                </span>
               </div>
             </td>
           </tr>
@@ -65,7 +60,6 @@
       </div>
     </div>
     <!-- Table Recipient details on left, VR No, Data on the right - Ends-->
-
     <!-- Expenses begins -->
     <div class="row">
       <div class="col-md-8">
@@ -123,6 +117,18 @@
       <label>Total Amount in this Voucher</label>
       <span class="badge">{{voucherTotalAmount | currency:"&#8377;"}}</span>
     </div>
+    <br>
+    <!-- Narration -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-group">
+          <span class="input-group-addon" id="narration-addon">Narration</span>
+          <input class="form-control" ng-model="voucher.Narration" placeholder="Optionally add a Narration for this voucher">
+        </div>
+      </div>
+    </div>
+    <!-- Narration -->
+
   </div>
   <div class="panel-footer">
     <div class="btn-group" role="group" aria-label="...">

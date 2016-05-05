@@ -39,15 +39,17 @@
         <th class="bg-primary">Date </th>
         <th class="bg-primary">Employee </th>
         <th class="bg-primary">Approver </th>
-        <th class="bg-primary">Amount </th>
-        <th class="bg-primary">State</th>
+        <th class="bg-primary">Head</th>
+        <th class="bg-primary">Particulars</th>
+        <th class="bg-primary">Amount</th>
       </tr>
       <tr ng-repeat="voucher in vouchers">
-        <td> <a style="cursor: pointer" ng-click="show(voucher)">{{voucher.Date | date}}</a></td>
-        <td>{{voucher.employeeId}}</td>
-        <td>{{voucher.Approver}}</td>
-        <td>{{voucher.Amount}}</td>
-        <td>{{voucher.State}}</td>
+        <td> <a style="cursor: pointer" ng-click="show(expense)">{{expense.Date | date}}</a></td>
+        <td>{{expense.employeeId}}</td>
+        <td>{{expense.Approver}}</td>
+        <td>{{expense.Head}}</td>
+        <td>{{expense.Particulars}}</td>
+        <td>{{expense.Amount}}</td>
       </tr>
     </table>
   </div>

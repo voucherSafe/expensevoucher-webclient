@@ -7,7 +7,7 @@
  */
 angular.module('expenseVouchersClientApp')
   .controller('CreateVoucherCtrl', function($scope, Voucher, Employee, Organisation, Expense, $location,
-                                            $routeParams, voucherStates, $uibModal) {
+                                            $routeParams, voucherStates, $uibModal, ModalDialogs) {
 
     $scope.error = '';
 
@@ -33,6 +33,22 @@ angular.module('expenseVouchersClientApp')
 
       });
     });
+
+    $scope.datePickerOpened = false;
+
+    $scope.dateOptions = {
+      //dateDisabled: disabled,
+      formatYear: 'yy',
+      maxDate: new Date(), //All date functionality uses today as the max
+      minDate: new Date(2016, 3, 1 ), //System introduced on 1/4/2016
+      startingDay: 1
+    };
+
+    $scope.openDatePicker = function() {
+      $scope.datePickerOpened = true;
+    };
+
+    $scope.format = 'dd/MM/yyyy';
 
     $scope.cancel = function(){
       $location.path('/home/' + $routeParams.id);
@@ -69,7 +85,9 @@ angular.module('expenseVouchersClientApp')
               Voucher.expenses.updateById({'id' : $scope.voucher.id, 'fk' : $scope.expenses[i].id}, $scope.expenses[i]);
             }
           }
-          return true;
+          ModalDialogs.informAction('Success. New Voucher created.', function(){
+            return true;
+          });
         });
 
       }else{
@@ -85,9 +103,10 @@ angular.module('expenseVouchersClientApp')
               //Expense that was present in the last save`
               Voucher.expenses.updateById({'id' : $scope.voucher.id, 'fk' : $scope.expenses[i].id}, $scope.expenses[i]);
             }
-
           }
-          return true;
+          ModalDialogs.informAction('Success. Voucher saved.', function(){
+            return true;
+          });
         });
       }
 
@@ -98,14 +117,16 @@ angular.module('expenseVouchersClientApp')
     };
 
     $scope.submit = function(){
-      $scope.voucher.State = voucherStates.submitted;
-      if (saveVoucherAndExpenses(true) === false){
-        //Save was not successful or validation criteria failed
-        $scope.voucher.State = voucherStates.draft;
-      }else{
-        //submit was successful. re-direct user to home directory
-        $location.path('/home/' + $routeParams.id);
-      }
+      ModalDialogs.confirmAction('A Voucher can\'t be edited once submitted. Please confirm.', function(){
+        $scope.voucher.State = voucherStates.submitted;
+        if (saveVoucherAndExpenses(true) === false){
+          //Save was not successful or validation criteria failed
+          $scope.voucher.State = voucherStates.draft;
+        }else{
+          //submit was successful. re-direct user to home directory
+          $location.path('/home/' + $routeParams.id);
+        }
+      });
     };
 
     /*
@@ -143,8 +164,8 @@ angular.module('expenseVouchersClientApp')
           expense: function () {
             return expense;
           },
-          voucherDate: function() {
-            return $scope.voucher.Date;
+          heads: function () {
+            return $scope.organisation.ExpenseHeads;
           }
         }
       });

@@ -7,7 +7,8 @@
  * Controller of the expenseVouchersClientApp
  */
 angular.module('expenseVouchersClientApp')
-  .controller('EmployeeVoucherCtrl', function($scope, Voucher, Employee, Organisation, Expense, $location, $routeParams, voucherStates, $uibModal) {
+  .controller('EmployeeVoucherCtrl', function($scope, Voucher, Employee, Organisation, Expense, $location,
+                                              $routeParams, voucherStates, $uibModal, ModalDialogs) {
 
     $scope.error = '';
     $scope.employee = Employee.get({'id' : $routeParams.employeeid}, function(){
@@ -30,7 +31,7 @@ angular.module('expenseVouchersClientApp')
           $scope.voucherTotalAmount = $scope.voucher.Amount;
 
           //Date in a form suitable for date field
-          $scope.formattedDate = new Date($scope.voucher.Date);
+          $scope.voucher.Date = new Date($scope.voucher.Date);
 
           //Get expenses for this voucher
           $scope.expenses = Voucher.expenses({'id': $routeParams.voucherid});
@@ -47,7 +48,7 @@ angular.module('expenseVouchersClientApp')
       $scope.newExpense.Amount.currency = 'INR';
       $scope.newExpense.Amount.major = 0;
       $scope.newExpense.Amount.minor = 0;
-      $scope.newExpense.Date = new Date();
+      //$scope.newExpense.Date = new Date();
       console.log('show popover to true');
       $scope.newExpense.SlNo = $scope.expenses.length + 1;
       console.log('You clicked Add new Expense');
@@ -96,8 +97,8 @@ angular.module('expenseVouchersClientApp')
       }
 
       $scope.voucher.Amount = $scope.voucherTotalAmount;
-      $scope.voucher.Date = new Date($scope.formattedDate);
-      $scope.voucher.ModifiedDate = new Date();
+      //$scope.voucher.Date = new Date($scope.formattedDate);
+      //$scope.voucher.ModifiedDate = new Date();
 
       //Update the history for action
 
@@ -121,23 +122,43 @@ angular.module('expenseVouchersClientApp')
               Voucher.expenses.destroyById({'id': $scope.voucher.id, 'fk': $scope.expensesToDelete[k].id});
             }
           }
-          return true;
+          ModalDialogs.informAction('Success. Voucher saved.', function(){
+            return true;
+          });
         });
     }
+
+    $scope.datePickerOpened = false;
+
+    $scope.dateOptions = {
+      //dateDisabled: disabled,
+      formatYear: 'yy',
+      maxDate: new Date(), //I don't foresee a need to set a future date in any of the voucher functionality
+      minDate: new Date(2016, 3, 1 ), //System introduced on 1/4/2016
+      startingDay: 1
+    };
+
+    $scope.openDatePicker = function() {
+      $scope.datePickerOpened = true;
+    };
+
+    $scope.format = 'dd/MM/yyyy';
 
     $scope.save = function(){
       saveVoucherAndExpenses();
     };
 
     $scope.submit = function(){
-      $scope.voucher.State = voucherStates.submitted;
-      if (saveVoucherAndExpenses() === false){
-        //Save was not successful or validation criteria failed
-        $scope.voucher.State = voucherStates.draft;
-      }else{
-        //submit was successful. re-direct user to home directory
-        $location.path('/home/' + $routeParams.employeeid);
-      }
+      ModalDialogs.confirmAction('Submitting Voucher... Please confirm.', function(){
+        $scope.voucher.State = voucherStates.submitted;
+        if (saveVoucherAndExpenses() === false){
+          //Save was not successful or validation criteria failed
+          $scope.voucher.State = voucherStates.draft;
+        }else{
+          //submit was successful. re-direct user to home directory
+          $location.path('/home/' + $routeParams.employeeid);
+        }
+      });
     };
 
     $scope.print = function(){
@@ -151,26 +172,35 @@ angular.module('expenseVouchersClientApp')
       window.print();
     };
 
+    $scope.deleteVoucher = function(){
+      ModalDialogs.confirmAction('Do you want to delete this voucher and all expenses in it?', function(){
+        Voucher.expenses.destroyAll({'id': $scope.voucher.id});
+        Voucher.deleteById({'id' : $scope.voucher.id});
+        $location.path('/home/' + $routeParams.employeeid);
+      });
+    };
+
     /*
      * Expense Creation, Deletion and Editing Modal Starts
      */
-
     $scope.createNewExpense = function(){
       $scope.open();
     };
 
     $scope.deleteExpense = function(SlNo){
-      //Remove the expense
-      var expenseToDelete = $scope.expenses.splice(SlNo-1, 1); //SlNo is (expenses array index + 1)
+      confirmAction(function(){
+        //Remove the expense
+        var expenseToDelete = $scope.expenses.splice(SlNo-1, 1); //SlNo is (expenses array index + 1)
 
-      //update the SlNos of the remaining expenses &
-      //Re-calculate the voucher total
-      $scope.voucherTotalAmount = 0;
-      for (var i=0; i<$scope.expenses.length; i++){
-        var expenseAmount = $scope.expenses[i].Amount.major + ($scope.expenses[i].Amount.minor/100);
-        $scope.expenses[i].SlNo = i+1;
-        $scope.voucherTotalAmount = $scope.voucherTotalAmount + expenseAmount;
-      }
+        //update the SlNos of the remaining expenses &
+        //Re-calculate the voucher total
+        $scope.voucherTotalAmount = 0;
+        for (var i=0; i<$scope.expenses.length; i++){
+          var expenseAmount = $scope.expenses[i].Amount.major + ($scope.expenses[i].Amount.minor/100);
+          $scope.expenses[i].SlNo = i+1;
+          $scope.voucherTotalAmount = $scope.voucherTotalAmount + expenseAmount;
+        }
+      });
     };
 
     $scope.editExpense = function(SlNo){
@@ -185,6 +215,9 @@ angular.module('expenseVouchersClientApp')
         resolve: {
           expense: function () {
             return expense;
+          },
+          heads: function () {
+            return $scope.organisation.ExpenseHeads;
           },
           voucherDate: function() {
             return $scope.voucher.Date;

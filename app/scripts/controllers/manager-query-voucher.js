@@ -6,7 +6,8 @@
  * Controller of the expenseVouchersClientApp
  */
 angular.module('expenseVouchersClientApp')
-  .controller('ManagerQueryVoucherCtrl', function($scope, Voucher, Organisation, $location, $routeParams, dateprovider) {
+  .controller('ManagerQueryVoucherCtrl', function($scope, Voucher, Organisation, $location,
+                                                  $routeParams, dateprovider, tallyUtils) {
 
     $scope.error = '';
 
@@ -17,6 +18,18 @@ angular.module('expenseVouchersClientApp')
           'and' : [{'State' : $scope.voucherState},
             {'Date' : {'gte' : $scope.startDate}}, {'Date' : {'lte' : $scope.endDate}}]
         }}
+      }, function(){
+        //Prepare the Tally XML Templates
+        tallyUtils.initializeTemplates(function(){
+          console.log('Loaded Templates...');
+          //Create the Tally XML String for the current context
+          tallyUtils.createTallyXMLString($scope.vouchers, $scope.organisation, function(tallyXMLString){
+            console.log('Created Tally XML String');
+            var tallyXMLContent = tallyXMLString;
+            var blob = new Blob([ tallyXMLContent ], { type : 'text/plain' });
+            $scope.tallyXMLURL = (window.URL || window.webkitURL).createObjectURL( blob );
+          });
+        });
       });
     }
 
@@ -30,8 +43,8 @@ angular.module('expenseVouchersClientApp')
     $scope.organisation = Organisation.findById({'id' : $routeParams.organisationid}, function(){
       //Set 'context' to last month by default since that would be the most frequently accessed query
       setDatesForQuery('lastMonth');
-      getVouchersForOrganisation();
       $scope.name = $scope.organisation.name;
+      getVouchersForOrganisation();
     });
 
     $scope.voucherState = $routeParams.voucherState;
@@ -45,6 +58,16 @@ angular.module('expenseVouchersClientApp')
 
     $scope.back = function(){
       $location.path('/home/' + $routeParams.managerid);
-    }
+    };
+
+    $scope.show = function(voucher){
+      console.log('Voucher is %j', voucher);
+      console.log('path is ' + '/organisation/' + $routeParams.organisationid +
+             '/manager/' + $routeParams.managerid + '/employee/' + voucher.employeeId +
+            '/voucher/' + voucher.id);
+      $location.path('/organisation/' + $routeParams.organisationid +
+       '/manager/' + $routeParams.managerid + '/employee/' + voucher.employeeId +
+      '/voucher/' + voucher.id);
+    };
 
   });

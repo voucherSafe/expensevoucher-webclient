@@ -7,14 +7,63 @@
   <span class="sr-only">Error:</span>
   {{error}}
 </div>
+<!-- The Date picker modal for custom query -->
+<script type="text/ng-template" id="DatePickerTemplate.html">
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">From</span>
+    <input type="text" class="form-control" uib-datepicker-popup="{{format}}"
+           ng-model="startDate" is-open="fromDatePickerOpened" datepicker-options="dateOptions"
+           ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openFromDatePicker()">
+          <i class="glyphicon glyphicon-calendar"></i>
+        </button>
+      </span>
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">To  </span>
+    <input type="text" class="form-control" uib-datepicker-popup="{{format}}"
+           ng-model="endDate" is-open="toDatePickerOpened" datepicker-options="dateOptions"
+           ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openToDatePicker()">
+          <i class="glyphicon glyphicon-calendar"></i>
+        </button>
+      </span>
+  </div>
+  <button type="button" class="btn btn-sm btn-default" data-ng-click="selectFromToDates()">Select</button>
+</script>
+
+<!-- Refer
+<button uib-popover-template="dynamicPopover.templateUrl" popover-title="{{dynamicPopover.title}}" type="button" class="btn btn-default">Popover With Template</button>
+
+    <script type="text/ng-template" id="myPopoverTemplate.html">
+        <div>{{dynamicPopover.content}}</div>
+        <div class="form-group">
+          <label>Popup Title:</label>
+          <input type="text" ng-model="dynamicPopover.title" class="form-control">
+        </div>
+    </script>
+
+JS
+$scope.dynamicPopover = {
+    content: 'Hello, World!',
+    templateUrl: 'myPopoverTemplate.html',
+    title: 'Title'
+  };
+
+ Refer -->
+
 <div class="container">
   <div class="row">
     <div class="btn-group" role="group" aria-label="...">
       <button type="button" ng-class="queryContext==='lastMonth' ? 'btn btn-info' : 'btn btn-default'"
               data-ng-click="changeQueryContext('lastMonth')">Last Month</button>
       <button type="button" ng-class="queryContext==='currentMonth' ? 'btn btn-info' : 'btn btn-default'"
-        data-ng-click="changeQueryContext('currentMonth')">This Month</button>
-      <button type="button" ng-class="queryContext==='custom' ? 'btn btn-info' : 'btn btn-default'">
+              data-ng-click="changeQueryContext('currentMonth')">This Month</button>
+      <button uib-popover-template="datePickerPopover.templateUrl" type="button"
+              ng-class="queryContext==='custom' ? 'btn btn-info' : 'btn btn-default'"
+              popover-placement="bottom" popover-is-open="openDatePickerPopover">
         <span class="glyphicon glyphicon-calendar"></span> Between Dates</button>
       <button type="button" class="btn btn-default" data-ng-click="back()">
         <span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
@@ -27,13 +76,28 @@
     </div>
     <div class="col-md-5">
       <div class="btn-group" role="group" aria-label="...">
-        <a class="btn btn-default" ng-disabled="vouchers.length === 0"
+        <!-- <a class="btn btn-default" ng-disabled="vouchers.length === 0"
            ng-href="">
-          <span class="glyphicon glyphicon-th-list"></span> View Expenses </a>
-        <a class="btn btn-default" ng-disabled="vouchers.length === 0"
+          <span class="glyphicon glyphicon-th-list"></span> View Expenses </a> -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+            Download <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a ng-click="csv.generate()"
+                   ng-href="{{ csv.link() }}"
+                   download="{{name}}-{{state}}-vouchers-{{startDate | date }}-to-{{endDate | date}}.csv">
+              As CSV file</a>
+            </li>
+            <li><a download="AccountingVoucher.xml" ng-href="{{tallyXMLURL}}" >As Tally XML File</a></li>
+          </ul>
+        </div>
+        <!-- <a class="btn btn-default" ng-disabled="vouchers.length === 0"
            ng-click="csv.generate()" ng-href="{{ csv.link() }}"
            download="{{name}}-{{state}}-vouchers-{{startDate | date }}-to-{{endDate | date}}.csv">
-          <span class="glyphicon glyphicon-download"></span> Save Report </a>
+          <span class="glyphicon glyphicon-download"></span> Save Report </a> -->
       </div>
 
     </div>
@@ -47,6 +111,7 @@
         <th class="bg-primary">Approver </th>
         <th class="bg-primary">Amount </th>
         <th class="bg-primary">State</th>
+        <th class="bg-primary"></th>
       </tr>
       <tr ng-repeat="voucher in vouchers">
         <td> <a style="cursor: pointer" ng-click="show(voucher)">{{voucher.Date | date}}</a></td>
@@ -54,6 +119,12 @@
         <td>{{voucher.Approver}}</td>
         <td>{{voucher.Amount}}</td>
         <td>{{voucher.State}}</td>
+        <td>
+          <button print-hide ng-if="isVoucherActive(voucher) === true" class="btn btn-default btn-xs"
+                  ng-click="deleteVoucher(voucher)">
+            <span class="glyphicon glyphicon-remove-circle"></span>
+          </button>
+        </td>
       </tr>
     </table>
   </div>

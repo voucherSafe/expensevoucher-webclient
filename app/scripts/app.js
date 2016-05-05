@@ -21,7 +21,7 @@ angular
     'AngularPrint',
     'ngTableToCsv'
   ])
-  .config(function ($routeProvider, LoopBackResourceProvider) {
+  .config(function ($routeProvider, LoopBackResourceProvider, $compileProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -69,4 +69,7 @@ angular
     LoopBackResourceProvider.setAuthHeader('X-Access-Token');
     // Change the URL where to access the LoopBack REST API server
     LoopBackResourceProvider.setUrlBase('http://localhost:3000/api/');
+
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|blob):/);
+
   });

@@ -7,11 +7,12 @@
  * Controller of the expenseVouchersClientApp
  */
 angular.module('expenseVouchersClientApp')
-  .controller('ManagerVoucherCtrl', function($scope, Voucher, Employee, Organisation, Expense, $location, $routeParams, voucherStates) {
+  .controller('ManagerVoucherCtrl', function($scope, Voucher, Employee, Organisation, Expense,
+                                             $location, $routeParams, voucherStates, tallyUtils, ModalDialogs) {
 
     $scope.error = '';
     $scope.employee = Organisation.employees.findById({'id' : $routeParams.organisationid,
-    'fk': $routeParams.employeeid}, function(){
+      'fk': $routeParams.employeeid}, function(){
       $scope.recipientDetails = $scope.employee.firstName + " " + $scope.employee.lastName + "\n"
       + $scope.employee.address;
       $scope.organisation = Organisation.get({'id' : $scope.employee.organisationId}, function(){
@@ -51,17 +52,26 @@ angular.module('expenseVouchersClientApp')
         $scope.error = 'You can\'t approve/reject your own voucher. Ask any other manager in this organisation.';
         return;
       }
+      var confirmMessage = '';
       if (approve === true){
-        $scope.voucher.State = voucherStates.approved;
-        $scope.voucher.Approver = $routeParams.managerid;
+        confirmMessage = 'About to Approve Voucher. Please confirm.';
       }else{
-        $scope.voucher.State = voucherStates.draft;
+        confirmMessage = 'About to Reject Voucher. Please confirm.';
       }
+      ModalDialogs.confirmAction(confirmMessage, function(){
+        if (approve === true){
+          $scope.voucher.State = voucherStates.approved;
+          $scope.voucher.Approver = $routeParams.managerid;
+        }else{
+          $scope.voucher.State = voucherStates.draft;
+        }
 
-      $scope.voucher = Organisation.vouchers.updateById({'id': $routeParams.organisationid,
-        'fk': $routeParams.voucherid}, $scope.voucher, function(){
+        $scope.voucher = Organisation.vouchers.updateById({'id': $routeParams.organisationid,
+          'fk': $routeParams.voucherid}, $scope.voucher, function(){
           $location.path('/home/' + $routeParams.managerid);
+        });
       });
+
     }
 
     $scope.approve = function(){
@@ -74,6 +84,12 @@ angular.module('expenseVouchersClientApp')
 
     $scope.print = function(){
       window.print();
+    };
+
+    $scope.export = function(){
+      tallyUtils.exportToTallyERP9($scope.voucher, $scope.expenses, function(){
+        console.log('Running callback after Export');
+      });
     };
 
   });

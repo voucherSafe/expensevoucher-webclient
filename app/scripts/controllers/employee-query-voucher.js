@@ -6,7 +6,8 @@
  * Controller of the expenseVouchersClientApp
  */
 angular.module('expenseVouchersClientApp')
-  .controller('EmployeeQueryVoucherCtrl', function($scope, Voucher, Employee, $location, $routeParams, dateprovider) {
+  .controller('EmployeeQueryVoucherCtrl', function($scope, Voucher, Employee, $location,
+                                                   $routeParams, dateprovider, voucherStates) {
 
     $scope.error = '';
 
@@ -43,12 +44,60 @@ angular.module('expenseVouchersClientApp')
       getVouchersForEmployee();
     };
 
+    $scope.selectFromToDates = function(){
+      //close the popover
+      $scope.openDatePickerPopover = false;
+      //refresh
+      $scope.queryContext = 'custom';
+      getVouchersForEmployee();
+    };
+
     $scope.show = function(voucher){
       $location.path('/employee/' + $routeParams.employeeid + '/voucher/' + voucher.id);
     };
 
     $scope.back = function(){
       $location.path('/home/' + $routeParams.employeeid);
-    }
+    };
+
+    $scope.isVoucherActive = function(voucher){
+      if (voucher.State === voucherStates.draft){
+        return true;
+      }
+    };
+
+    $scope.deleteVoucher = function(voucher){
+      //Delete expenses one by one
+      Voucher.expenses.destroyAll({'id': voucher.id});
+      Voucher.deleteById({'id' : voucher.id});
+    };
+
+
+    //Date picker for custom dates
+    $scope.datePickerPopover = {
+      templateUrl: 'DatePickerTemplate.html',
+      title: 'Select From and To Dates'
+    };
+
+    $scope.fromDatePickerOpened = false;
+    $scope.toDatePickerOpened = false;
+
+    $scope.dateOptions = {
+      //dateDisabled: disabled,
+      formatYear: 'yy',
+      maxDate: new Date(), //I don't foresee a need to set a future date in any of the voucher functionality
+      minDate: new Date(2016, 3, 1 ), //System introduced on 1/4/2016
+      startingDay: 1
+    };
+
+    $scope.openFromDatePicker = function() {
+      $scope.fromDatePickerOpened = true;
+    };
+
+    $scope.openToDatePicker = function() {
+      $scope.toDatePickerOpened = true;
+    };
+
+    $scope.format = 'dd/MM/yyyy';
 
   });

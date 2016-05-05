@@ -46,6 +46,9 @@
                 <p class="list-group-item-text">
                   <span>{{ voucher.employeeId }}</span>
                 </p>
+                <p>
+                  <small> {{voucher.Narration}} </small>
+                </p>
                 <p class="list-group-item-text">
                   <span>Amount</span>
                   <span class="badge">{{voucher.Amount | currency:"&#8377;"}}</span>
@@ -78,14 +81,14 @@
 
           <!-- Employee Management -->
           <div class="col-md-4">
-          <h4>Manage Employees</h4>
-          <div class="list-group">
-            <div class="list-group-item" data-ng-click="">Add </div>
-            <div class="list-group-item" data-ng-click="">Modify Details</div>
-            <div class="list-group-item" data-ng-click="">View all</div>
+            <h4>Manage Employees</h4>
+            <div class="list-group">
+              <div class="list-group-item" data-ng-click="">Add </div>
+              <div class="list-group-item" data-ng-click="">Modify Details</div>
+              <div class="list-group-item" data-ng-click="">View all</div>
+            </div>
           </div>
-        </div>
-        <!-- Employee Management ends -->
+          <!-- Employee Management ends -->
         </div>
 
       </div>
@@ -95,85 +98,91 @@
 
   <!-- Employee's Stuff -->
   <div class="row">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">Work with your Vouchers</h3>
-    </div>
-    <div class="panel-body">
-      <!--Work area containing action buttons and vouchers starts-->
-          <div class="row">
-            <!--Left hand column for action buttons starts-->
-            <div class="col-md-5">
-              <h4>Actions</h4>
-              <div class="list-group">
-                <button class="list-group-item" data-ng-click="newVoucher()">Create a new Voucher</button>
-                <button class="list-group-item" data-ng-click="employeeVoucherQuery('submitted')">View Submitted Vouchers</button>
-                <button class="list-group-item" data-ng-click="employeeVoucherQuery('complete')">View Completed Vouchers</button>
-              </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Work with your Vouchers</h3>
+      </div>
+      <div class="panel-body">
+        <!--Work area containing action buttons and vouchers starts-->
+        <div class="row">
+          <!--Left hand column for action buttons starts-->
+          <div class="col-md-5">
+            <h4>Actions</h4>
+            <div class="list-group">
+              <button class="list-group-item" data-ng-click="newVoucher()">Create a new Voucher</button>
+              <button class="list-group-item" data-ng-click="employeeVoucherQuery('submitted')">View Submitted Vouchers</button>
+              <button class="list-group-item" data-ng-click="employeeVoucherQuery('complete')">View Completed Vouchers</button>
             </div>
-            <!--Left hand column for actions ends-->
-
-            <!--Right-hand column starts-->
-            <div class="col-md-7">
-
-              <!--Active vouchers panel starts-->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Active Vouchers <small>(Draft and Rejected)</small></h3>
-                </div>
-                <div class="panel-body">
-                  <p ng-if="!activeVouchers.length"> You don't have any.</p>
-                  <div class="list-group" ng-if="activeVouchers.length">
-                    <a class="list-group-item" data-ng-repeat="voucher in activeVouchers"
-                       data-ng-href="#/employee/{{employee.employeeID}}/voucher/{{voucher.id}}" >
-                      <p class="list-group-item-text">
-                        <span>Amount</span>
-                        <span class="badge">{{voucher.Amount | currency:"&#8377;"}}</span>
-                      </p>
-                      <p class="list-group-item-text">
-                        <span>{{voucher.Date | date:'medium'}}</span>
-                      </p>
-                    </a>
-                  </div>
-                  <a class="btn btn-default pull-right"
-                     ng-show="activeVouchers.length >= 5"
-                     ng-click="employeeVoucherQuery('draft')">View All</a>
-                </div>
-              </div>
-              <!--Active vouchers panel ends-->
-
-              <!--Approved vouchers panel starts-->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Approved Vouchers <small>(To Print)</small></h3>
-                </div>
-                <div class="panel-body">
-                  <p ng-if="!approvedVouchers.length"> You don't have any.</p>
-                  <div class="list-group" ng-if="approvedVouchers.length">
-                    <a class="list-group-item" data-ng-repeat="voucher in approvedVouchers"
-                       data-ng-href="#/employee/{{employee.employeeID}}/voucher/{{voucher.id}}" >
-                      <p class="list-group-item-text">
-                        <span>Amount</span>
-                        <span class="badge">{{voucher.Amount | currency:"&#8377;"}}</span>
-                      </p>
-                      <p class="list-group-item-text">
-                        <span>{{voucher.Date | date:'medium'}}</span>
-                      </p>
-                    </a>
-                  </div>
-                  <a class="btn btn-default pull-right"
-                     ng-show="approvedVouchers.length >= 5"
-                     ng-click="employeeVoucherQuery('approved')">View All</a>
-                </div>
-              </div>
-              <!--Approved vouchers panel ends-->
-            </div>
-            <!--Right-hand column ends-->
           </div>
-          <!--Work area containing action buttons and vouchers ends-->
+          <!--Left hand column for actions ends-->
+
+          <!--Right-hand column starts-->
+          <div class="col-md-7">
+
+            <!--Active vouchers panel starts-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Active Vouchers <small>(Draft and Rejected)</small></h3>
+              </div>
+              <div class="panel-body">
+                <p ng-if="!activeVouchers.length"> You don't have any.</p>
+                <div class="list-group" ng-if="activeVouchers.length">
+                  <a class="list-group-item" data-ng-repeat="voucher in activeVouchers"
+                     data-ng-href="#/employee/{{employee.employeeID}}/voucher/{{voucher.id}}" >
+                    <p class="list-group-item-text">
+                      <small> {{voucher.Narration}} </small>
+                    </p>
+                    <p class="list-group-item-text">
+                      <span>Amount</span>
+                      <span class="badge">{{voucher.Amount | currency:"&#8377;"}}</span>
+                    </p>
+                    <p class="list-group-item-text">
+                      <span>{{voucher.Date | date:'medium'}}</span>
+                    </p>
+                  </a>
+                </div>
+                <a class="btn btn-default pull-right"
+                   ng-show="activeVouchers.length >= 5"
+                   ng-click="employeeVoucherQuery('draft')">View All</a>
+              </div>
+            </div>
+            <!--Active vouchers panel ends-->
+
+            <!--Approved vouchers panel starts-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Approved Vouchers <small>(To Print)</small></h3>
+              </div>
+              <div class="panel-body">
+                <p ng-if="!approvedVouchers.length"> You don't have any.</p>
+                <div class="list-group" ng-if="approvedVouchers.length">
+                  <a class="list-group-item" data-ng-repeat="voucher in approvedVouchers"
+                     data-ng-href="#/employee/{{employee.employeeID}}/voucher/{{voucher.id}}" >
+                    <p class="list-group-item-text">
+                      <small> {{voucher.Narration}} </small>
+                    </p>
+                    <p class="list-group-item-text">
+                      <span>Amount</span>
+                      <span class="badge">{{voucher.Amount | currency:"&#8377;"}}</span>
+                    </p>
+                    <p class="list-group-item-text">
+                      <span>{{voucher.Date | date:'medium'}}</span>
+                    </p>
+                  </a>
+                </div>
+                <a class="btn btn-default pull-right"
+                   ng-show="approvedVouchers.length >= 5"
+                   ng-click="employeeVoucherQuery('approved')">View All</a>
+              </div>
+            </div>
+            <!--Approved vouchers panel ends-->
+          </div>
+          <!--Right-hand column ends-->
         </div>
+        <!--Work area containing action buttons and vouchers ends-->
+      </div>
     </div>
-    </div>
-  <!-- Employee's stuff ends -->
   </div>
-  <!-- container-fluid -->
+  <!-- Employee's stuff ends -->
+</div>
+<!-- container-fluid -->
