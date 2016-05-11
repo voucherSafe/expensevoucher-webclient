@@ -12,7 +12,7 @@
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">From</span>
     <input type="text" class="form-control" uib-datepicker-popup="{{format}}"
-           ng-model="startDate" is-open="fromDatePickerOpened" datepicker-options="dateOptions"
+           ng-model="$parent.startDate" is-open="fromDatePickerOpened" datepicker-options="dateOptions"
            ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
       <span class="input-group-btn">
         <button type="button" class="btn btn-default" ng-click="openFromDatePicker()">
@@ -23,7 +23,7 @@
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">To  </span>
     <input type="text" class="form-control" uib-datepicker-popup="{{format}}"
-           ng-model="endDate" is-open="toDatePickerOpened" datepicker-options="dateOptions"
+           ng-model="$parent.endDate" is-open="toDatePickerOpened" datepicker-options="dateOptions"
            ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
       <span class="input-group-btn">
         <button type="button" class="btn btn-default" ng-click="openToDatePicker()">

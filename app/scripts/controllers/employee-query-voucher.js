@@ -44,14 +44,6 @@ angular.module('expenseVouchersClientApp')
       getVouchersForEmployee();
     };
 
-    $scope.selectFromToDates = function(){
-      //close the popover
-      $scope.openDatePickerPopover = false;
-      //refresh
-      $scope.queryContext = 'custom';
-      getVouchersForEmployee();
-    };
-
     $scope.show = function(voucher){
       $location.path('/employee/' + $routeParams.employeeid + '/voucher/' + voucher.id);
     };
@@ -72,8 +64,7 @@ angular.module('expenseVouchersClientApp')
       Voucher.deleteById({'id' : voucher.id});
     };
 
-
-    //Date picker for custom dates
+    //Date picker and functions for custom dates
     $scope.datePickerPopover = {
       templateUrl: 'DatePickerTemplate.html',
       title: 'Select From and To Dates'
@@ -99,5 +90,18 @@ angular.module('expenseVouchersClientApp')
     };
 
     $scope.format = 'dd/MM/yyyy';
+
+    $scope.selectFromToDates = function(){
+      $scope.fromDatePickerOpened = false;
+      $scope.toDatePickerOpened = false;
+
+       //close the popover
+      $scope.openDatePickerPopover = false;
+      //refresh
+      $scope.queryContext = 'custom';
+      getVouchersForEmployee();
+
+    };
+    //Custom dates functions complete
 
   });

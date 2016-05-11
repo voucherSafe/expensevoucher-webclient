@@ -63,11 +63,52 @@ angular.module('expenseVouchersClientApp')
     $scope.show = function(voucher){
       console.log('Voucher is %j', voucher);
       console.log('path is ' + '/organisation/' + $routeParams.organisationid +
-             '/manager/' + $routeParams.managerid + '/employee/' + voucher.employeeId +
-            '/voucher/' + voucher.id);
+      '/manager/' + $routeParams.managerid + '/employee/' + voucher.employeeId +
+      '/voucher/' + voucher.id);
       $location.path('/organisation/' + $routeParams.organisationid +
-       '/manager/' + $routeParams.managerid + '/employee/' + voucher.employeeId +
+      '/manager/' + $routeParams.managerid + '/employee/' + voucher.employeeId +
       '/voucher/' + voucher.id);
     };
+
+    //Date picker and functions for custom dates
+    $scope.datePickerPopover = {
+      templateUrl: 'DatePickerTemplate.html',
+      title: 'Select From and To Dates'
+    };
+
+    $scope.fromDatePickerOpened = false;
+    $scope.toDatePickerOpened = false;
+
+    $scope.dateOptions = {
+      //dateDisabled: disabled,
+      formatYear: 'yy',
+      maxDate: new Date(), //I don't foresee a need to set a future date in any of the voucher functionality
+      minDate: new Date(2016, 3, 1 ), //System introduced on 1/4/2016
+      startingDay: 1
+    };
+
+    $scope.openFromDatePicker = function() {
+      $scope.fromDatePickerOpened = true;
+    };
+
+    $scope.openToDatePicker = function() {
+      $scope.toDatePickerOpened = true;
+    };
+
+    $scope.format = 'dd/MM/yyyy';
+
+    $scope.selectFromToDates = function(){
+      $scope.fromDatePickerOpened = false;
+      $scope.toDatePickerOpened = false;
+
+      //close the popover
+      $scope.openDatePickerPopover = false;
+      //refresh
+      $scope.queryContext = 'custom';
+      getVouchersForOrganisation();
+
+    };
+    //Custom dates functions complete
+
 
   });

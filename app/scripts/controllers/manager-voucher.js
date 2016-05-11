@@ -31,8 +31,8 @@ angular.module('expenseVouchersClientApp')
           //Take total amount
           $scope.voucherTotalAmount = $scope.voucher.Amount;
 
-          //Date in a form suitable for date field
-          $scope.formattedDate = new Date($scope.voucher.Date);
+          //Date in a form suitable for date field. Date property is a string in the database
+          $scope.voucher.Date = new Date($scope.voucher.Date);
 
           //Get expenses for this voucher
           $scope.expenses = Voucher.expenses({'id': $routeParams.voucherid});
@@ -62,17 +62,36 @@ angular.module('expenseVouchersClientApp')
         if (approve === true){
           $scope.voucher.State = voucherStates.approved;
           $scope.voucher.Approver = $routeParams.managerid;
+          $scope.voucher.History.push(voucherStates.historyObjectFactory('approve', $routeParams.managerid, new Date()));
         }else{
           $scope.voucher.State = voucherStates.draft;
+          $scope.voucher.History.push(voucherStates.historyObjectFactory('reject', $routeParams.managerid, new Date()));
         }
+        $scope.voucher.ModifiedDate = new Date();
 
         $scope.voucher = Organisation.vouchers.updateById({'id': $routeParams.organisationid,
           'fk': $routeParams.voucherid}, $scope.voucher, function(){
           $location.path('/home/' + $routeParams.managerid);
         });
       });
-
     }
+
+    $scope.datePickerOpened = false;
+
+    $scope.dateOptions = {
+      dateDisabled: 'disabled',
+      formatYear: 'yy',
+      maxDate: new Date(), //I don't foresee a need to set a future date in any of the voucher functionality
+      minDate: new Date(2016, 3, 1 ), //System introduced on 1/4/2016
+      startingDay: 1
+    };
+
+    $scope.openDatePicker = function() {
+      //No voucher fields should be editable when the manager is viewing it
+      //$scope.datePickerOpened = true;
+    };
+
+    $scope.format = 'dd/MM/yyyy';
 
     $scope.approve = function(){
       managerAction(true);

@@ -98,7 +98,7 @@ angular.module('expenseVouchersClientApp')
 
       $scope.voucher.Amount = $scope.voucherTotalAmount;
       //$scope.voucher.Date = new Date($scope.formattedDate);
-      //$scope.voucher.ModifiedDate = new Date();
+      $scope.voucher.ModifiedDate = new Date();
 
       //Update the history for action
 
@@ -163,7 +163,7 @@ angular.module('expenseVouchersClientApp')
 
     $scope.print = function(){
       if ($scope.voucher.State === voucherStates.approved){
-        $scope.voucher.State = voucherStates.complete;
+        //$scope.voucher.State = voucherStates.complete;
         //Add action to history
         $scope.voucher.History.push(voucherStates.historyObjectFactory('print', $routeParams.id, new Date()));
         //Save the voucher state

@@ -66,6 +66,7 @@ angular.module('expenseVouchersClientApp')
         return false;
       }
       $scope.voucher.Amount = $scope.voucherTotalAmount;
+      $scope.voucher.ModifiedDate = new Date(); //Set modified date to 'now'
 
       if (submit === true){
         $scope.voucher.History.push(voucherStates.historyObjectFactory('submit', $routeParams.id, new Date()));
@@ -86,6 +87,7 @@ angular.module('expenseVouchersClientApp')
             }
           }
           ModalDialogs.informAction('Success. New Voucher created.', function(){
+            //TODO refresh page
             return true;
           });
         });
@@ -105,6 +107,7 @@ angular.module('expenseVouchersClientApp')
             }
           }
           ModalDialogs.informAction('Success. Voucher saved.', function(){
+            //TODO refresh page
             return true;
           });
         });
@@ -123,7 +126,7 @@ angular.module('expenseVouchersClientApp')
           //Save was not successful or validation criteria failed
           $scope.voucher.State = voucherStates.draft;
         }else{
-          //submit was successful. re-direct user to home directory
+          //submit was successful. re-direct user to home page
           $location.path('/home/' + $routeParams.id);
         }
       });
