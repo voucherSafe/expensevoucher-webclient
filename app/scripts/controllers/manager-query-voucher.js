@@ -35,7 +35,12 @@ angular.module('expenseVouchersClientApp')
 
     function setDatesForQuery(context){
       $scope.queryContext = context;
-      dateprovider.setContext($scope.queryContext, new Date());
+
+      //Always use 0:0:0.000 as time
+      var currentDate = new Date();
+      currentDate.setHours(0,0,0,0);
+      dateprovider.setContext($scope.queryContext, currentDate);
+
       $scope.startDate = dateprovider.getStartDate();
       $scope.endDate = dateprovider.getEndDate();
     }
