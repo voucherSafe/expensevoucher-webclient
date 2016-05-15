@@ -34,32 +34,32 @@ angular
         controllerAs: 'expensevouchers'
       })
       .when('/employee/:id/voucher/create', {
-        templateUrl: '../views/create-voucher.html',
+        templateUrl: 'views/create-voucher.html',
         controller: 'CreateVoucherCtrl',
         controllerAs: 'expensevouchers'
       })
       .when('/employee/:employeeid/voucher/:voucherid', {
-        templateUrl: '../views/voucher.html',
+        templateUrl: 'views/voucher.html',
         controller: 'EmployeeVoucherCtrl'
       })
       .when('/organisation/:organisationid/manager/:managerid/employee/:employeeid/voucher/:voucherid', {
-        templateUrl: '../views/voucher.html',
+        templateUrl: 'views/voucher.html',
         controller: 'ManagerVoucherCtrl'
       })
       .when('/organisation/:organisationid/manager/:managerid/vouchers/:voucherState', {
-        templateUrl: '../views/query-voucher.html',
+        templateUrl: 'views/query-voucher.html',
         controller: 'ManagerQueryVoucherCtrl'
       })
       .when('/employee/:employeeid/vouchers/:voucherState', {
-        templateUrl: '../views/query-voucher.html',
+        templateUrl: 'views/query-voucher.html',
         controller: 'EmployeeQueryVoucherCtrl'
       })
       .when('/organisation/:organisationid/manager/:managerid/vouchers/:voucherState/expenses', {
-        templateUrl : '../views/query-expense.html',
+        templateUrl : 'views/query-expense.html',
         controller  : 'ManagerQueryExpenseCtrl'
       })
       .when('/employee/:employeeid/vouchers/:voucherState/expenses', {
-        templateUrl : '../views/query-expense.html',
+        templateUrl : 'views/query-expense.html',
         controller: 'EmployeeQueryExpenseCtrl'
       })
       .otherwise({
