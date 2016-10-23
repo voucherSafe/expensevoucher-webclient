@@ -107,7 +107,7 @@ angular.module('expenseVouchersClientApp')
           console.log('saved voucher id - %j', $scope.voucher.id);
           for (var i=0; i<$scope.expenses.length; i++){
             var expense = $scope.expenses[i];
-            if (expense.id !== undefined && expense.id != null){
+            if (expense.id !== undefined && expense.id !== null){
               //Expense already present
               Voucher.expenses.updateById({'id': $scope.voucher.id, 'fk': expense.id}, expense);
             }else{
@@ -115,13 +115,13 @@ angular.module('expenseVouchersClientApp')
               Voucher.expenses.create({'id': $scope.voucher.id}, expense);
             }
           }
-          for (var k=0; k<$scope.expensesToDelete.length; k++){
-            if ($scope.expensesToDelete[k].id !== undefined && $scope.expensesToDelete[k].id !== null){
-              //This is an expense received from the database and not added in this session
-              //expenseToDelete.deleteById({'id':expenseToDelete.id});
-              Voucher.expenses.destroyById({'id': $scope.voucher.id, 'fk': $scope.expensesToDelete[k].id});
-            }
-          }
+          // console.log('no of expenses to delete: ' + $scope.expensesToDelete.length);
+          // for (var k=0; k<$scope.expensesToDelete.length; k++){
+          //   if ($scope.expensesToDelete[k].id !== undefined && $scope.expensesToDelete[k].id !== null){
+          //     //An expenses deleted now but is present in database
+          //     Voucher.expenses.destroyById({'id': $scope.voucher.id, 'fk': $scope.expensesToDelete[k].id});
+          //   }
+          // }
           ModalDialogs.informAction('Success. Voucher saved.', function(){
             return true;
           });
@@ -188,7 +188,7 @@ angular.module('expenseVouchersClientApp')
     };
 
     $scope.deleteExpense = function(SlNo){
-      confirmAction(function(){
+      ModalDialogs.confirmAction('Do you want to delete this expense?', function(){
         //Remove the expense
         var expenseToDelete = $scope.expenses.splice(SlNo-1, 1); //SlNo is (expenses array index + 1)
 
@@ -200,6 +200,12 @@ angular.module('expenseVouchersClientApp')
           $scope.expenses[i].SlNo = i+1;
           $scope.voucherTotalAmount = $scope.voucherTotalAmount + expenseAmount;
         }
+
+        //delete the expense from the database if present there
+        if (expenseToDelete[0].id !== undefined && expenseToDelete[0].id !== null){
+              Voucher.expenses.destroyById({'id': $scope.voucher.id, 'fk': expenseToDelete[0].id});
+        }
+
       });
     };
 

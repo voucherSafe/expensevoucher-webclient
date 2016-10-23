@@ -141,6 +141,7 @@ angular.module('expenseVouchersClientApp')
     };
 
     $scope.deleteExpense = function(SlNo){
+      ModalDialogs.confirmAction('Do you want to delete this expense?', function(){
       //Remove the expense
       var expenseToDelete = $scope.expenses.splice(SlNo-1, 1); //SlNo is (expenses array index + 1)
 
@@ -152,6 +153,11 @@ angular.module('expenseVouchersClientApp')
         $scope.expenses[i].SlNo = i+1;
         $scope.voucherTotalAmount = $scope.voucherTotalAmount + expenseAmount;
       }
+      //delete the expense from the database if present there
+        if (expenseToDelete[0].id !== undefined && expenseToDelete[0].id !== null){
+              Voucher.expenses.destroyById({'id': $scope.voucher.id, 'fk': expenseToDelete[0].id});
+        }
+    });
     };
 
     $scope.editExpense = function(SlNo){
