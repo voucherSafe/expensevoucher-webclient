@@ -15,10 +15,11 @@ angular.module('expenseVouchersClientApp')
       $scope.vouchers = Organisation.vouchers({
         'id'    : $scope.organisation.id,
         'filter': {'where' : {
-          'and' : [{'State' : $scope.voucherState},
-            {'Date' : {'gte' : $scope.startDate}}, {'Date' : {'lte' : $scope.endDate}}]
-        }}
-      }, function(){
+                   'and'   : [{'State' : $scope.voucherState},
+                            {'Date' : {'gte' : $scope.startDate}}, {'Date' : {'lte' : $scope.endDate}}]
+                  },
+                  'order' : 'Date ASC'},
+        }, function(){
         //Prepare the Tally XML Templates
         tallyUtils.initializeTemplates(function(){
           console.log('Loaded Templates...');

@@ -15,9 +15,10 @@ angular.module('expenseVouchersClientApp')
       $scope.vouchers = Employee.vouchers({
         'id'    : $routeParams.employeeid,
         'filter': {'where' : {
-          'and' : [{'State' : $scope.voucherState},
-            {'Date' : {'gte' : $scope.startDate}}, {'Date' : {'lte' : $scope.endDate}}]
-        }}
+                    'and' : [{'State' : $scope.voucherState},
+                             {'Date' : {'gte' : $scope.startDate}}, {'Date' : {'lte' : $scope.endDate}}]
+                  },
+        'order' : 'Date ASC' }
       });
     }
 
