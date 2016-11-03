@@ -162,16 +162,27 @@ angular.module('expenseVouchersClientApp')
             tallyRequestString = tallyRequestString.replace('@@@VOUCHERS@@@', allVouchersString);
             //console.log('Complete tallyRequestString - ' + tallyRequestString);
             callback(tallyRequestString);
+          }else{
+            //there are more; recurse
+            Voucher.expenses({'id': vouchers[k+1].id}, expenseCallbackProvider(k+1));
           }
         }
 
       }
 
       //For each Voucher...
-      for (var i = 0; i < vouchers.length; i++) {
+      //for (var i = 0; i < vouchers.length; i++) {
         //Get Expenses for this Voucher
-        Voucher.expenses({'id' : vouchers[i].id}, expenseCallbackProvider(i));
-      }
+        //Voucher.expenses({'id' : vouchers[i].id}, expenseCallbackProvider(i));
+      //}
+      // 3-Nov-2016
+      //In order to maintain the order of vouchers in final string, using the following logic
+      //if vouchers length is greater than 0, pick up first and pass on the callback
+      //in callback - recurse the callback function after incrementing index
+      if (vouchers.length >= 0){
+        Voucher.expenses({'id' : vouchers[0].id}, expenseCallbackProvider(0));
+      }//else just fall through doing nothing
+
     }
 
   });
