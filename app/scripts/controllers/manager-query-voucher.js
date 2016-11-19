@@ -11,6 +11,17 @@ angular.module('expenseVouchersClientApp')
 
     $scope.error = '';
 
+    var prepareTallyXMLBlob = function(){
+          console.log('Loaded Templates...');
+          //Create the Tally XML String for the current context
+          tallyUtils.createTallyXMLString($scope.vouchers, $scope.organisation, function(tallyXMLString){
+            console.log('Created Tally XML String');
+            var tallyXMLContent = tallyXMLString;
+            var blob = new Blob([ tallyXMLContent ], { type : 'text/plain' });
+            $scope.tallyXMLURL = (window.URL || window.webkitURL).createObjectURL( blob );
+          });
+        }
+
     function getVouchersForOrganisation() {
       $scope.vouchers = Organisation.vouchers({
         'id'    : $scope.organisation.id,
@@ -20,17 +31,14 @@ angular.module('expenseVouchersClientApp')
                   },
                   'order' : 'Date ASC'},
         }, function(){
-        //Prepare the Tally XML Templates
-        tallyUtils.initializeTemplates(function(){
-          console.log('Loaded Templates...');
-          //Create the Tally XML String for the current context
-          tallyUtils.createTallyXMLString($scope.vouchers, $scope.organisation, function(tallyXMLString){
-            console.log('Created Tally XML String');
-            var tallyXMLContent = tallyXMLString;
-            var blob = new Blob([ tallyXMLContent ], { type : 'text/plain' });
-            $scope.tallyXMLURL = (window.URL || window.webkitURL).createObjectURL( blob );
-          });
-        });
+          //if (tallyUtils.templatesInitialized === false){
+            //Prepare the Tally XML Templates
+          tallyUtils.initializeTemplates(prepareTallyXMLBlob);
+          //}else{
+            //Prepare directly
+          //  prepareTallyXMLBlob();
+          //}
+
       });
     }
 

@@ -39,7 +39,7 @@ angular.module('expenseVouchersClientApp')
       var formattedDate = this.tallyDateFormatter(new Date(voucher.Date));
       this.XMLRequest = this.XMLRequestTemplate.replaceAll('@@@DATE@@@', formattedDate);
       //2. Narration using Voucher's Expense Particulars
-      this.XMLRequest = this.XMLRequest.replace('@@@NARRATION@@@', expenses[0].Particulars);
+      //this.XMLRequest = this.XMLRequest.replace('@@@NARRATION@@@', expenses[0].Particulars);
       //3. Head using Voucher's expense head
       this.XMLRequest = this.XMLRequest.replace('@@@LEDGERNAME@@@', expenses[0].Head);
       //4. Voucher Number
@@ -68,6 +68,8 @@ angular.module('expenseVouchersClientApp')
       }
     };
 
+    //var templatesInitialized = false;
+
     function getTemplateValueSetter(key, callback){
       return function(value){
         templates[key].templateString = value.data;
@@ -79,6 +81,7 @@ angular.module('expenseVouchersClientApp')
         if(count === 4){
           //Done initialization
           //console.log('Completed Initialization of templates...');
+          //templatesInitialized = true;
           callback();
         }
       };
@@ -87,11 +90,14 @@ angular.module('expenseVouchersClientApp')
     var count = 0;
 
     this.initializeTemplates = function(callback) {
+      //reset count
+      count = 0;
       //Load up the templates and have them ready as strings
       //Initialize the templates
       for (var templateName in templates) {
         var templateValueSetter = getTemplateValueSetter(templateName, callback);
-        $http.get(templates[templateName].templateFileURL)
+        //Fix to avoid caching
+        $http.get(templates[templateName].templateFileURL + '?random='+new Date().getTime())
           .then(templateValueSetter, function (response) {
             count++;
             //hit some error, log it
@@ -141,9 +147,13 @@ angular.module('expenseVouchersClientApp')
           //1. Date in YYYYMMDD format
           var formattedDate = tallyUtilsObj.tallyDateFormatter(new Date(vouchers[k].Date));
           voucherString = voucherString.replaceAll('@@@DATE@@@', formattedDate);
-          voucherString = voucherString.replace('@@@NARRATION@@@', vouchers[k].Narration);
-          voucherString = voucherString.replace('@@@ALTERID@@@', organisation.properties.AlterID);
-          voucherString = voucherString.replace('@@@MASTERID@@@', organisation.properties.MasterID);
+          if (vouchers[k].Narration !== undefined){
+            voucherString = voucherString.replace('@@@NARRATION@@@', vouchers[k].Narration.encodeHTML());
+          }else{
+            voucherString = voucherString.replace('@@@NARRATION@@@', '');
+          }
+          //voucherString = voucherString.replace('@@@ALTERID@@@', organisation.properties.AlterID);
+          //voucherString = voucherString.replace('@@@MASTERID@@@', organisation.properties.MasterID);
           voucherString = voucherString.replace('@@@ENTEREDBY@@@', vouchers[k].employeeId);
           voucherString = voucherString.replace('@@@PARTYLEDGERNAME@@@', organisation.properties.PartyLedgerName);
           voucherString = voucherString.replace('@@@VOUCHERTYPENAME@@@', organisation.properties.VoucherTypeName);
