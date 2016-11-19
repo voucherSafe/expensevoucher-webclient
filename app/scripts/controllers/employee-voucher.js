@@ -80,7 +80,8 @@ angular.module('expenseVouchersClientApp')
     };
 
     $scope.cancel = function(){
-      $location.path('/home/' + $routeParams.employeeid);
+      window.history.back();
+      //$location.path('/home/' + $routeParams.employeeid);
     };
 
     function saveVoucherAndExpenses(){

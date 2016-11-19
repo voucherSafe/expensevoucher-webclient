@@ -43,7 +43,8 @@ angular.module('expenseVouchersClientApp')
     $scope.isManagerViewing = true;
 
     $scope.cancel = function(){
-      $location.path('/home/' + $routeParams.managerid);
+      window.history.back();
+      //$location.path('/home/' + $routeParams.managerid);
     };
 
     //Perform approve or reject
