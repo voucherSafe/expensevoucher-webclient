@@ -113,7 +113,8 @@ angular.module('expenseVouchersClientApp')
               Voucher.expenses.updateById({'id': $scope.voucher.id, 'fk': expense.id}, expense);
             }else{
               //expense created in this view
-              Voucher.expenses.create({'id': $scope.voucher.id}, expense);
+              //The saved ID should come in to view model to avoid duplication
+              $scope.expenses[i] = Voucher.expenses.create({'id': $scope.voucher.id}, expense);
             }
           }
           // console.log('no of expenses to delete: ' + $scope.expensesToDelete.length);

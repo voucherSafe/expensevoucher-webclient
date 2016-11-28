@@ -8,7 +8,7 @@
  */
 angular.module('expenseVouchersClientApp')
   .controller('ManagerVoucherCtrl', function($scope, Voucher, Employee, Organisation, Expense,
-                                             $location, $routeParams, voucherStates, tallyUtils, ModalDialogs) {
+                                             $location, $routeParams, voucherStates, tallyUtils, $uibModal, ModalDialogs) {
 
     $scope.error = '';
     $scope.employee = Organisation.employees.findById({'id' : $routeParams.organisationid,
@@ -47,6 +47,46 @@ angular.module('expenseVouchersClientApp')
       //$location.path('/home/' + $routeParams.managerid);
     };
 
+    $scope.editExpense = function(SlNo){
+      $scope.open($scope.expenses[SlNo - 1]);
+    };
+
+    $scope.open = function (expense) {
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'ExpenseModal.html',
+        controller: 'ExpenseModalInstanceCtrl',
+        resolve: {
+          expense: function () {
+            return expense;
+          },
+          heads: function () {
+            return $scope.organisation.ExpenseHeads;
+          },
+          voucherDate: function() {
+            return $scope.voucher.Date;
+          }
+        }
+      });
+      modalInstance.result.then(function (result) {
+        if (result.isNew === true){ //Push new expense into array
+          $scope.newExpense = result.expense;
+          $scope.newExpense.SlNo = $scope.expenses.length+1;
+          $scope.expenses.push($scope.newExpense);
+        }
+
+        //Recalculate new voucher total
+        $scope.voucherTotalAmount = 0;
+        for (var k=0; k < $scope.expenses.length; k++){
+          var expenseAmount = $scope.expenses[k].Amount.major + ($scope.expenses[k].Amount.minor/100);
+          $scope.voucherTotalAmount = $scope.voucherTotalAmount + expenseAmount;
+        }
+
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
+
     //Perform approve or reject
     function managerAction(approve){
       if ($scope.voucher.employeeId === $routeParams.managerid){
@@ -72,6 +112,14 @@ angular.module('expenseVouchersClientApp')
 
         $scope.voucher = Organisation.vouchers.updateById({'id': $routeParams.organisationid,
           'fk': $routeParams.voucherid}, $scope.voucher, function(){
+            //Update expenses in case the manager has changed expense heads
+            for (var i=0; i<$scope.expenses.length; i++){
+              var expense = $scope.expenses[i];
+              if (expense.id !== undefined && expense.id !== null){
+                //Expense already present
+                Voucher.expenses.updateById({'id': $scope.voucher.id, 'fk': expense.id}, expense);
+              }
+            }
           $location.path('/home/' + $routeParams.managerid);
         });
       });

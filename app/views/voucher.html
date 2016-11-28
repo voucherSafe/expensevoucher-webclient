@@ -114,7 +114,7 @@
             {{ expense.BillNo }}
           </td>
           <td>
-            <button print-hide ng-if="activeVoucher" class="btn btn-default btn-xs" ng-click="editExpense(expense.SlNo)">
+            <button print-hide ng-if="activeVoucher || isManagerViewing" class="btn btn-default btn-xs" ng-click="editExpense(expense.SlNo)">
               <span class="glyphicon glyphicon-edit"></span>
             </button>
             <button print-hide ng-if="activeVoucher" class="btn btn-default btn-xs" ng-click="deleteExpense(expense.SlNo)">
