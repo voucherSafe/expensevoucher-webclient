@@ -1,0 +1,48 @@
+<div print-remove="true" class="page-header">
+  <h1>View Organisation</h1>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"> {{ organisation.name }}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-5">
+          <h5> Address </h5>
+          <textarea class="form-control" rows="3" id="address" ng-disabled="true">{{ organisation.address }}
+          </textarea>
+          <h5> PettyCashLedgerName </h5>
+            <input class="form-control" rows="1" id="pettycashledgername" readonly
+                ng-model="organisation.properties.PettyCashLedgerName"\>
+          <h5> PartyLedgerName </h5>
+                    <input class="form-control" rows="1" id="partyledgername" readonly
+                            ng-model="organisation.properties.PartyLedgerName" \>
+          <h5> VoucherTypeName </h5>
+                    <input class="form-control" rows="1" id="vouchertypename" readonly
+                            ng-model="organisation.properties.VoucherTypeName"\><br>
+          <a class="btn btn-danger" data-ng-click="cancel()">
+              <span class="glyphicon glyphicon-circle-arrow-left"></span>
+              Cancel
+          </a>
+          <a class="btn btn-primary"
+             ng-href="#/organisation/{{organisation.id}}/manager/{{managerid}}/edit">
+              <span class="glyphicon glyphicon-edit"></span>
+              Edit Organisation
+          </a>
+      </div>
+
+      <!-- Account Heads -->
+      <div class="col-md-7">
+        <h4>Expense Heads</h4>
+        <div class="list-group">
+          <div class="list-group-item" data-ng-repeat="head in organisation.ExpenseHeads">
+              {{head}}
+          </div>
+        </div>
+      </div>
+      <!-- Employee Management ends -->
+    </div>
+
+  </div>
+</div>

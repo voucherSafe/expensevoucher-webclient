@@ -1,7 +1,5 @@
 describe('VoucherSafe Web Client App', function() {
-  var email = element(by.model('credentials.email'));
-  var password = element(by.model('credentials.password'));
-  var loginButton = element(by.className('btn btn-primary'));
+
   var latestResult = element(by.className('latest'));
 
   beforeEach(function() {
@@ -21,7 +19,20 @@ describe('VoucherSafe Web Client App', function() {
     //Perform logout
     loginButton.click();
     expect(element(by.className('btn btn-primary')).getText()).toContain('Log In');
+  });
+
+  it('should create and save voucher for employee', function() {
+    var createVoucherButton = element(by.buttonText('Create a new Voucher'));
+    email.sendKeys('dhanya@kollavarsham.org');
+    password.sendKeys('temp123');
+    //Perform login
+    loginButton.click();
+    //wait for next window
+    expect(browser.urlContains('home'));
+    createVoucherButton.click();
+    expect(element.)
 
   });
+
 
 });

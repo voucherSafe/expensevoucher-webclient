@@ -81,11 +81,12 @@
 
           <!-- Employee Management -->
           <div class="col-md-4">
-            <h4>Manage Employees</h4>
+            <h4>Manage Organization</h4>
             <div class="list-group">
-              <div class="list-group-item" data-ng-click="">Add </div>
-              <div class="list-group-item" data-ng-click="">Modify Details</div>
-              <div class="list-group-item" data-ng-click="">View all</div>
+              <a class="list-group-item" data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/view">
+                  Work with Organization
+              </a>
+              <div class="list-group-item" data-ng-click="">Work with Employees</div>
             </div>
           </div>
           <!-- Employee Management ends -->
