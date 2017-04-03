@@ -13,14 +13,14 @@
           <textarea class="form-control" rows="3" id="address" ng-disabled="true">{{ organisation.address }}
           </textarea>
           <h5> PettyCashLedgerName </h5>
-            <input class="form-control" rows="1" id="pettycashledgername" readonly
-                ng-model="organisation.properties.PettyCashLedgerName"\>
+            <input class="form-control" id="pettycashledgername" readonly
+                ng-model="organisation.properties.PettyCashLedgerName" />
           <h5> PartyLedgerName </h5>
-                    <input class="form-control" rows="1" id="partyledgername" readonly
-                            ng-model="organisation.properties.PartyLedgerName" \>
+            <input class="form-control" id="partyledgername" readonly
+                   ng-model="organisation.properties.PartyLedgerName" />
           <h5> VoucherTypeName </h5>
-                    <input class="form-control" rows="1" id="vouchertypename" readonly
-                            ng-model="organisation.properties.VoucherTypeName"\><br>
+            <input class="form-control" id="vouchertypename" readonly
+                   ng-model="organisation.properties.VoucherTypeName" /><br>
           <a class="btn btn-danger" data-ng-click="cancel()">
               <span class="glyphicon glyphicon-circle-arrow-left"></span>
               Back

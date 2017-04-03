@@ -17,14 +17,14 @@
           <textarea class="form-control" rows="3" id="address">{{ organisation.address }}
           </textarea>
                 <h5> PettyCashLedgerName </h5>
-                <input class="form-control" rows="1" id="pettycashledgername"
-                       ng-model="organisation.properties.PettyCashLedgerName"\>
+                <input class="form-control" id="pettycashledgername"
+                       ng-model="organisation.properties.PettyCashLedgerName"/>
                 <h5> PartyLedgerName </h5>
-                <input class="form-control" rows="1" id="partyledgername"
-                       ng-model="organisation.properties.PartyLedgerName" \>
+                <input class="form-control" id="partyledgername"
+                       ng-model="organisation.properties.PartyLedgerName"/>
                 <h5> VoucherTypeName </h5>
-                <input class="form-control" rows="1" id="vouchertypename"
-                       ng-model="organisation.properties.VoucherTypeName"\><br>
+                <input class="form-control" id="vouchertypename"
+                       ng-model="organisation.properties.VoucherTypeName"/><br>
                 <a class="btn btn-danger" data-ng-click="cancel()">
                     <span class="glyphicon glyphicon-circle-arrow-left"></span>
                     Back
@@ -38,9 +38,8 @@
             <!-- Account Heads -->
             <div class="col-md-7">
                 <h4>Expense Heads</h4>
-                <!-- <div uib-alert ng-show="duplicateExpenseHead" ng-class="'alert-danger'">Duplicate Expense Head!</div> -->
                 <div class="list-group">
-                    <div class="list-group-item list-group-item">
+                    <div class="list-group-item">
                         <a class="btn btn-success" data-ng-click="createNewExpenseHead()">
                             <span class="glyphicon glyphicon-plus-sign"> </span>
                             Add a new Expense Head
