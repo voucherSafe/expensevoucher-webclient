@@ -27,7 +27,7 @@
                        ng-model="organisation.properties.VoucherTypeName"\><br>
                 <a class="btn btn-danger" data-ng-click="cancel()">
                     <span class="glyphicon glyphicon-circle-arrow-left"></span>
-                    Cancel
+                    Back
                 </a>
                 <a class="btn btn-primary" data-ng-click="save()">
                     <span class="glyphicon glyphicon-floppy-save"></span>
@@ -38,13 +38,29 @@
             <!-- Account Heads -->
             <div class="col-md-7">
                 <h4>Expense Heads</h4>
+                <!-- <div uib-alert ng-show="duplicateExpenseHead" ng-class="'alert-danger'">Duplicate Expense Head!</div> -->
                 <div class="list-group">
-                    <div class="list-group-item list-group-item-success" data-ng-click="createNewExpenseHead()">
-                        <span class="glyphicon glyphicon-plus-sign"> </span> Add Expense Head</div>
-                    <div class="list-group-item" data-ng-repeat="head in organisation.ExpenseHeads track by $index">
-                        <div class="input-group">
-                            <input type="text" class="form-control" ng-model="organisation.ExpenseHeads[$index]">
-                            <span class="input-group-addon" ng-click="removeExpenseHead(head)"><i class="glyphicon glyphicon-remove"></i></span>
+                    <div class="list-group-item list-group-item">
+                        <a class="btn btn-success" data-ng-click="createNewExpenseHead()">
+                            <span class="glyphicon glyphicon-plus-sign"> </span>
+                            Add a new Expense Head
+                        </a>
+                    </div>
+                    <div class="list-group-item" data-ng-repeat="head in editableHeads track by $index">
+                        <div class="input-group" ng-hide="editableHeads[$index].editable">
+                            <input type="text" class="form-control" ng-model="editableHeads[$index].expenseHead" readonly>
+                            <span class="input-group-addon" ng-click="makeHeadEditable($index)">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </span>
+                        </div>
+                        <div class="input-group" ng-show="editableHeads[$index].editable">
+                            <input type="text" class="form-control" ng-model="editableHeads[$index].expenseHead">
+                            <span class="input-group-addon" ng-click="commitExpenseHead($index)">
+                                <i class="glyphicon glyphicon-check"></i>
+                            </span>
+                            <span class="input-group-addon" ng-click="removeExpenseHead($index)">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </span>
                         </div>
                     </div>
                 </div>
