@@ -1,0 +1,88 @@
+<div print-remove="true" class="page-header">
+    <h1>Work with Employees</h1>
+</div>
+
+<!-- Confirmation and Alert dialogs -->
+<div print-hide ng-include="'views/confirm-dialog.html'"></div>
+<div print-hide ng-include="'views/info-dialog.html'"></div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"> {{ organisation.name }}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-5">
+                <h5> Employees </h5>
+                <div class="list-group">
+                    <div class="list-group-item" data-ng-repeat="employee in employees track by $index"
+                         data-ng-click="selectEmployee($index)">
+                        <b>{{ employee.employeeID }}</b>
+                        {{ " - " + employee.firstName + " " + employee.lastName }}
+                    </div>
+                </div>
+                <a class="btn btn-danger" ng-click="cancel()">
+                    <span class="glyphicon glyphicon-circle-arrow-left"></span> Home
+                </a>
+            </div>
+
+            <!-- Employee Details -->
+            <div class="col-md-7">
+                <h4>Edit Employee</h4>
+                <div ng-if="employeeToEdit === undefined || employeeToEdit === null">
+                    <p class="lead"> Select an employee to edit</p>
+                </div>
+                <div ng-if="employeeToEdit !== undefined && employeeToEdit !== null">
+                    <div class="form-group">
+                        <label>EmployeeID</label>
+                        <input name="employeeID" type="text" ng-model="employeeToEdit.employeeID" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input name="firstName" type="text" ng-model="employeeToEdit.firstName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input name="lastName" type="text" ng-model="employeeToEdit.lastName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input name="address" type="text" ng-model="employeeToEdit.address" class="form-control">
+                    </div>
+                    <h4>Employee Specific Expense Heads</h4>
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <a class="btn btn-success" data-ng-click="createNewExpenseHead()">
+                                <span class="glyphicon glyphicon-plus-sign"> </span>
+                                Add a new Expense Head
+                            </a>
+                        </div>
+                        <div class="list-group-item" data-ng-repeat="head in editableHeads track by $index">
+                            <div class="input-group" ng-hide="editableHeads[$index].editable">
+                                <input type="text" class="form-control" ng-model="editableHeads[$index].expenseHead" readonly>
+                                <span class="input-group-addon" ng-click="makeHeadEditable($index)">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                </span>
+                            </div>
+                            <div class="input-group" ng-show="editableHeads[$index].editable">
+                                <input type="text" class="form-control" ng-model="editableHeads[$index].expenseHead">
+                                <span class="input-group-addon" ng-click="commitExpenseHead($index)">
+                                    <i class="glyphicon glyphicon-check"></i>
+                                </span>
+                                <span class="input-group-addon" ng-click="removeExpenseHead($index)">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary" ng-click="save()">
+                        <span class="glyphicon glyphicon-floppy-save"></span> Save Changes
+                    </a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Employee Details ends -->
+        </div>
+    </div>
+</div>

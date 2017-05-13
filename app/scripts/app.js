@@ -70,6 +70,10 @@ angular
                 templateUrl : 'views/edit-organisation.html',
                 controller : 'EditOrganisationCtrl'
             })
+            .when('/organisation/:organisationid/manager/:managerid/employees', {
+                templateUrl : 'views/manage-employees.html',
+                controller : 'ManageEmployeesCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

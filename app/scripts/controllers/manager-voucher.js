@@ -61,7 +61,10 @@ angular.module('expenseVouchersClientApp')
             return expense;
           },
           heads: function () {
-            return $scope.organisation.ExpenseHeads;
+              var allHeads = [];
+              allHeads = allHeads.concat($scope.organisation.ExpenseHeads);
+              allHeads = allHeads.concat($scope.employee.ExpenseHeads);
+              return allHeads;
           },
           voucherDate: function() {
             return $scope.voucher.Date;
