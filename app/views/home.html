@@ -1,14 +1,26 @@
 <div class="page-header">
-  <h1>Home</h1>
-
+    <div class="row">
+      <div class="col-md-8">
+         <h1>VoucherSafe Home</h1>
+      </div>
+      <div class="col-md-4" ng-show="organisation.ourtimeEnabled">
+        <a class="btn btn-lg btn-default" data-ng-href="#/dpor/home/{{employee.employeeID}}">
+          Switch to OurTime
+        </a>
+      </div>
+    </div>
 </div>
 <div class="container-fluid">
 
   <!-- Employee Info and Welcome -->
-  <div class="row">
-    <p class="pull-right"><a class="btn btn-primary" ng-click="logout()">
-      <span class="glyphicon glyphicon-log-out"></span> Log Out </a></p>
-  </div>
+    <div class="row">
+          <div class="col-md-6">
+          </div>
+          <div class="col-md-6">
+            <p class="pull-right"><a class="btn btn-primary" ng-click="logout()">
+              <span class="glyphicon glyphicon-log-out"></span> Log Out </a></p>
+          </div>
+      </div>
   <div class="row">
     <div class="col-md-5">
       <p class="lead"> Welcome <b>{{employee.firstName + " " + employee.lastName}}</b></p>
@@ -33,7 +45,12 @@
   <div class="row" ng-show="employee.isManager">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">Manager's Corner</h3>
+          <div class="row">
+              <div class="col-md-8">
+                  <h3 class="panel-title">Manager's Corner</h3>
+              </div>
+          </div>
+
       </div>
       <div class="panel-body">
         <div class="row">

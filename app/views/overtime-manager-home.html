@@ -1,0 +1,112 @@
+<div class="page-header">
+  <h1>Home</h1>
+
+</div>
+<div class="container-fluid">
+
+  <!-- Employee Info and Welcome -->
+  <div class="row">
+    <p class="pull-right"><a class="btn btn-primary" ng-click="logout()">
+      <span class="glyphicon glyphicon-log-out"></span> Log Out </a></p>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <p class="lead"> Welcome <b>{{employee.firstName + " " + employee.lastName}}</b></p>
+    </div>
+    <div class="col-md-7">
+      <p class="lead" ng-if="employee.isManager===true">Manager of <b>{{organisation.name}}</b></p>
+      <p class="lead" ng-if="employee.isManager===false">Employee of <b>{{organisation.name}}</b></p>
+    </div>
+  </div>
+  <!-- Employee Info and Welcome -->
+
+  <!-- Output Error if any -->
+  <div class="alert alert-danger" role="alert" ng-show="error!==''">
+    <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="error=''"></span>
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{error.msg}}
+  </div>
+  <!-- Output Error ends -->
+
+  <!-- Manager's Corner -->
+  <div class="row" ng-show="employee.isManager">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+          <div class="row">
+              <div class="col-md-8">
+                  <h3 class="panel-title">Manager's Corner</h3>
+              </div>
+              <div class="col-md-4">
+                  <a class="btn btn-lg btn-default" href="#">Switch to OurTime</a>
+              </div>
+          </div>
+
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <h4>Recently Submitted</h4>
+            <p class="lead" ng-if="!orgSubmittedVouchers.length"> There aren't any.</p>
+            <div class="list-group" ng-if="orgSubmittedVouchers.length">
+              <a class="list-group-item" data-ng-repeat="voucher in orgSubmittedVouchers"
+                 data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/employee/{{voucher.employeeId}}/voucher/{{voucher.id}}" >
+                <p class="list-group-item-text">
+                  <span>{{ voucher.employeeId }}</span>
+                </p>
+                <p>
+                  <small> {{voucher.Narration}} </small>
+                </p>
+                <p class="list-group-item-text">
+                  <span>Amount</span>
+                  <span class="badge">{{voucher.Amount | currency:"&#8377;"}}</span>
+                </p>
+                <p class="list-group-item-text">
+                  <span>{{voucher.Date | date:'medium'}}</span>
+                </p>
+              </a>
+            </div>
+            <a class="btn btn-default pull-right"
+               ng-if="orgSubmittedVouchers.length >= 1"
+               ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/vouchers/submitted">
+              View All
+            </a>
+          </div>
+
+          <!-- Organization Reports -->
+          <div class="col-md-4">
+            <h4>Work with Vouchers</h4>
+            <div class="list-group">
+              <a class="list-group-item"
+                 data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/vouchers/approved">
+                All Approved Vouchers</a>
+              <a class="list-group-item"
+                 data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/vouchers/complete">
+                All Completed Vouchers</a>
+            </div>
+          </div>
+          <!-- Organization Reports ends -->
+
+          <!-- Employee Management -->
+          <div class="col-md-4">
+            <h4>Manage Organization</h4>
+            <div class="list-group">
+              <a class="list-group-item" data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/view">
+                  Work with Organization
+              </a>
+              <a class="list-group-item"
+                   data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/employees">
+                  Work with Employees
+              </a>
+            </div>
+          </div>
+          <!-- Employee Management ends -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Manager's Corner ends -->
+
+</div>
+<!-- container-fluid -->

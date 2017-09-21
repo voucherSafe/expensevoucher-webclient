@@ -1,0 +1,48 @@
+<!-- Add Job Detail Pop-up template starts-->
+<script type="text/ng-template" id="JobDetailModal.html">
+  <div class="modal-header">
+    <h3 class="modal-title">Job Details</h3>
+  </div>
+  <div class="modal-body">
+  <form name="jobDetailForm" novalidate>
+    <div class="form-group">
+      <label>J/C No.</label>
+      <input name="jcNo" type="text" ng-model="jobDetail.jobCardNo" class="form-control" required="">
+    </div>
+    <div class="form-group">
+      <label>Customer Name</label>
+      <input name="customerName" type="text" ng-model="jobDetail.customerName" required="" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Job Name</label>
+      <input name="jobName" type="text" ng-model="jobDetail.jobName" required="" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>End Time</label>
+      <input name="endTime" type="time" ng-model="jobDetail.endTime" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Amount</label>
+      <input name="amount" type="number" ng-model="jobDetail.amount" required="" class="form-control">
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="button" ng-disabled="jobDetailForm.$invalid" ng-click="ok()">OK</button>
+      <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+    <div class="padding">
+      <p ng-show="jobDetailForm.jcNo.$error.required && !jobDetailForm.jcNo.$pristine">
+      * Job Card number is required</p>
+      <p ng-show="jobDetailForm.customerName.$error.required && !jobDetailForm.customerName.$pristine">
+      * Customer Name is Required</p>
+      <p ng-show="jobDetailForm.jobName.$error.required && !jobDetailForm.jobName.$pristine">
+      * Job Name is required</p>
+      <p ng-show="jobDetailForm.endTime.$error.required && !jobDetailForm.endTime.$pristine">
+      * End Time is required</p>
+      <p ng-show="jobDetailForm.amount.$error.required && !jobDetailForm.amount.$pristine">
+      * Amount is required</p>
+
+    </div>
+    </form>
+  </div>
+</script>
+<!-- Add Job Detail Pop-up template ends -->

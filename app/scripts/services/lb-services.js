@@ -1220,30 +1220,84 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "PUT",
             },
 
-            // INTERNAL. Use Organisation.jobs.findById() instead.
-            "prototype$__findById__jobs": {
+            // INTERNAL. Use Organisation.overtimes.findById() instead.
+            "prototype$__findById__overtimes": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/organisations/:id/jobs/:fk",
+              url: urlBase + "/organisations/:id/overtimes/:fk",
               method: "GET",
             },
 
-            // INTERNAL. Use Organisation.jobs.destroyById() instead.
-            "prototype$__destroyById__jobs": {
+            // INTERNAL. Use Organisation.overtimes.destroyById() instead.
+            "prototype$__destroyById__overtimes": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/organisations/:id/jobs/:fk",
+              url: urlBase + "/organisations/:id/overtimes/:fk",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Organisation.jobs.updateById() instead.
-            "prototype$__updateById__jobs": {
+            // INTERNAL. Use Organisation.overtimes.updateById() instead.
+            "prototype$__updateById__overtimes": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/organisations/:id/jobs/:fk",
+              url: urlBase + "/organisations/:id/overtimes/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Organisation.departments.findById() instead.
+            "prototype$__findById__departments": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/organisations/:id/departments/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Organisation.departments.destroyById() instead.
+            "prototype$__destroyById__departments": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/organisations/:id/departments/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Organisation.departments.updateById() instead.
+            "prototype$__updateById__departments": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/organisations/:id/departments/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports.findById() instead.
+            "prototype$__findById__dailyProductionAndOvertimeReports": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports.destroyById() instead.
+            "prototype$__destroyById__dailyProductionAndOvertimeReports": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports.updateById() instead.
+            "prototype$__updateById__dailyProductionAndOvertimeReports": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports/:fk",
               method: "PUT",
             },
 
@@ -1297,28 +1351,78 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "GET",
             },
 
-            // INTERNAL. Use Organisation.jobs() instead.
-            "prototype$__get__jobs": {
+            // INTERNAL. Use Organisation.overtimes() instead.
+            "prototype$__get__overtimes": {
               isArray: true,
-              url: urlBase + "/organisations/:id/jobs",
+              url: urlBase + "/organisations/:id/overtimes",
               method: "GET",
             },
 
-            // INTERNAL. Use Organisation.jobs.create() instead.
-            "prototype$__create__jobs": {
-              url: urlBase + "/organisations/:id/jobs",
+            // INTERNAL. Use Organisation.overtimes.create() instead.
+            "prototype$__create__overtimes": {
+              url: urlBase + "/organisations/:id/overtimes",
               method: "POST",
             },
 
-            // INTERNAL. Use Organisation.jobs.destroyAll() instead.
-            "prototype$__delete__jobs": {
-              url: urlBase + "/organisations/:id/jobs",
+            // INTERNAL. Use Organisation.overtimes.destroyAll() instead.
+            "prototype$__delete__overtimes": {
+              url: urlBase + "/organisations/:id/overtimes",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Organisation.jobs.count() instead.
-            "prototype$__count__jobs": {
-              url: urlBase + "/organisations/:id/jobs/count",
+            // INTERNAL. Use Organisation.overtimes.count() instead.
+            "prototype$__count__overtimes": {
+              url: urlBase + "/organisations/:id/overtimes/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Organisation.departments() instead.
+            "prototype$__get__departments": {
+              isArray: true,
+              url: urlBase + "/organisations/:id/departments",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Organisation.departments.create() instead.
+            "prototype$__create__departments": {
+              url: urlBase + "/organisations/:id/departments",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Organisation.departments.destroyAll() instead.
+            "prototype$__delete__departments": {
+              url: urlBase + "/organisations/:id/departments",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Organisation.departments.count() instead.
+            "prototype$__count__departments": {
+              url: urlBase + "/organisations/:id/departments/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports() instead.
+            "prototype$__get__dailyProductionAndOvertimeReports": {
+              isArray: true,
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports.create() instead.
+            "prototype$__create__dailyProductionAndOvertimeReports": {
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports.destroyAll() instead.
+            "prototype$__delete__dailyProductionAndOvertimeReports": {
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports.count() instead.
+            "prototype$__count__dailyProductionAndOvertimeReports": {
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports/count",
               method: "GET",
             },
 
@@ -2489,27 +2593,27 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         };
     /**
      * @ngdoc object
-     * @name lbServices.Organisation.jobs
-     * @header lbServices.Organisation.jobs
+     * @name lbServices.Organisation.overtimes
+     * @header lbServices.Organisation.overtimes
      * @object
      * @description
      *
-     * The object `Organisation.jobs` groups methods
-     * manipulating `Job` instances related to `Organisation`.
+     * The object `Organisation.overtimes` groups methods
+     * manipulating `Overtime` instances related to `Organisation`.
      *
-     * Call {@link lbServices.Organisation#jobs Organisation.jobs()}
+     * Call {@link lbServices.Organisation#overtimes Organisation.overtimes()}
      * to query all related instances.
      */
 
 
             /**
              * @ngdoc method
-             * @name lbServices.Organisation#jobs
+             * @name lbServices.Organisation#overtimes
              * @methodOf lbServices.Organisation
              *
              * @description
              *
-             * Queries jobs of organisation.
+             * Queries overtimes of organisation.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2529,23 +2633,23 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Overtime` object.)
              * </em>
              */
-        R.jobs = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::get::Organisation::jobs"];
+        R.overtimes = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::get::Organisation::overtimes"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Organisation.jobs#count
-             * @methodOf lbServices.Organisation.jobs
+             * @name lbServices.Organisation.overtimes#count
+             * @methodOf lbServices.Organisation.overtimes
              *
              * @description
              *
-             * Counts jobs of organisation.
+             * Counts overtimes of organisation.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2567,20 +2671,20 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              *  - `count` – `{number=}` -
              */
-        R.jobs.count = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::count::Organisation::jobs"];
+        R.overtimes.count = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::count::Organisation::overtimes"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Organisation.jobs#create
-             * @methodOf lbServices.Organisation.jobs
+             * @name lbServices.Organisation.overtimes#create
+             * @methodOf lbServices.Organisation.overtimes
              *
              * @description
              *
-             * Creates a new instance in jobs of this model.
+             * Creates a new instance in overtimes of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2602,23 +2706,23 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Overtime` object.)
              * </em>
              */
-        R.jobs.create = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::create::Organisation::jobs"];
+        R.overtimes.create = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::create::Organisation::overtimes"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Organisation.jobs#createMany
-             * @methodOf lbServices.Organisation.jobs
+             * @name lbServices.Organisation.overtimes#createMany
+             * @methodOf lbServices.Organisation.overtimes
              *
              * @description
              *
-             * Creates a new instance in jobs of this model.
+             * Creates a new instance in overtimes of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2640,23 +2744,23 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Overtime` object.)
              * </em>
              */
-        R.jobs.createMany = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::createMany::Organisation::jobs"];
+        R.overtimes.createMany = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::createMany::Organisation::overtimes"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Organisation.jobs#destroyAll
-             * @methodOf lbServices.Organisation.jobs
+             * @name lbServices.Organisation.overtimes#destroyAll
+             * @methodOf lbServices.Organisation.overtimes
              *
              * @description
              *
-             * Deletes all jobs of this model.
+             * Deletes all overtimes of this model.
              *
              * @param {Object=} parameters Request parameters.
              *
@@ -2674,26 +2778,26 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * This method returns no data.
              */
-        R.jobs.destroyAll = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::delete::Organisation::jobs"];
+        R.overtimes.destroyAll = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::delete::Organisation::overtimes"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Organisation.jobs#destroyById
-             * @methodOf lbServices.Organisation.jobs
+             * @name lbServices.Organisation.overtimes#destroyById
+             * @methodOf lbServices.Organisation.overtimes
              *
              * @description
              *
-             * Delete a related item by id for jobs.
+             * Delete a related item by id for overtimes.
              *
              * @param {Object=} parameters Request parameters.
              *
              *  - `id` – `{*}` - PersistedModel id
              *
-             *  - `fk` – `{*}` - Foreign key for jobs
+             *  - `fk` – `{*}` - Foreign key for overtimes
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2707,26 +2811,26 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * This method returns no data.
              */
-        R.jobs.destroyById = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::destroyById::Organisation::jobs"];
+        R.overtimes.destroyById = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::destroyById::Organisation::overtimes"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Organisation.jobs#findById
-             * @methodOf lbServices.Organisation.jobs
+             * @name lbServices.Organisation.overtimes#findById
+             * @methodOf lbServices.Organisation.overtimes
              *
              * @description
              *
-             * Find a related item by id for jobs.
+             * Find a related item by id for overtimes.
              *
              * @param {Object=} parameters Request parameters.
              *
              *  - `id` – `{*}` - PersistedModel id
              *
-             *  - `fk` – `{*}` - Foreign key for jobs
+             *  - `fk` – `{*}` - Foreign key for overtimes
              *
              * @param {function(Object,Object)=} successCb
              *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2740,29 +2844,29 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Overtime` object.)
              * </em>
              */
-        R.jobs.findById = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::findById::Organisation::jobs"];
+        R.overtimes.findById = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::findById::Organisation::overtimes"];
           return action.apply(R, arguments);
         };
 
             /**
              * @ngdoc method
-             * @name lbServices.Organisation.jobs#updateById
-             * @methodOf lbServices.Organisation.jobs
+             * @name lbServices.Organisation.overtimes#updateById
+             * @methodOf lbServices.Organisation.overtimes
              *
              * @description
              *
-             * Update a related item by id for jobs.
+             * Update a related item by id for overtimes.
              *
              * @param {Object=} parameters Request parameters.
              *
              *  - `id` – `{*}` - PersistedModel id
              *
-             *  - `fk` – `{*}` - Foreign key for jobs
+             *  - `fk` – `{*}` - Foreign key for overtimes
              *
              * @param {Object} postData Request data.
              *
@@ -2780,12 +2884,614 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Overtime` object.)
              * </em>
              */
-        R.jobs.updateById = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::updateById::Organisation::jobs"];
+        R.overtimes.updateById = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::updateById::Organisation::overtimes"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.Organisation.departments
+     * @header lbServices.Organisation.departments
+     * @object
+     * @description
+     *
+     * The object `Organisation.departments` groups methods
+     * manipulating `Department` instances related to `Organisation`.
+     *
+     * Call {@link lbServices.Organisation#departments Organisation.departments()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation#departments
+             * @methodOf lbServices.Organisation
+             *
+             * @description
+             *
+             * Queries departments of organisation.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Department` object.)
+             * </em>
+             */
+        R.departments = function() {
+          var TargetResource = $injector.get("Department");
+          var action = TargetResource["::get::Organisation::departments"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.departments#count
+             * @methodOf lbServices.Organisation.departments
+             *
+             * @description
+             *
+             * Counts departments of organisation.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.departments.count = function() {
+          var TargetResource = $injector.get("Department");
+          var action = TargetResource["::count::Organisation::departments"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.departments#create
+             * @methodOf lbServices.Organisation.departments
+             *
+             * @description
+             *
+             * Creates a new instance in departments of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Department` object.)
+             * </em>
+             */
+        R.departments.create = function() {
+          var TargetResource = $injector.get("Department");
+          var action = TargetResource["::create::Organisation::departments"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.departments#createMany
+             * @methodOf lbServices.Organisation.departments
+             *
+             * @description
+             *
+             * Creates a new instance in departments of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Department` object.)
+             * </em>
+             */
+        R.departments.createMany = function() {
+          var TargetResource = $injector.get("Department");
+          var action = TargetResource["::createMany::Organisation::departments"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.departments#destroyAll
+             * @methodOf lbServices.Organisation.departments
+             *
+             * @description
+             *
+             * Deletes all departments of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.departments.destroyAll = function() {
+          var TargetResource = $injector.get("Department");
+          var action = TargetResource["::delete::Organisation::departments"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.departments#destroyById
+             * @methodOf lbServices.Organisation.departments
+             *
+             * @description
+             *
+             * Delete a related item by id for departments.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for departments
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.departments.destroyById = function() {
+          var TargetResource = $injector.get("Department");
+          var action = TargetResource["::destroyById::Organisation::departments"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.departments#findById
+             * @methodOf lbServices.Organisation.departments
+             *
+             * @description
+             *
+             * Find a related item by id for departments.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for departments
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Department` object.)
+             * </em>
+             */
+        R.departments.findById = function() {
+          var TargetResource = $injector.get("Department");
+          var action = TargetResource["::findById::Organisation::departments"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.departments#updateById
+             * @methodOf lbServices.Organisation.departments
+             *
+             * @description
+             *
+             * Update a related item by id for departments.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for departments
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Department` object.)
+             * </em>
+             */
+        R.departments.updateById = function() {
+          var TargetResource = $injector.get("Department");
+          var action = TargetResource["::updateById::Organisation::departments"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.Organisation.dailyProductionAndOvertimeReports
+     * @header lbServices.Organisation.dailyProductionAndOvertimeReports
+     * @object
+     * @description
+     *
+     * The object `Organisation.dailyProductionAndOvertimeReports` groups methods
+     * manipulating `DailyProductionAndOvertimeReport` instances related to `Organisation`.
+     *
+     * Call {@link lbServices.Organisation#dailyProductionAndOvertimeReports Organisation.dailyProductionAndOvertimeReports()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation#dailyProductionAndOvertimeReports
+             * @methodOf lbServices.Organisation
+             *
+             * @description
+             *
+             * Queries dailyProductionAndOvertimeReports of organisation.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+        R.dailyProductionAndOvertimeReports = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::get::Organisation::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.dailyProductionAndOvertimeReports#count
+             * @methodOf lbServices.Organisation.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Counts dailyProductionAndOvertimeReports of organisation.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.dailyProductionAndOvertimeReports.count = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::count::Organisation::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.dailyProductionAndOvertimeReports#create
+             * @methodOf lbServices.Organisation.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Creates a new instance in dailyProductionAndOvertimeReports of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+        R.dailyProductionAndOvertimeReports.create = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::create::Organisation::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.dailyProductionAndOvertimeReports#createMany
+             * @methodOf lbServices.Organisation.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Creates a new instance in dailyProductionAndOvertimeReports of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+        R.dailyProductionAndOvertimeReports.createMany = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::createMany::Organisation::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.dailyProductionAndOvertimeReports#destroyAll
+             * @methodOf lbServices.Organisation.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Deletes all dailyProductionAndOvertimeReports of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.dailyProductionAndOvertimeReports.destroyAll = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::delete::Organisation::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.dailyProductionAndOvertimeReports#destroyById
+             * @methodOf lbServices.Organisation.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Delete a related item by id for dailyProductionAndOvertimeReports.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for dailyProductionAndOvertimeReports
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.dailyProductionAndOvertimeReports.destroyById = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::destroyById::Organisation::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.dailyProductionAndOvertimeReports#findById
+             * @methodOf lbServices.Organisation.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Find a related item by id for dailyProductionAndOvertimeReports.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for dailyProductionAndOvertimeReports
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+        R.dailyProductionAndOvertimeReports.findById = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::findById::Organisation::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Organisation.dailyProductionAndOvertimeReports#updateById
+             * @methodOf lbServices.Organisation.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Update a related item by id for dailyProductionAndOvertimeReports.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for dailyProductionAndOvertimeReports
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+        R.dailyProductionAndOvertimeReports.updateById = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::updateById::Organisation::dailyProductionAndOvertimeReports"];
           return action.apply(R, arguments);
         };
 
@@ -2962,6 +3668,84 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "PUT",
             },
 
+            // INTERNAL. Use Employee.overtimes.findById() instead.
+            "prototype$__findById__overtimes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/employees/:id/overtimes/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Employee.overtimes.destroyById() instead.
+            "prototype$__destroyById__overtimes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/employees/:id/overtimes/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Employee.overtimes.updateById() instead.
+            "prototype$__updateById__overtimes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/employees/:id/overtimes/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Employee.departments() instead.
+            "prototype$__get__departments": {
+              url: urlBase + "/employees/:id/departments",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Employee.departments.create() instead.
+            "prototype$__create__departments": {
+              url: urlBase + "/employees/:id/departments",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Employee.departments.update() instead.
+            "prototype$__update__departments": {
+              url: urlBase + "/employees/:id/departments",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Employee.departments.destroy() instead.
+            "prototype$__destroy__departments": {
+              url: urlBase + "/employees/:id/departments",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports.findById() instead.
+            "prototype$__findById__dailyProductionAndOvertimeReports": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports.destroyById() instead.
+            "prototype$__destroyById__dailyProductionAndOvertimeReports": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports.updateById() instead.
+            "prototype$__updateById__dailyProductionAndOvertimeReports": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports/:fk",
+              method: "PUT",
+            },
+
             /**
              * @ngdoc method
              * @name lbServices.Employee#prototype$__get__accessTokens
@@ -3121,6 +3905,56 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             // INTERNAL. Use Employee.vouchers.count() instead.
             "prototype$__count__vouchers": {
               url: urlBase + "/employees/:id/vouchers/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Employee.overtimes() instead.
+            "prototype$__get__overtimes": {
+              isArray: true,
+              url: urlBase + "/employees/:id/overtimes",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Employee.overtimes.create() instead.
+            "prototype$__create__overtimes": {
+              url: urlBase + "/employees/:id/overtimes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Employee.overtimes.destroyAll() instead.
+            "prototype$__delete__overtimes": {
+              url: urlBase + "/employees/:id/overtimes",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Employee.overtimes.count() instead.
+            "prototype$__count__overtimes": {
+              url: urlBase + "/employees/:id/overtimes/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports() instead.
+            "prototype$__get__dailyProductionAndOvertimeReports": {
+              isArray: true,
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports.create() instead.
+            "prototype$__create__dailyProductionAndOvertimeReports": {
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports.destroyAll() instead.
+            "prototype$__delete__dailyProductionAndOvertimeReports": {
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports.count() instead.
+            "prototype$__count__dailyProductionAndOvertimeReports": {
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports/count",
               method: "GET",
             },
 
@@ -3789,6 +4623,43 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "GET",
             },
 
+            // INTERNAL. Use Department.coordinator() instead.
+            "::get::Department::coordinator": {
+              url: urlBase + "/departments/:id/coordinator",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Department.coordinator.create() instead.
+            "::create::Department::coordinator": {
+              url: urlBase + "/departments/:id/coordinator",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Department.coordinator.createMany() instead.
+            "::createMany::Department::coordinator": {
+              isArray: true,
+              url: urlBase + "/departments/:id/coordinator",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Department.coordinator.update() instead.
+            "::update::Department::coordinator": {
+              url: urlBase + "/departments/:id/coordinator",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Department.coordinator.destroy() instead.
+            "::destroy::Department::coordinator": {
+              url: urlBase + "/departments/:id/coordinator",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.employee() instead.
+            "::get::DailyProductionAndOvertimeReport::employee": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/employee",
+              method: "GET",
+            },
+
             /**
              * @ngdoc method
              * @name lbServices.Employee#getCurrent
@@ -4314,6 +5185,803 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         R.vouchers.updateById = function() {
           var TargetResource = $injector.get("Voucher");
           var action = TargetResource["::updateById::Employee::vouchers"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.Employee.overtimes
+     * @header lbServices.Employee.overtimes
+     * @object
+     * @description
+     *
+     * The object `Employee.overtimes` groups methods
+     * manipulating `Overtime` instances related to `Employee`.
+     *
+     * Call {@link lbServices.Employee#overtimes Employee.overtimes()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee#overtimes
+             * @methodOf lbServices.Employee
+             *
+             * @description
+             *
+             * Queries overtimes of employee.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Overtime` object.)
+             * </em>
+             */
+        R.overtimes = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::get::Employee::overtimes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.overtimes#count
+             * @methodOf lbServices.Employee.overtimes
+             *
+             * @description
+             *
+             * Counts overtimes of employee.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.overtimes.count = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::count::Employee::overtimes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.overtimes#create
+             * @methodOf lbServices.Employee.overtimes
+             *
+             * @description
+             *
+             * Creates a new instance in overtimes of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Overtime` object.)
+             * </em>
+             */
+        R.overtimes.create = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::create::Employee::overtimes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.overtimes#createMany
+             * @methodOf lbServices.Employee.overtimes
+             *
+             * @description
+             *
+             * Creates a new instance in overtimes of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Overtime` object.)
+             * </em>
+             */
+        R.overtimes.createMany = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::createMany::Employee::overtimes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.overtimes#destroyAll
+             * @methodOf lbServices.Employee.overtimes
+             *
+             * @description
+             *
+             * Deletes all overtimes of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.overtimes.destroyAll = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::delete::Employee::overtimes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.overtimes#destroyById
+             * @methodOf lbServices.Employee.overtimes
+             *
+             * @description
+             *
+             * Delete a related item by id for overtimes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             *  - `fk` – `{*}` - Foreign key for overtimes
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.overtimes.destroyById = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::destroyById::Employee::overtimes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.overtimes#findById
+             * @methodOf lbServices.Employee.overtimes
+             *
+             * @description
+             *
+             * Find a related item by id for overtimes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             *  - `fk` – `{*}` - Foreign key for overtimes
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Overtime` object.)
+             * </em>
+             */
+        R.overtimes.findById = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::findById::Employee::overtimes"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.overtimes#updateById
+             * @methodOf lbServices.Employee.overtimes
+             *
+             * @description
+             *
+             * Update a related item by id for overtimes.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             *  - `fk` – `{*}` - Foreign key for overtimes
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Overtime` object.)
+             * </em>
+             */
+        R.overtimes.updateById = function() {
+          var TargetResource = $injector.get("Overtime");
+          var action = TargetResource["::updateById::Employee::overtimes"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.Employee.departments
+     * @header lbServices.Employee.departments
+     * @object
+     * @description
+     *
+     * The object `Employee.departments` groups methods
+     * manipulating `Department` instances related to `Employee`.
+     *
+     * Call {@link lbServices.Employee#departments Employee.departments()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee#departments
+             * @methodOf lbServices.Employee
+             *
+             * @description
+             *
+             * Fetches hasOne relation departments.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Department` object.)
+             * </em>
+             */
+        R.departments = function() {
+          var TargetResource = $injector.get("Department");
+          var action = TargetResource["::get::Employee::departments"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.departments#create
+             * @methodOf lbServices.Employee.departments
+             *
+             * @description
+             *
+             * Creates a new instance in departments of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Department` object.)
+             * </em>
+             */
+        R.departments.create = function() {
+          var TargetResource = $injector.get("Department");
+          var action = TargetResource["::create::Employee::departments"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.departments#createMany
+             * @methodOf lbServices.Employee.departments
+             *
+             * @description
+             *
+             * Creates a new instance in departments of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Department` object.)
+             * </em>
+             */
+        R.departments.createMany = function() {
+          var TargetResource = $injector.get("Department");
+          var action = TargetResource["::createMany::Employee::departments"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.departments#destroy
+             * @methodOf lbServices.Employee.departments
+             *
+             * @description
+             *
+             * Deletes departments of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.departments.destroy = function() {
+          var TargetResource = $injector.get("Department");
+          var action = TargetResource["::destroy::Employee::departments"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.departments#update
+             * @methodOf lbServices.Employee.departments
+             *
+             * @description
+             *
+             * Update departments of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Department` object.)
+             * </em>
+             */
+        R.departments.update = function() {
+          var TargetResource = $injector.get("Department");
+          var action = TargetResource["::update::Employee::departments"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.Employee.dailyProductionAndOvertimeReports
+     * @header lbServices.Employee.dailyProductionAndOvertimeReports
+     * @object
+     * @description
+     *
+     * The object `Employee.dailyProductionAndOvertimeReports` groups methods
+     * manipulating `DailyProductionAndOvertimeReport` instances related to `Employee`.
+     *
+     * Call {@link lbServices.Employee#dailyProductionAndOvertimeReports Employee.dailyProductionAndOvertimeReports()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee#dailyProductionAndOvertimeReports
+             * @methodOf lbServices.Employee
+             *
+             * @description
+             *
+             * Queries dailyProductionAndOvertimeReports of employee.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+        R.dailyProductionAndOvertimeReports = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::get::Employee::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.dailyProductionAndOvertimeReports#count
+             * @methodOf lbServices.Employee.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Counts dailyProductionAndOvertimeReports of employee.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.dailyProductionAndOvertimeReports.count = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::count::Employee::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.dailyProductionAndOvertimeReports#create
+             * @methodOf lbServices.Employee.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Creates a new instance in dailyProductionAndOvertimeReports of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+        R.dailyProductionAndOvertimeReports.create = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::create::Employee::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.dailyProductionAndOvertimeReports#createMany
+             * @methodOf lbServices.Employee.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Creates a new instance in dailyProductionAndOvertimeReports of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+        R.dailyProductionAndOvertimeReports.createMany = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::createMany::Employee::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.dailyProductionAndOvertimeReports#destroyAll
+             * @methodOf lbServices.Employee.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Deletes all dailyProductionAndOvertimeReports of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.dailyProductionAndOvertimeReports.destroyAll = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::delete::Employee::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.dailyProductionAndOvertimeReports#destroyById
+             * @methodOf lbServices.Employee.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Delete a related item by id for dailyProductionAndOvertimeReports.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             *  - `fk` – `{*}` - Foreign key for dailyProductionAndOvertimeReports
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.dailyProductionAndOvertimeReports.destroyById = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::destroyById::Employee::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.dailyProductionAndOvertimeReports#findById
+             * @methodOf lbServices.Employee.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Find a related item by id for dailyProductionAndOvertimeReports.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             *  - `fk` – `{*}` - Foreign key for dailyProductionAndOvertimeReports
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+        R.dailyProductionAndOvertimeReports.findById = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::findById::Employee::dailyProductionAndOvertimeReports"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Employee.dailyProductionAndOvertimeReports#updateById
+             * @methodOf lbServices.Employee.dailyProductionAndOvertimeReports
+             *
+             * @description
+             *
+             * Update a related item by id for dailyProductionAndOvertimeReports.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - User id
+             *
+             *  - `fk` – `{*}` - Foreign key for dailyProductionAndOvertimeReports
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+        R.dailyProductionAndOvertimeReports.updateById = function() {
+          var TargetResource = $injector.get("DailyProductionAndOvertimeReport");
+          var action = TargetResource["::updateById::Employee::dailyProductionAndOvertimeReports"];
           return action.apply(R, arguments);
         };
 
@@ -6085,601 +7753,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
 /**
  * @ngdoc object
- * @name lbServices.Sandbox
- * @header lbServices.Sandbox
- * @object
- *
- * @description
- *
- * A $resource object for interacting with the `Sandbox` model.
- *
- * ## Example
- *
- * See
- * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
- * for an example of using this object.
- *
- */
-  module.factory(
-    "Sandbox",
-    [
-      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
-      function(LoopBackResource, LoopBackAuth, $injector, $q) {
-        var R = LoopBackResource(
-        urlBase + "/sandboxes/:id",
-          { 'id': '@id' },
-          {
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#create
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Create a new instance of the model and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Sandbox` object.)
-             * </em>
-             */
-            "create": {
-              url: urlBase + "/sandboxes",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#createMany
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Create a new instance of the model and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Sandbox` object.)
-             * </em>
-             */
-            "createMany": {
-              isArray: true,
-              url: urlBase + "/sandboxes",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#upsert
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Sandbox` object.)
-             * </em>
-             */
-            "upsert": {
-              url: urlBase + "/sandboxes",
-              method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#exists
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Check whether a model instance exists in the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * Data properties:
-             *
-             *  - `exists` – `{boolean=}` -
-             */
-            "exists": {
-              url: urlBase + "/sandboxes/:id/exists",
-              method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#findById
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Find a model instance by id from the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             *  - `filter` – `{object=}` - Filter defining fields and include
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Sandbox` object.)
-             * </em>
-             */
-            "findById": {
-              url: urlBase + "/sandboxes/:id",
-              method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#find
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Find all instances of the model matched by filter from the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Sandbox` object.)
-             * </em>
-             */
-            "find": {
-              isArray: true,
-              url: urlBase + "/sandboxes",
-              method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#findOne
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Find first instance of the model matched by filter from the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Sandbox` object.)
-             * </em>
-             */
-            "findOne": {
-              url: urlBase + "/sandboxes/findOne",
-              method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#updateAll
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Update instances of the model matched by where from the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * The number of instances updated
-             */
-            "updateAll": {
-              url: urlBase + "/sandboxes/update",
-              method: "POST",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#deleteById
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Delete a model instance by id from the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Sandbox` object.)
-             * </em>
-             */
-            "deleteById": {
-              url: urlBase + "/sandboxes/:id",
-              method: "DELETE",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#count
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Count instances of the model matched by where from the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * Data properties:
-             *
-             *  - `count` – `{number=}` -
-             */
-            "count": {
-              url: urlBase + "/sandboxes/count",
-              method: "GET",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#prototype$updateAttributes
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Update attributes for a model instance and persist it into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Sandbox` object.)
-             * </em>
-             */
-            "prototype$updateAttributes": {
-              url: urlBase + "/sandboxes/:id",
-              method: "PUT",
-            },
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#createChangeStream
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Create a change stream.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * Data properties:
-             *
-             *  - `changes` – `{ReadableStream=}` -
-             */
-            "createChangeStream": {
-              url: urlBase + "/sandboxes/change-stream",
-              method: "POST",
-            },
-          }
-        );
-
-
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#updateOrCreate
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Update an existing model instance or insert a new one into the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *   This method does not accept any parameters.
-             *   Supply an empty object or omit this argument altogether.
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Sandbox` object.)
-             * </em>
-             */
-        R["updateOrCreate"] = R["upsert"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#update
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Update instances of the model matched by where from the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * The number of instances updated
-             */
-        R["update"] = R["updateAll"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#destroyById
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Delete a model instance by id from the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Sandbox` object.)
-             * </em>
-             */
-        R["destroyById"] = R["deleteById"];
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Sandbox#removeById
-             * @methodOf lbServices.Sandbox
-             *
-             * @description
-             *
-             * Delete a model instance by id from the data source.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - Model id
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Sandbox` object.)
-             * </em>
-             */
-        R["removeById"] = R["deleteById"];
-
-
-        /**
-        * @ngdoc property
-        * @name lbServices.Sandbox#modelName
-        * @propertyOf lbServices.Sandbox
-        * @description
-        * The name of the model represented by this $resource,
-        * i.e. `Sandbox`.
-        */
-        R.modelName = "Sandbox";
-
-
-
-        return R;
-      }]);
-
-/**
- * @ngdoc object
  * @name lbServices.Overtime
  * @header lbServices.Overtime
  * @object
@@ -6708,58 +7781,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             // INTERNAL. Use Overtime.employee() instead.
             "prototype$__get__employee": {
               url: urlBase + "/overtimes/:id/employee",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Overtime.jobs.findById() instead.
-            "prototype$__findById__jobs": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/overtimes/:id/jobs/:fk",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Overtime.jobs.destroyById() instead.
-            "prototype$__destroyById__jobs": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/overtimes/:id/jobs/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use Overtime.jobs.updateById() instead.
-            "prototype$__updateById__jobs": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/overtimes/:id/jobs/:fk",
-              method: "PUT",
-            },
-
-            // INTERNAL. Use Overtime.jobs() instead.
-            "prototype$__get__jobs": {
-              isArray: true,
-              url: urlBase + "/overtimes/:id/jobs",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Overtime.jobs.create() instead.
-            "prototype$__create__jobs": {
-              url: urlBase + "/overtimes/:id/jobs",
-              method: "POST",
-            },
-
-            // INTERNAL. Use Overtime.jobs.destroyAll() instead.
-            "prototype$__delete__jobs": {
-              url: urlBase + "/overtimes/:id/jobs",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use Overtime.jobs.count() instead.
-            "prototype$__count__jobs": {
-              url: urlBase + "/overtimes/:id/jobs/count",
               method: "GET",
             },
 
@@ -7184,6 +8205,124 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               url: urlBase + "/overtimes/change-stream",
               method: "POST",
             },
+
+            // INTERNAL. Use Organisation.overtimes.findById() instead.
+            "::findById::Organisation::overtimes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/organisations/:id/overtimes/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Organisation.overtimes.destroyById() instead.
+            "::destroyById::Organisation::overtimes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/organisations/:id/overtimes/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Organisation.overtimes.updateById() instead.
+            "::updateById::Organisation::overtimes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/organisations/:id/overtimes/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Organisation.overtimes() instead.
+            "::get::Organisation::overtimes": {
+              isArray: true,
+              url: urlBase + "/organisations/:id/overtimes",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Organisation.overtimes.create() instead.
+            "::create::Organisation::overtimes": {
+              url: urlBase + "/organisations/:id/overtimes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Organisation.overtimes.createMany() instead.
+            "::createMany::Organisation::overtimes": {
+              isArray: true,
+              url: urlBase + "/organisations/:id/overtimes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Organisation.overtimes.destroyAll() instead.
+            "::delete::Organisation::overtimes": {
+              url: urlBase + "/organisations/:id/overtimes",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Organisation.overtimes.count() instead.
+            "::count::Organisation::overtimes": {
+              url: urlBase + "/organisations/:id/overtimes/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Employee.overtimes.findById() instead.
+            "::findById::Employee::overtimes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/employees/:id/overtimes/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Employee.overtimes.destroyById() instead.
+            "::destroyById::Employee::overtimes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/employees/:id/overtimes/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Employee.overtimes.updateById() instead.
+            "::updateById::Employee::overtimes": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/employees/:id/overtimes/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Employee.overtimes() instead.
+            "::get::Employee::overtimes": {
+              isArray: true,
+              url: urlBase + "/employees/:id/overtimes",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Employee.overtimes.create() instead.
+            "::create::Employee::overtimes": {
+              url: urlBase + "/employees/:id/overtimes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Employee.overtimes.createMany() instead.
+            "::createMany::Employee::overtimes": {
+              isArray: true,
+              url: urlBase + "/employees/:id/overtimes",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Employee.overtimes.destroyAll() instead.
+            "::delete::Employee::overtimes": {
+              url: urlBase + "/employees/:id/overtimes",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Employee.overtimes.count() instead.
+            "::count::Employee::overtimes": {
+              url: urlBase + "/employees/:id/overtimes/count",
+              method: "GET",
+            },
           }
         );
 
@@ -7362,307 +8501,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
           var action = TargetResource["::get::Overtime::employee"];
           return action.apply(R, arguments);
         };
-    /**
-     * @ngdoc object
-     * @name lbServices.Overtime.jobs
-     * @header lbServices.Overtime.jobs
-     * @object
-     * @description
-     *
-     * The object `Overtime.jobs` groups methods
-     * manipulating `Job` instances related to `Overtime`.
-     *
-     * Call {@link lbServices.Overtime#jobs Overtime.jobs()}
-     * to query all related instances.
-     */
-
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Overtime#jobs
-             * @methodOf lbServices.Overtime
-             *
-             * @description
-             *
-             * Queries jobs of overtime.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `filter` – `{object=}` -
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
-             * </em>
-             */
-        R.jobs = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::get::Overtime::jobs"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Overtime.jobs#count
-             * @methodOf lbServices.Overtime.jobs
-             *
-             * @description
-             *
-             * Counts jobs of overtime.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * Data properties:
-             *
-             *  - `count` – `{number=}` -
-             */
-        R.jobs.count = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::count::Overtime::jobs"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Overtime.jobs#create
-             * @methodOf lbServices.Overtime.jobs
-             *
-             * @description
-             *
-             * Creates a new instance in jobs of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
-             * </em>
-             */
-        R.jobs.create = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::create::Overtime::jobs"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Overtime.jobs#createMany
-             * @methodOf lbServices.Overtime.jobs
-             *
-             * @description
-             *
-             * Creates a new instance in jobs of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
-             * </em>
-             */
-        R.jobs.createMany = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::createMany::Overtime::jobs"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Overtime.jobs#destroyAll
-             * @methodOf lbServices.Overtime.jobs
-             *
-             * @description
-             *
-             * Deletes all jobs of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.jobs.destroyAll = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::delete::Overtime::jobs"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Overtime.jobs#destroyById
-             * @methodOf lbServices.Overtime.jobs
-             *
-             * @description
-             *
-             * Delete a related item by id for jobs.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for jobs
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.jobs.destroyById = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::destroyById::Overtime::jobs"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Overtime.jobs#findById
-             * @methodOf lbServices.Overtime.jobs
-             *
-             * @description
-             *
-             * Find a related item by id for jobs.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for jobs
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
-             * </em>
-             */
-        R.jobs.findById = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::findById::Overtime::jobs"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Overtime.jobs#updateById
-             * @methodOf lbServices.Overtime.jobs
-             *
-             * @description
-             *
-             * Update a related item by id for jobs.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - PersistedModel id
-             *
-             *  - `fk` – `{*}` - Foreign key for jobs
-             *
-             * @param {Object} postData Request data.
-             *
-             * This method expects a subset of model properties as request parameters.
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
-             * </em>
-             */
-        R.jobs.updateById = function() {
-          var TargetResource = $injector.get("Job");
-          var action = TargetResource["::updateById::Overtime::jobs"];
-          return action.apply(R, arguments);
-        };
 
 
         return R;
@@ -7670,13 +8508,13 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
 /**
  * @ngdoc object
- * @name lbServices.Job
- * @header lbServices.Job
+ * @name lbServices.Department
+ * @header lbServices.Department
  * @object
  *
  * @description
  *
- * A $resource object for interacting with the `Job` model.
+ * A $resource object for interacting with the `Department` model.
  *
  * ## Example
  *
@@ -7686,19 +8524,43 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
  *
  */
   module.factory(
-    "Job",
+    "Department",
     [
       'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
       function(LoopBackResource, LoopBackAuth, $injector, $q) {
         var R = LoopBackResource(
-        urlBase + "/jobs/:id",
+        urlBase + "/departments/:id",
           { 'id': '@id' },
           {
 
+            // INTERNAL. Use Department.coordinator() instead.
+            "prototype$__get__coordinator": {
+              url: urlBase + "/departments/:id/coordinator",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Department.coordinator.create() instead.
+            "prototype$__create__coordinator": {
+              url: urlBase + "/departments/:id/coordinator",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Department.coordinator.update() instead.
+            "prototype$__update__coordinator": {
+              url: urlBase + "/departments/:id/coordinator",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Department.coordinator.destroy() instead.
+            "prototype$__destroy__coordinator": {
+              url: urlBase + "/departments/:id/coordinator",
+              method: "DELETE",
+            },
+
             /**
              * @ngdoc method
-             * @name lbServices.Job#create
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#create
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -7725,18 +8587,18 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Department` object.)
              * </em>
              */
             "create": {
-              url: urlBase + "/jobs",
+              url: urlBase + "/departments",
               method: "POST",
             },
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#createMany
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#createMany
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -7763,19 +8625,19 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Department` object.)
              * </em>
              */
             "createMany": {
               isArray: true,
-              url: urlBase + "/jobs",
+              url: urlBase + "/departments",
               method: "POST",
             },
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#upsert
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#upsert
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -7802,18 +8664,18 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Department` object.)
              * </em>
              */
             "upsert": {
-              url: urlBase + "/jobs",
+              url: urlBase + "/departments",
               method: "PUT",
             },
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#exists
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#exists
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -7838,14 +8700,14 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *  - `exists` – `{boolean=}` -
              */
             "exists": {
-              url: urlBase + "/jobs/:id/exists",
+              url: urlBase + "/departments/:id/exists",
               method: "GET",
             },
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#findById
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#findById
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -7869,18 +8731,18 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Department` object.)
              * </em>
              */
             "findById": {
-              url: urlBase + "/jobs/:id",
+              url: urlBase + "/departments/:id",
               method: "GET",
             },
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#find
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#find
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -7902,19 +8764,19 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Department` object.)
              * </em>
              */
             "find": {
               isArray: true,
-              url: urlBase + "/jobs",
+              url: urlBase + "/departments",
               method: "GET",
             },
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#findOne
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#findOne
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -7936,18 +8798,18 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Department` object.)
              * </em>
              */
             "findOne": {
-              url: urlBase + "/jobs/findOne",
+              url: urlBase + "/departments/findOne",
               method: "GET",
             },
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#updateAll
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#updateAll
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -7974,14 +8836,14 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              * The number of instances updated
              */
             "updateAll": {
-              url: urlBase + "/jobs/update",
+              url: urlBase + "/departments/update",
               method: "POST",
             },
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#deleteById
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#deleteById
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -8003,18 +8865,18 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Department` object.)
              * </em>
              */
             "deleteById": {
-              url: urlBase + "/jobs/:id",
+              url: urlBase + "/departments/:id",
               method: "DELETE",
             },
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#count
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#count
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -8039,14 +8901,14 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *  - `count` – `{number=}` -
              */
             "count": {
-              url: urlBase + "/jobs/count",
+              url: urlBase + "/departments/count",
               method: "GET",
             },
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#prototype$updateAttributes
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#prototype$updateAttributes
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -8072,18 +8934,18 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Department` object.)
              * </em>
              */
             "prototype$updateAttributes": {
-              url: urlBase + "/jobs/:id",
+              url: urlBase + "/departments/:id",
               method: "PUT",
             },
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#createChangeStream
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#createChangeStream
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -8113,126 +8975,98 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *  - `changes` – `{ReadableStream=}` -
              */
             "createChangeStream": {
-              url: urlBase + "/jobs/change-stream",
+              url: urlBase + "/departments/change-stream",
               method: "POST",
             },
 
-            // INTERNAL. Use Organisation.jobs.findById() instead.
-            "::findById::Organisation::jobs": {
+            // INTERNAL. Use Organisation.departments.findById() instead.
+            "::findById::Organisation::departments": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/organisations/:id/jobs/:fk",
+              url: urlBase + "/organisations/:id/departments/:fk",
               method: "GET",
             },
 
-            // INTERNAL. Use Organisation.jobs.destroyById() instead.
-            "::destroyById::Organisation::jobs": {
+            // INTERNAL. Use Organisation.departments.destroyById() instead.
+            "::destroyById::Organisation::departments": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/organisations/:id/jobs/:fk",
+              url: urlBase + "/organisations/:id/departments/:fk",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Organisation.jobs.updateById() instead.
-            "::updateById::Organisation::jobs": {
+            // INTERNAL. Use Organisation.departments.updateById() instead.
+            "::updateById::Organisation::departments": {
               params: {
                 'fk': '@fk',
               },
-              url: urlBase + "/organisations/:id/jobs/:fk",
+              url: urlBase + "/organisations/:id/departments/:fk",
               method: "PUT",
             },
 
-            // INTERNAL. Use Organisation.jobs() instead.
-            "::get::Organisation::jobs": {
+            // INTERNAL. Use Organisation.departments() instead.
+            "::get::Organisation::departments": {
               isArray: true,
-              url: urlBase + "/organisations/:id/jobs",
+              url: urlBase + "/organisations/:id/departments",
               method: "GET",
             },
 
-            // INTERNAL. Use Organisation.jobs.create() instead.
-            "::create::Organisation::jobs": {
-              url: urlBase + "/organisations/:id/jobs",
+            // INTERNAL. Use Organisation.departments.create() instead.
+            "::create::Organisation::departments": {
+              url: urlBase + "/organisations/:id/departments",
               method: "POST",
             },
 
-            // INTERNAL. Use Organisation.jobs.createMany() instead.
-            "::createMany::Organisation::jobs": {
+            // INTERNAL. Use Organisation.departments.createMany() instead.
+            "::createMany::Organisation::departments": {
               isArray: true,
-              url: urlBase + "/organisations/:id/jobs",
+              url: urlBase + "/organisations/:id/departments",
               method: "POST",
             },
 
-            // INTERNAL. Use Organisation.jobs.destroyAll() instead.
-            "::delete::Organisation::jobs": {
-              url: urlBase + "/organisations/:id/jobs",
+            // INTERNAL. Use Organisation.departments.destroyAll() instead.
+            "::delete::Organisation::departments": {
+              url: urlBase + "/organisations/:id/departments",
               method: "DELETE",
             },
 
-            // INTERNAL. Use Organisation.jobs.count() instead.
-            "::count::Organisation::jobs": {
-              url: urlBase + "/organisations/:id/jobs/count",
+            // INTERNAL. Use Organisation.departments.count() instead.
+            "::count::Organisation::departments": {
+              url: urlBase + "/organisations/:id/departments/count",
               method: "GET",
             },
 
-            // INTERNAL. Use Overtime.jobs.findById() instead.
-            "::findById::Overtime::jobs": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/overtimes/:id/jobs/:fk",
+            // INTERNAL. Use Employee.departments() instead.
+            "::get::Employee::departments": {
+              url: urlBase + "/employees/:id/departments",
               method: "GET",
             },
 
-            // INTERNAL. Use Overtime.jobs.destroyById() instead.
-            "::destroyById::Overtime::jobs": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/overtimes/:id/jobs/:fk",
-              method: "DELETE",
+            // INTERNAL. Use Employee.departments.create() instead.
+            "::create::Employee::departments": {
+              url: urlBase + "/employees/:id/departments",
+              method: "POST",
             },
 
-            // INTERNAL. Use Overtime.jobs.updateById() instead.
-            "::updateById::Overtime::jobs": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/overtimes/:id/jobs/:fk",
+            // INTERNAL. Use Employee.departments.createMany() instead.
+            "::createMany::Employee::departments": {
+              isArray: true,
+              url: urlBase + "/employees/:id/departments",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Employee.departments.update() instead.
+            "::update::Employee::departments": {
+              url: urlBase + "/employees/:id/departments",
               method: "PUT",
             },
 
-            // INTERNAL. Use Overtime.jobs() instead.
-            "::get::Overtime::jobs": {
-              isArray: true,
-              url: urlBase + "/overtimes/:id/jobs",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Overtime.jobs.create() instead.
-            "::create::Overtime::jobs": {
-              url: urlBase + "/overtimes/:id/jobs",
-              method: "POST",
-            },
-
-            // INTERNAL. Use Overtime.jobs.createMany() instead.
-            "::createMany::Overtime::jobs": {
-              isArray: true,
-              url: urlBase + "/overtimes/:id/jobs",
-              method: "POST",
-            },
-
-            // INTERNAL. Use Overtime.jobs.destroyAll() instead.
-            "::delete::Overtime::jobs": {
-              url: urlBase + "/overtimes/:id/jobs",
+            // INTERNAL. Use Employee.departments.destroy() instead.
+            "::destroy::Employee::departments": {
+              url: urlBase + "/employees/:id/departments",
               method: "DELETE",
-            },
-
-            // INTERNAL. Use Overtime.jobs.count() instead.
-            "::count::Overtime::jobs": {
-              url: urlBase + "/overtimes/:id/jobs/count",
-              method: "GET",
             },
           }
         );
@@ -8241,8 +9075,8 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#updateOrCreate
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#updateOrCreate
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -8269,15 +9103,15 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Department` object.)
              * </em>
              */
         R["updateOrCreate"] = R["upsert"];
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#update
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#update
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -8307,8 +9141,8 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#destroyById
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#destroyById
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -8330,15 +9164,15 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Department` object.)
              * </em>
              */
         R["destroyById"] = R["deleteById"];
 
             /**
              * @ngdoc method
-             * @name lbServices.Job#removeById
-             * @methodOf lbServices.Job
+             * @name lbServices.Department#removeById
+             * @methodOf lbServices.Department
              *
              * @description
              *
@@ -8360,7 +9194,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              *
              * <em>
              * (The remote method definition does not provide any description.
-             * This usually means the response is a `Job` object.)
+             * This usually means the response is a `Department` object.)
              * </em>
              */
         R["removeById"] = R["deleteById"];
@@ -8368,13 +9202,1970 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
         /**
         * @ngdoc property
-        * @name lbServices.Job#modelName
-        * @propertyOf lbServices.Job
+        * @name lbServices.Department#modelName
+        * @propertyOf lbServices.Department
         * @description
         * The name of the model represented by this $resource,
-        * i.e. `Job`.
+        * i.e. `Department`.
         */
-        R.modelName = "Job";
+        R.modelName = "Department";
+
+    /**
+     * @ngdoc object
+     * @name lbServices.Department.coordinator
+     * @header lbServices.Department.coordinator
+     * @object
+     * @description
+     *
+     * The object `Department.coordinator` groups methods
+     * manipulating `Employee` instances related to `Department`.
+     *
+     * Call {@link lbServices.Department#coordinator Department.coordinator()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Department#coordinator
+             * @methodOf lbServices.Department
+             *
+             * @description
+             *
+             * Fetches hasOne relation coordinator.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Employee` object.)
+             * </em>
+             */
+        R.coordinator = function() {
+          var TargetResource = $injector.get("Employee");
+          var action = TargetResource["::get::Department::coordinator"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Department.coordinator#create
+             * @methodOf lbServices.Department.coordinator
+             *
+             * @description
+             *
+             * Creates a new instance in coordinator of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Employee` object.)
+             * </em>
+             */
+        R.coordinator.create = function() {
+          var TargetResource = $injector.get("Employee");
+          var action = TargetResource["::create::Department::coordinator"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Department.coordinator#createMany
+             * @methodOf lbServices.Department.coordinator
+             *
+             * @description
+             *
+             * Creates a new instance in coordinator of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Employee` object.)
+             * </em>
+             */
+        R.coordinator.createMany = function() {
+          var TargetResource = $injector.get("Employee");
+          var action = TargetResource["::createMany::Department::coordinator"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Department.coordinator#destroy
+             * @methodOf lbServices.Department.coordinator
+             *
+             * @description
+             *
+             * Deletes coordinator of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.coordinator.destroy = function() {
+          var TargetResource = $injector.get("Employee");
+          var action = TargetResource["::destroy::Department::coordinator"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Department.coordinator#update
+             * @methodOf lbServices.Department.coordinator
+             *
+             * @description
+             *
+             * Update coordinator of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Employee` object.)
+             * </em>
+             */
+        R.coordinator.update = function() {
+          var TargetResource = $injector.get("Employee");
+          var action = TargetResource["::update::Department::coordinator"];
+          return action.apply(R, arguments);
+        };
+
+
+        return R;
+      }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.DailyProductionAndOvertimeReport
+ * @header lbServices.DailyProductionAndOvertimeReport
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `DailyProductionAndOvertimeReport` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+  module.factory(
+    "DailyProductionAndOvertimeReport",
+    [
+      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
+      function(LoopBackResource, LoopBackAuth, $injector, $q) {
+        var R = LoopBackResource(
+        urlBase + "/DailyProductionAndOvertimeReports/:id",
+          { 'id': '@id' },
+          {
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.employee() instead.
+            "prototype$__get__employee": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/employee",
+              method: "GET",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails.findById() instead.
+            "prototype$__findById__jobdetails": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails.destroyById() instead.
+            "prototype$__destroyById__jobdetails": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails.updateById() instead.
+            "prototype$__updateById__jobdetails": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails() instead.
+            "prototype$__get__jobdetails": {
+              isArray: true,
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails",
+              method: "GET",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails.create() instead.
+            "prototype$__create__jobdetails": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails",
+              method: "POST",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails.destroyAll() instead.
+            "prototype$__delete__jobdetails": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails.count() instead.
+            "prototype$__count__jobdetails": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#create
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+            "create": {
+              url: urlBase + "/DailyProductionAndOvertimeReports",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#createMany
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+            "createMany": {
+              isArray: true,
+              url: urlBase + "/DailyProductionAndOvertimeReports",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#upsert
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+            "upsert": {
+              url: urlBase + "/DailyProductionAndOvertimeReports",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#exists
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Check whether a model instance exists in the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `exists` – `{boolean=}` -
+             */
+            "exists": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/exists",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#findById
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Find a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `filter` – `{object=}` - Filter defining fields and include
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+            "findById": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#find
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Find all instances of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+            "find": {
+              isArray: true,
+              url: urlBase + "/DailyProductionAndOvertimeReports",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#findOne
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Find first instance of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+            "findOne": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/findOne",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#updateAll
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+            "updateAll": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/update",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#deleteById
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+            "deleteById": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id",
+              method: "DELETE",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#count
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Count instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+            "count": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#prototype$updateAttributes
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Update attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+            "prototype$updateAttributes": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#createChangeStream
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Create a change stream.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `changes` – `{ReadableStream=}` -
+             */
+            "createChangeStream": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/change-stream",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports.findById() instead.
+            "::findById::Organisation::dailyProductionAndOvertimeReports": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports.destroyById() instead.
+            "::destroyById::Organisation::dailyProductionAndOvertimeReports": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports.updateById() instead.
+            "::updateById::Organisation::dailyProductionAndOvertimeReports": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports() instead.
+            "::get::Organisation::dailyProductionAndOvertimeReports": {
+              isArray: true,
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports.create() instead.
+            "::create::Organisation::dailyProductionAndOvertimeReports": {
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports.createMany() instead.
+            "::createMany::Organisation::dailyProductionAndOvertimeReports": {
+              isArray: true,
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports.destroyAll() instead.
+            "::delete::Organisation::dailyProductionAndOvertimeReports": {
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Organisation.dailyProductionAndOvertimeReports.count() instead.
+            "::count::Organisation::dailyProductionAndOvertimeReports": {
+              url: urlBase + "/organisations/:id/dailyProductionAndOvertimeReports/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports.findById() instead.
+            "::findById::Employee::dailyProductionAndOvertimeReports": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports.destroyById() instead.
+            "::destroyById::Employee::dailyProductionAndOvertimeReports": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports.updateById() instead.
+            "::updateById::Employee::dailyProductionAndOvertimeReports": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports() instead.
+            "::get::Employee::dailyProductionAndOvertimeReports": {
+              isArray: true,
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports.create() instead.
+            "::create::Employee::dailyProductionAndOvertimeReports": {
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports.createMany() instead.
+            "::createMany::Employee::dailyProductionAndOvertimeReports": {
+              isArray: true,
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports",
+              method: "POST",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports.destroyAll() instead.
+            "::delete::Employee::dailyProductionAndOvertimeReports": {
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use Employee.dailyProductionAndOvertimeReports.count() instead.
+            "::count::Employee::dailyProductionAndOvertimeReports": {
+              url: urlBase + "/employees/:id/dailyProductionAndOvertimeReports/count",
+              method: "GET",
+            },
+          }
+        );
+
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#updateOrCreate
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+        R["updateOrCreate"] = R["upsert"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#update
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+        R["update"] = R["updateAll"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#destroyById
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+        R["destroyById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#removeById
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `DailyProductionAndOvertimeReport` object.)
+             * </em>
+             */
+        R["removeById"] = R["deleteById"];
+
+
+        /**
+        * @ngdoc property
+        * @name lbServices.DailyProductionAndOvertimeReport#modelName
+        * @propertyOf lbServices.DailyProductionAndOvertimeReport
+        * @description
+        * The name of the model represented by this $resource,
+        * i.e. `DailyProductionAndOvertimeReport`.
+        */
+        R.modelName = "DailyProductionAndOvertimeReport";
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#employee
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Fetches belongsTo relation employee.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Employee` object.)
+             * </em>
+             */
+        R.employee = function() {
+          var TargetResource = $injector.get("Employee");
+          var action = TargetResource["::get::DailyProductionAndOvertimeReport::employee"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.DailyProductionAndOvertimeReport.jobdetails
+     * @header lbServices.DailyProductionAndOvertimeReport.jobdetails
+     * @object
+     * @description
+     *
+     * The object `DailyProductionAndOvertimeReport.jobdetails` groups methods
+     * manipulating `Jobdetail` instances related to `DailyProductionAndOvertimeReport`.
+     *
+     * Call {@link lbServices.DailyProductionAndOvertimeReport#jobdetails DailyProductionAndOvertimeReport.jobdetails()}
+     * to query all related instances.
+     */
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport#jobdetails
+             * @methodOf lbServices.DailyProductionAndOvertimeReport
+             *
+             * @description
+             *
+             * Queries jobdetails of DailyProductionAndOvertimeReport.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `filter` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+        R.jobdetails = function() {
+          var TargetResource = $injector.get("Jobdetail");
+          var action = TargetResource["::get::DailyProductionAndOvertimeReport::jobdetails"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport.jobdetails#count
+             * @methodOf lbServices.DailyProductionAndOvertimeReport.jobdetails
+             *
+             * @description
+             *
+             * Counts jobdetails of DailyProductionAndOvertimeReport.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+        R.jobdetails.count = function() {
+          var TargetResource = $injector.get("Jobdetail");
+          var action = TargetResource["::count::DailyProductionAndOvertimeReport::jobdetails"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport.jobdetails#create
+             * @methodOf lbServices.DailyProductionAndOvertimeReport.jobdetails
+             *
+             * @description
+             *
+             * Creates a new instance in jobdetails of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+        R.jobdetails.create = function() {
+          var TargetResource = $injector.get("Jobdetail");
+          var action = TargetResource["::create::DailyProductionAndOvertimeReport::jobdetails"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport.jobdetails#createMany
+             * @methodOf lbServices.DailyProductionAndOvertimeReport.jobdetails
+             *
+             * @description
+             *
+             * Creates a new instance in jobdetails of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+        R.jobdetails.createMany = function() {
+          var TargetResource = $injector.get("Jobdetail");
+          var action = TargetResource["::createMany::DailyProductionAndOvertimeReport::jobdetails"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport.jobdetails#destroyAll
+             * @methodOf lbServices.DailyProductionAndOvertimeReport.jobdetails
+             *
+             * @description
+             *
+             * Deletes all jobdetails of this model.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.jobdetails.destroyAll = function() {
+          var TargetResource = $injector.get("Jobdetail");
+          var action = TargetResource["::delete::DailyProductionAndOvertimeReport::jobdetails"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport.jobdetails#destroyById
+             * @methodOf lbServices.DailyProductionAndOvertimeReport.jobdetails
+             *
+             * @description
+             *
+             * Delete a related item by id for jobdetails.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for jobdetails
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * This method returns no data.
+             */
+        R.jobdetails.destroyById = function() {
+          var TargetResource = $injector.get("Jobdetail");
+          var action = TargetResource["::destroyById::DailyProductionAndOvertimeReport::jobdetails"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport.jobdetails#findById
+             * @methodOf lbServices.DailyProductionAndOvertimeReport.jobdetails
+             *
+             * @description
+             *
+             * Find a related item by id for jobdetails.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for jobdetails
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+        R.jobdetails.findById = function() {
+          var TargetResource = $injector.get("Jobdetail");
+          var action = TargetResource["::findById::DailyProductionAndOvertimeReport::jobdetails"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.DailyProductionAndOvertimeReport.jobdetails#updateById
+             * @methodOf lbServices.DailyProductionAndOvertimeReport.jobdetails
+             *
+             * @description
+             *
+             * Update a related item by id for jobdetails.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             *  - `fk` – `{*}` - Foreign key for jobdetails
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+        R.jobdetails.updateById = function() {
+          var TargetResource = $injector.get("Jobdetail");
+          var action = TargetResource["::updateById::DailyProductionAndOvertimeReport::jobdetails"];
+          return action.apply(R, arguments);
+        };
+
+
+        return R;
+      }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.Jobdetail
+ * @header lbServices.Jobdetail
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `Jobdetail` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+  module.factory(
+    "Jobdetail",
+    [
+      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
+      function(LoopBackResource, LoopBackAuth, $injector, $q) {
+        var R = LoopBackResource(
+        urlBase + "/jobdetails/:id",
+          { 'id': '@id' },
+          {
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#create
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+            "create": {
+              url: urlBase + "/jobdetails",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#createMany
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+            "createMany": {
+              isArray: true,
+              url: urlBase + "/jobdetails",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#upsert
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+            "upsert": {
+              url: urlBase + "/jobdetails",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#exists
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Check whether a model instance exists in the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `exists` – `{boolean=}` -
+             */
+            "exists": {
+              url: urlBase + "/jobdetails/:id/exists",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#findById
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Find a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `filter` – `{object=}` - Filter defining fields and include
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+            "findById": {
+              url: urlBase + "/jobdetails/:id",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#find
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Find all instances of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+            "find": {
+              isArray: true,
+              url: urlBase + "/jobdetails",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#findOne
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Find first instance of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+            "findOne": {
+              url: urlBase + "/jobdetails/findOne",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#updateAll
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+            "updateAll": {
+              url: urlBase + "/jobdetails/update",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#deleteById
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+            "deleteById": {
+              url: urlBase + "/jobdetails/:id",
+              method: "DELETE",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#count
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Count instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+            "count": {
+              url: urlBase + "/jobdetails/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#prototype$updateAttributes
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Update attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - PersistedModel id
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+            "prototype$updateAttributes": {
+              url: urlBase + "/jobdetails/:id",
+              method: "PUT",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#createChangeStream
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Create a change stream.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `changes` – `{ReadableStream=}` -
+             */
+            "createChangeStream": {
+              url: urlBase + "/jobdetails/change-stream",
+              method: "POST",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails.findById() instead.
+            "::findById::DailyProductionAndOvertimeReport::jobdetails": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails/:fk",
+              method: "GET",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails.destroyById() instead.
+            "::destroyById::DailyProductionAndOvertimeReport::jobdetails": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails/:fk",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails.updateById() instead.
+            "::updateById::DailyProductionAndOvertimeReport::jobdetails": {
+              params: {
+                'fk': '@fk',
+              },
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails/:fk",
+              method: "PUT",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails() instead.
+            "::get::DailyProductionAndOvertimeReport::jobdetails": {
+              isArray: true,
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails",
+              method: "GET",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails.create() instead.
+            "::create::DailyProductionAndOvertimeReport::jobdetails": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails",
+              method: "POST",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails.createMany() instead.
+            "::createMany::DailyProductionAndOvertimeReport::jobdetails": {
+              isArray: true,
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails",
+              method: "POST",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails.destroyAll() instead.
+            "::delete::DailyProductionAndOvertimeReport::jobdetails": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails",
+              method: "DELETE",
+            },
+
+            // INTERNAL. Use DailyProductionAndOvertimeReport.jobdetails.count() instead.
+            "::count::DailyProductionAndOvertimeReport::jobdetails": {
+              url: urlBase + "/DailyProductionAndOvertimeReports/:id/jobdetails/count",
+              method: "GET",
+            },
+          }
+        );
+
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#updateOrCreate
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+        R["updateOrCreate"] = R["upsert"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#update
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Update instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method expects a subset of model properties as request parameters.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * The number of instances updated
+             */
+        R["update"] = R["updateAll"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#destroyById
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+        R["destroyById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Jobdetail#removeById
+             * @methodOf lbServices.Jobdetail
+             *
+             * @description
+             *
+             * Delete a model instance by id from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Jobdetail` object.)
+             * </em>
+             */
+        R["removeById"] = R["deleteById"];
+
+
+        /**
+        * @ngdoc property
+        * @name lbServices.Jobdetail#modelName
+        * @propertyOf lbServices.Jobdetail
+        * @description
+        * The name of the model represented by this $resource,
+        * i.e. `Jobdetail`.
+        */
+        R.modelName = "Jobdetail";
 
 
 

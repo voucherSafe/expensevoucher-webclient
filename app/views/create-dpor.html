@@ -1,0 +1,187 @@
+<div class="page-header">
+  <h1>Create a new Production and Overtime Report</h1>
+</div>
+<div class="alert alert-danger" role="alert" ng-show="error!==''">
+  <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="error=''"></span>
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  {{error}}
+</div>
+<!-- Modal Window for Expense -->
+<div ng-include="'views/jobdetail-modal.html'"></div>
+<!-- Confirmation Message -->
+<div ng-include="'views/confirm-dialog.html'"></div>
+<div ng-include="'views/info-dialog.html'"></div>
+
+<!-- The form copies the exact format used by the Daily production reports in Purandara -->
+<!-- Top Row a Box with the Recipient details and VR No, Date -->
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{organisation.name}}</h3>
+  </div>
+  <div class="panel-body">
+    <!-- Table Employee details on left, Report No, Data on the right-->
+    <div class="row">
+      <div class="col-md-7">
+        <label for="recipient-details">Employee Name & Address</label>
+        <!-- Do not change indentation of textarea -->
+          <textarea class="form-control" rows="4" id="recipient-details" ng-disabled="true">{{ recipientDetails }}
+          </textarea>
+      </div>
+      <div class="col-md-5">
+        <table class="table table-bordered">
+          <tr>
+            <td>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Report No.</span>
+                <input type="text" class="form-control" placeholder="System Generated" aria-describedby="basic-addon1" ng-disabled="true">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Date</span>
+                <input type="text" class="form-control" uib-datepicker-popup="{{format}}"
+                       ng-model="dpor.Date" is-open="datePickerOpened" datepicker-options="dateOptions"
+                       ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="openDatePicker()">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                  </button>
+                </span>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- Table Employee details on left, Report No, Data on the right - Ends-->
+    <!-- DPOR - Start/End/Overtime inputs ends -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h4>Duty timings and Overtime</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-bordered">
+          <tr>
+            <td>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Start Time</span>
+                <input type="time" class="form-control" placeholder="Start Time" ng-model="dpor.starttime">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">End Time</span>
+                <input type="time" class="form-control" placeholder="End Time" ng-model="dpor.endtime">
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Overtime hours</span>
+          <input type="number" class="form-control" placeholder="eg. 2.5 for 2 Hrs 30 mins"
+                  ng-model="dpor.enteredOvertime">
+        </div>
+      </div>
+    </div>
+    <!-- DPOR - Start/End/Overtime inputs ends -->
+    <!-- Job Details begins -->
+    <div class="row">
+      <div class="col-md-8">
+        <h4> Job Details </h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-success" ng-click="createJobDetail()">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          Add Job Detail
+        </button>
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <tr>
+        <th>
+          Sl No
+        </th>
+        <th>
+          J/C No
+        </th>
+        <th>
+          Customer Name
+        </th>
+        <th>
+          Job Name
+        </th>
+        <th>
+          End Time
+        </th>
+        <th>
+          Amount
+        </th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="jobDetail in jobDetails | orderBy:'SlNo'">
+        <td>
+          {{ jobDetail.SlNo }}
+        </td>
+        <td>
+          {{ jobDetail.jobCardNo }}
+        </td>
+        <td>
+          {{ jobDetail.customerName }}
+        </td>
+        <td>
+          {{ jobDetail.jobName }}
+        </td>
+        <td>
+          {{ jobDetail.endTime | date: 'hh:mm'}}
+        </td>
+        <td>
+          {{ jobDetail.amount }}
+        </td>
+        <td>
+          <button print-hide class="btn btn-default btn-xs"
+                  ng-click="editJobDetail(jobDetail.SlNo)">
+            <span class="glyphicon glyphicon-edit"></span>
+          </button>
+          <button print-hide class="btn btn-default btn-xs" ng-click="deleteJobDetail(jobDetail.SlNo)">
+            <span class="glyphicon glyphicon-remove-circle"></span>
+          </button>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <!-- Remarks -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-group">
+          <span class="input-group-addon" id="narration-addon">Remarks</span>
+          <textarea class="form-control" placeholder="Optionally add remarks for this report"
+                  ng-model="dpor.remarks">
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <!-- Narration -->
+
+  </div>
+  <div class="panel-footer">
+    <div class="btn-group" role="group" aria-label="...">
+      <button type="button" class="btn btn-default" ng-click="save()">
+        <span class="glyphicon glyphicon-floppy-save"></span> Save</button>
+      <button type="button" class="btn btn-default" ng-click="submit()">
+        <span class="glyphicon glyphicon-ok-sign"></span> Submit</button>
+      <button type="button" class="btn btn-default" ng-click="cancel()">
+        <span class="glyphicon glyphicon-circle-arrow-left"></span> Cancel</button>
+    </div>
+    <h4 class="pull-right"> {{dpor.State | uppercase}}</h4>
+  </div>
+</div>

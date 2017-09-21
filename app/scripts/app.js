@@ -74,6 +74,34 @@ angular
                 templateUrl : 'views/manage-employees.html',
                 controller : 'ManageEmployeesCtrl'
             })
+            .when('/dpor/home/:id', {
+                templateUrl: 'views/dpor-home.html',
+                controller: 'DporHomeCtrl'
+            })
+            .when('/organisation/:organisationid/manager/:managerid/overtime', {
+                templateUrl : 'views/overtime-manager-home.html',
+                controller : 'OvertimeManagerCtrl'
+            })
+            .when('/employee/:id/dpor/create', {
+                templateUrl: 'views/create-dpor.html',
+                controller: 'CreateDporCtrl'
+            })
+            .when('/employee/:employeeid/dpor/:dporid', {
+                templateUrl: 'views/dpor.html',
+                controller: 'EmployeeDporCtrl'
+            })
+            .when('/employee/:employeeid/dpors/:dporState', {
+                templateUrl: 'views/query-dpor.html',
+                controller: 'EmployeeQueryDporCtrl'
+            })
+            .when('/organisation/:organisationid/manager/:managerid/employee/:employeeid/dpor/:dporid', {
+                templateUrl: 'views/dpor.html',
+                controller: 'ManagerDporCtrl'
+            })
+            .when('/organisation/:organisationid/manager/:managerid/dpors/:dporState', {
+                templateUrl: 'views/query-dpor.html',
+                controller: 'ManagerQueryDporCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

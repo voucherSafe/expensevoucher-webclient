@@ -1,0 +1,131 @@
+<div class="page-header">
+  <h2>{{name}}'s <i>{{dporState | uppercase }}</i> Daily Production And Overtime Reports</h2>
+</div>
+<div class="alert alert-danger" role="alert" ng-show="error!==''">
+  <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="error=''"></span>
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  {{error}}
+</div>
+<!-- The Date picker modal for custom query -->
+<script type="text/ng-template" id="DatePickerTemplate.html">
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">From</span>
+    <input type="text" class="form-control" uib-datepicker-popup="{{format}}"
+           ng-model="$parent.startDate" is-open="fromDatePickerOpened" datepicker-options="dateOptions"
+           ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openFromDatePicker()">
+          <i class="glyphicon glyphicon-calendar"></i>
+        </button>
+      </span>
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">To  </span>
+    <input type="text" class="form-control" uib-datepicker-popup="{{format}}"
+           ng-model="$parent.endDate" is-open="toDatePickerOpened" datepicker-options="dateOptions"
+           ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openToDatePicker()">
+          <i class="glyphicon glyphicon-calendar"></i>
+        </button>
+      </span>
+  </div>
+  <button type="button" class="btn btn-sm btn-default" data-ng-click="selectFromToDates()">Select</button>
+</script>
+
+<!-- Refer
+<button uib-popover-template="dynamicPopover.templateUrl" popover-title="{{dynamicPopover.title}}" type="button" class="btn btn-default">Popover With Template</button>
+
+    <script type="text/ng-template" id="myPopoverTemplate.html">
+        <div>{{dynamicPopover.content}}</div>
+        <div class="form-group">
+          <label>Popup Title:</label>
+          <input type="text" ng-model="dynamicPopover.title" class="form-control">
+        </div>
+    </script>
+
+JS
+$scope.dynamicPopover = {
+    content: 'Hello, World!',
+    templateUrl: 'myPopoverTemplate.html',
+    title: 'Title'
+  };
+
+ Refer -->
+
+<div class="container">
+  <div class="row">
+    <div class="btn-group" role="group" aria-label="...">
+      <button type="button" ng-class="queryContext==='lastMonth' ? 'btn btn-success' : 'btn btn-default'"
+              data-ng-click="changeQueryContext('lastMonth')">Last Month</button>
+      <button type="button" ng-class="queryContext==='currentMonth' ? 'btn btn-success' : 'btn btn-default'"
+              data-ng-click="changeQueryContext('currentMonth')">This Month</button>
+      <button uib-popover-template="datePickerPopover.templateUrl" type="button"
+              ng-class="queryContext==='custom' ? 'btn btn-success' : 'btn btn-default'"
+              popover-placement="bottom" popover-is-open="openDatePickerPopover">
+        <span class="glyphicon glyphicon-calendar"></span> Between Dates</button>
+      <button type="button" class="btn btn-default" data-ng-click="back()">
+        <span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-7">
+      <h5> Reports between <b>{{startDate | date}}</b> and <b>{{endDate | date}}</b></h5>
+    </div>
+    <div class="col-md-5">
+      <div class="btn-group" role="group" aria-label="...">
+        <!-- <a class="btn btn-default" ng-disabled="vouchers.length === 0"
+           ng-href="">
+          <span class="glyphicon glyphicon-th-list"></span> View Expenses </a> -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+            Download <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a ng-click="csv.generate()"
+                   ng-href="{{ csv.link() }}"
+                   download="{{name}}-{{state}}-vouchers-{{startDate | date }}-to-{{endDate | date}}.csv">
+              As CSV file</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <table class="table table-striped" export-csv="csv" separator=",">
+      <tr>
+        <th class="bg-success">Date </th>
+        <th class="bg-success">Employee </th>
+        <th class="bg-success">Approver </th>
+        <th class="bg-success">Duty Start time </th>
+        <th class="bg-success">Duty End time </th>
+        <th class="bg-success">Approved Overtime </th>
+        <th class="bg-success">State</th>
+        <th class="bg-success"></th>
+      </tr>
+      <tr ng-repeat="dpor in dpors">
+        <td> <a style="cursor: pointer" ng-click="show(dpor)">{{dpor.Date | date}}</a></td>
+        <td>{{dpor.employeeId}}</td>
+        <td>{{dpor.Approver}}</td>
+        <td>{{dpor.starttime | date:'hh:mm a'}}</td>
+        <td>{{dpor.endtime | date:'hh:mm a'}}</td>
+        <td>{{dpor.calculatedOvertime}}</td>
+        <td>{{dpor.State}}</td>
+        <td>
+          <button print-hide ng-if="isDporActive(voucher) === true" class="btn btn-default btn-xs"
+                  ng-click="deleteDpor(dpor)">
+            <span class="glyphicon glyphicon-remove-circle"></span>
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+

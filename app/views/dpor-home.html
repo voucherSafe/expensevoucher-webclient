@@ -1,0 +1,185 @@
+<div class="page-header">
+    <div class="row">
+          <div class="col-md-8">
+             <h1>OurTime Home</h1>
+          </div>
+          <div class="col-md-4">
+            <a class="btn btn-lg btn-default" data-ng-href="#/home/{{employee.employeeID}}">
+              Switch to VoucherSafe
+            </a>
+          </div>
+        </div>
+</div>
+<div class="container-fluid">
+
+  <!-- Employee Info and Welcome -->
+  <div class="row">
+    <p class="pull-right"><a class="btn btn-success" ng-click="logout()">
+      <span class="glyphicon glyphicon-log-out"></span> Log Out </a></p>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <p class="lead"> Welcome <b>{{employee.firstName + " " + employee.lastName}}</b></p>
+    </div>
+    <div class="col-md-7">
+      <p class="lead" ng-if="employee.isManager===true">Manager of <b>{{organisation.name}}</b></p>
+      <p class="lead" ng-if="employee.isManager===false">Employee of <b>{{organisation.name}}</b></p>
+    </div>
+  </div>
+  <!-- Employee Info and Welcome -->
+
+  <!-- Output Error if any -->
+  <div class="alert alert-danger" role="alert" ng-show="error!==''">
+    <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="error=''"></span>
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{error.msg}}
+  </div>
+  <!-- Output Error ends -->
+
+  <!-- Manager's Corner -->
+  <div class="row" ng-show="employee.isManager">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+          <div class="row">
+              <div class="col-md-8">
+                  <h3 class="panel-title">Manager's Corner</h3>
+              </div>
+          </div>
+
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <h4>Recently Submitted</h4>
+            <p class="lead" ng-if="!orgSubmittedDpors.length"> There aren't any.</p>
+            <div class="list-group" ng-if="orgSubmittedDpors.length">
+              <a class="list-group-item" data-ng-repeat="dpor in orgSubmittedDpors"
+                 data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/employee/{{dpor.employeeId}}/dpor/{{dpor.id}}" >
+                <p class="list-group-item-text">
+                  <span>{{ dpor.employeeId }}</span>
+                </p>
+                <p class="list-group-item-text">
+                  <span>{{dpor.Date | date:'mediumDate'}}</span>
+                </p>
+              </a>
+            </div>
+            <a class="btn btn-default pull-right"
+               ng-if="orgSubmittedDpors.length >= 1"
+               ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/dpors/submitted">
+              View All
+            </a>
+          </div>
+
+          <!-- Organization Reports -->
+          <div class="col-md-4">
+            <h4>Work with Reports</h4>
+            <div class="list-group">
+              <a class="list-group-item"
+                 data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/dpors/approved">
+                All Approved Reports</a>
+              <a class="list-group-item"
+                 data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/dpors/complete">
+                All Completed Reports</a>
+            </div>
+          </div>
+          <!-- Organization Reports ends -->
+
+          <!-- Employee Management -->
+          <div class="col-md-4">
+            <h4>Manage Organization</h4>
+            <div class="list-group">
+              <a class="list-group-item" data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/view">
+                  Work with Organization
+              </a>
+              <a class="list-group-item"
+                   data-ng-href="#/organisation/{{organisation.id}}/manager/{{employee.employeeID}}/employees">
+                  Work with Employees
+              </a>
+            </div>
+          </div>
+          <!-- Employee Management ends -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Manager's Corner ends -->
+
+  <!-- Employee's Stuff -->
+  <div class="row">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">Work with your Daily Production and Overtime Reports</h3>
+      </div>
+      <div class="panel-body">
+        <!--Work area containing action buttons and dpors starts-->
+        <div class="row">
+          <!--Left hand column for action buttons starts-->
+          <div class="col-md-5">
+            <h4>Actions</h4>
+            <div class="list-group">
+              <button class="list-group-item" data-ng-click="newDpor()">Create a new Report</button>
+              <button class="list-group-item" data-ng-click="employeeDporQuery('submitted')">View Submitted Reports</button>
+              <button class="list-group-item" data-ng-click="employeeDporQuery('complete')">View Completed Reports</button>
+            </div>
+          </div>
+          <!--Left hand column for actions ends-->
+
+          <!--Right-hand column starts-->
+          <div class="col-md-7">
+
+            <!--Active dpors panel starts-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Active Reports <small>(Draft and Rejected)</small></h3>
+              </div>
+              <div class="panel-body">
+                <p ng-if="!activeDpors.length"> You don't have any.</p>
+                <div class="list-group" ng-if="activeDpors.length">
+                  <a class="list-group-item" data-ng-repeat="dpor in activeDpors"
+                     data-ng-href="#/employee/{{employee.employeeID}}/dpor/{{dpor.id}}" >
+                    <p class="list-group-item-text">
+                      <span>{{dpor.Date | date:'mediumDate'}}</span>
+                    </p>
+                  </a>
+                </div>
+                <a class="btn btn-default pull-right"
+                   ng-show="activeDpors.length >= 1"
+                   ng-click="employeeDporQuery('draft')">View All</a>
+              </div>
+            </div>
+            <!--Active dpors panel ends-->
+
+            <!--Approved dpors panel starts-->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Approved Reports <small>(To Print)</small></h3>
+              </div>
+              <div class="panel-body">
+                <p ng-if="!approvedDpors.length"> You don't have any.</p>
+                <div class="list-group" ng-if="approvedDpors.length">
+                  <a class="list-group-item" data-ng-repeat="dpor in approvedDpors"
+                     data-ng-href="#/employee/{{employee.employeeID}}/dpor/{{dpor.id}}" >
+                    <p class="list-group-item-text">
+                      <span>{{dpor.Date | date:'mediumDate'}}</span>
+                    </p>
+                  </a>
+                </div>
+                <a class="btn btn-default pull-right"
+                   ng-show="approvedDpors.length >= 1"
+                   ng-click="employeeDporQuery('approved')">View All</a>
+              </div>
+            </div>
+            <!-- TODO View All - change to 5 -->
+            <!--Approved dpors panel ends-->
+          </div>
+          <!--Right-hand column ends-->
+        </div>
+        <!--Work area containing action buttons and dpor ends-->
+      </div>
+    </div>
+  </div>
+  <!-- Employee's stuff ends -->
+</div>
+<!-- container-fluid -->
